@@ -323,4 +323,208 @@ def build_batch_data_loader(
             return data_loader
         return MapDataset(data_loader, collate_fn)
     else:
-    
+        return torchdata.DataLoader(
+            dataset,
+            batch_size=batch_size,
+            drop_last=True,
+            num_workers=num_workers,
+            collate_fn=trivial_batch_collator if collate_fn is None else collate_fn,
+            worker_init_fn=worker_init_reset_seed,
+        )
+
+
+def _train_loader_from_config(cfg, mapper=None, *, dataset=None, sampler=None):
+    if dataset is None:
+        dataset = get_detection_dataset_dicts(
+            cfg.DATASETS.TRAIN,
+            filter_empty=cfg.DATALOADER.FILTER_EMPTY_ANNOTATIONS,
+            min_keypoints=cfg.MODEL.ROI_KEYPOINT_HEAD.MIN_KEYPOINTS_PER_IMAGE
+            if cfg.MODEL.KEYPOINT_ON
+            else 0,
+            proposal_files=cfg.DATASETS.PROPOSAL_FILES_TRAIN if cfg.MODEL.LOAD_PROPOSALS else None,
+        )
+        _log_api_usage("dataset." + cfg.DATASETS.TRAIN[0])
+
+    if mapper is None:
+        mapper = DatasetMapper(cfg, True)
+
+    if sampler is None:
+        sampler_name = cfg.DATALOADER.SAMPLER_TRAIN
+        logger = logging.getLogger(__name__)
+        logger.info("Using training sampler {}".format(sampler_name))
+        if sampler_name == "TrainingSampler":
+            sampler = TrainingSampler(len(dataset))
+        elif sampler_name == "RepeatFactorTrainingSampler":
+            repeat_factors = RepeatFactorTrainingSampler.repeat_factors_from_category_frequency(
+                dataset, cfg.DATALOADER.REPEAT_THRESHOLD
+            )
+            sampler = RepeatFactorTrainingSampler(repeat_factors)
+        elif sampler_name == "RandomSubsetTrainingSampler":
+            sampler = RandomSubsetTrainingSampler(len(dataset), cfg.DATALOADER.RANDOM_SUBSET_RATIO)
+        else:
+            raise ValueError("Unknown training sampler: {}".format(sampler_name))
+
+    return {
+        "dataset": dataset,
+        "sampler": sampler,
+        "mapper": mapper,
+        "total_batch_size": cfg.SOLVER.IMS_PER_BATCH,
+        "aspect_ratio_grouping": cfg.DATALOADER.ASPECT_RATIO_GROUPING,
+        "num_workers": cfg.DATALOADER.NUM_WORKERS,
+    }
+
+
+@configurable(from_config=_train_loader_from_config)
+def build_detection_train_loader(
+    dataset,
+    *,
+    mapper,
+    sampler=None,
+    total_batch_size,
+    aspect_ratio_grouping=True,
+    num_workers=0,
+    collate_fn=None,
+):
+    """
+    Build a dataloader for object detection with some default features.
+    This interface is experimental.
+
+    Args:
+        dataset (list or torch.utils.data.Dataset): a list of dataset dicts,
+            or a pytorch dataset (either map-style or iterable). It can be obtained
+            by using :func:`DatasetCatalog.get` or :func:`get_detection_dataset_dicts`.
+        mapper (callable): a callable which takes a sample (dict) from dataset and
+            returns the format to be consumed by the model.
+            When using cfg, the default choice is ``DatasetMapper(cfg, is_train=True)``.
+        sampler (torch.utils.data.sampler.Sampler or None): a sampler that produces
+            indices to be applied on ``dataset``.
+            If ``dataset`` is map-style, the default sampler is a :class:`TrainingSampler`,
+            which coordinates an infinite random shuffle sequence across all workers.
+            Sampler must be None if ``dataset`` is iterable.
+        total_batch_size (int): total batch size across all workers. Batching
+            simply puts data into a list.
+        aspect_ratio_grouping (bool): whether to group images with similar
+            aspect ratio for efficiency. When enabled, it requires each
+            element in dataset be a dict with keys "width" and "height".
+        num_workers (int): number of parallel data loading workers
+        collate_fn: same as the argument of `torch.utils.data.DataLoader`.
+            Defaults to do no collation and return a list of data.
+            No collation is OK for small batch size and simple data structures.
+            If your batch size is large and each sample contains too many small tensors,
+            it's more efficient to collate them in data loader.
+
+    Returns:
+        torch.utils.data.DataLoader:
+            a dataloader. Each output from it is a ``list[mapped_element]`` of length
+            ``total_batch_size / num_workers``, where ``mapped_element`` is produced
+            by the ``mapper``.
+    """
+    if isinstance(dataset, list):
+        dataset = DatasetFromList(dataset, copy=False)
+    if mapper is not None:
+        dataset = MapDataset(dataset, mapper)
+
+    if isinstance(dataset, torchdata.IterableDataset):
+        assert sampler is None, "sampler must be None if dataset is IterableDataset"
+    else:
+        if sampler is None:
+            sampler = TrainingSampler(len(dataset))
+        assert isinstance(sampler, torchdata.Sampler), "Expect a Sampler but got {type(sampler)}"
+    return build_batch_data_loader(
+        dataset,
+        sampler,
+        total_batch_size,
+        aspect_ratio_grouping=aspect_ratio_grouping,
+        num_workers=num_workers,
+        collate_fn=collate_fn,
+    )
+
+
+def _test_loader_from_config(cfg, dataset_name, mapper=None):
+    """
+    Uses the given `dataset_name` argument (instead of the names in cfg), because the
+    standard practice is to evaluate each test set individually (not combining them).
+    """
+    if isinstance(dataset_name, str):
+        dataset_name = [dataset_name]
+
+    dataset = get_detection_dataset_dicts(
+        dataset_name,
+        filter_empty=False,
+        proposal_files=[
+            cfg.DATASETS.PROPOSAL_FILES_TEST[list(cfg.DATASETS.TEST).index(x)] for x in dataset_name
+        ]
+        if cfg.MODEL.LOAD_PROPOSALS
+        else None,
+    )
+    if mapper is None:
+        mapper = DatasetMapper(cfg, False)
+    return {"dataset": dataset, "mapper": mapper, "num_workers": cfg.DATALOADER.NUM_WORKERS}
+
+
+@configurable(from_config=_test_loader_from_config)
+def build_detection_test_loader(dataset, *, mapper, sampler=None, num_workers=0, collate_fn=None):
+    """
+    Similar to `build_detection_train_loader`, but uses a batch size of 1,
+    and :class:`InferenceSampler`. This sampler coordinates all workers to
+    produce the exact set of all samples.
+    This interface is experimental.
+
+    Args:
+        dataset (list or torch.utils.data.Dataset): a list of dataset dicts,
+            or a pytorch dataset (either map-style or iterable). They can be obtained
+            by using :func:`DatasetCatalog.get` or :func:`get_detection_dataset_dicts`.
+        mapper (callable): a callable which takes a sample (dict) from dataset
+           and returns the format to be consumed by the model.
+           When using cfg, the default choice is ``DatasetMapper(cfg, is_train=False)``.
+        sampler (torch.utils.data.sampler.Sampler or None): a sampler that produces
+            indices to be applied on ``dataset``. Default to :class:`InferenceSampler`,
+            which splits the dataset across all workers. Sampler must be None
+            if `dataset` is iterable.
+        num_workers (int): number of parallel data loading workers
+        collate_fn: same as the argument of `torch.utils.data.DataLoader`.
+            Defaults to do no collation and return a list of data.
+
+    Returns:
+        DataLoader: a torch DataLoader, that loads the given detection
+        dataset, with test-time transformation and batching.
+
+    Examples:
+    ::
+        data_loader = build_detection_test_loader(
+            DatasetRegistry.get("my_test"),
+            mapper=DatasetMapper(...))
+
+        # or, instantiate with a CfgNode:
+        data_loader = build_detection_test_loader(cfg, "my_test")
+    """
+    if isinstance(dataset, list):
+        dataset = DatasetFromList(dataset, copy=False)
+    if mapper is not None:
+        dataset = MapDataset(dataset, mapper)
+    if isinstance(dataset, torchdata.IterableDataset):
+        assert sampler is None, "sampler must be None if dataset is IterableDataset"
+    else:
+        if sampler is None:
+            sampler = InferenceSampler(len(dataset))
+    # Always use 1 image per worker during inference since this is the
+    # standard when reporting inference time in papers.
+    return torchdata.DataLoader(
+        dataset,
+        batch_size=1,
+        sampler=sampler,
+        num_workers=num_workers,
+        collate_fn=trivial_batch_collator if collate_fn is None else collate_fn,
+    )
+
+
+def trivial_batch_collator(batch):
+    """
+    A batch collator that does nothing.
+    """
+    return batch
+
+
+def worker_init_reset_seed(worker_id):
+    initial_seed = torch.initial_seed() % 2 ** 31
+    seed_all_rng(initial_seed + worker_id)
