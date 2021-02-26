@@ -264,4 +264,15 @@ class MoeLayer(nn.Layer):
             #[4096, 257, 768]
             combine_output = common_outputs * possiblity[:, 0].unsqueeze(1).unsqueeze(2) \
                                      + specific_outputs * possiblity[:, 1].unsqueeze(1).unsqueeze(2) 
-            combine_output = combine_outpu
+            combine_output = combine_output.reshape_(cur_shape) #[4096, 257*768]
+        else:
+            combine_output = x
+            
+        x = MOEGather.apply(combine_output, local_expert_count, global_expert_count, monitor.moe_group.nranks, monitor.moe_group)
+        
+        #[1024, 257, 768]
+        x = x.reshape_(origin_shape)
+
+        return x
+
+
