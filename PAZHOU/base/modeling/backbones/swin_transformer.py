@@ -689,4 +689,160 @@ class SwinTransformer(nn.Layer):
         self.embed_dim = embed_dim
         self.ape = ape
         self.patch_norm = patch_norm
-        self.num_features = int(embed_dim * 2**(self.num_layers - 1
+        self.num_features = int(embed_dim * 2**(self.num_layers - 1))
+        self.mlp_ratio = mlp_ratio
+
+        # split image into non-overlapping patches
+        self.patch_embed = PatchEmbed(
+            img_size=img_size,
+            patch_size=patch_size,
+            in_chans=in_chans,
+            embed_dim=embed_dim,
+            norm_layer=norm_layer if self.patch_norm else None)
+        num_patches = self.patch_embed.num_patches
+        patches_resolution = self.patch_embed.patches_resolution
+        self.patches_resolution = patches_resolution
+
+        # absolute position embedding
+        if self.ape:
+            self.absolute_pos_embed = self.create_parameter(
+                shape=(1, num_patches, embed_dim), default_initializer=zeros_)
+            self.add_parameter("absolute_pos_embed", self.absolute_pos_embed)
+            trunc_normal_(self.absolute_pos_embed)
+
+        self.pos_drop = nn.Dropout(p=drop_rate)
+
+        # stochastic depth
+        dpr = np.linspace(0, drop_path_rate,
+                          sum(depths)).tolist()  # stochastic depth decay rule
+
+        # build layers
+        self.layers = nn.LayerList()
+        for i_layer in range(self.num_layers):
+            layer = BasicLayer(
+                dim=int(embed_dim * 2**i_layer),
+                input_resolution=(patches_resolution[0] // (2**i_layer),
+                                  patches_resolution[1] // (2**i_layer)),
+                depth=depths[i_layer],
+                num_heads=num_heads[i_layer],
+                window_size=window_size,
+                mlp_ratio=self.mlp_ratio,
+                qkv_bias=qkv_bias,
+                qk_scale=qk_scale,
+                drop=drop_rate,
+                attn_drop=attn_drop_rate,
+                drop_path=dpr[sum(depths[:i_layer]):sum(depths[:i_layer + 1])],
+                norm_layer=norm_layer,
+                downsample=PatchMerging
+                if (i_layer < self.num_layers - 1) else None,
+                use_checkpoint=use_checkpoint)
+            self.layers.append(layer)
+
+        self.norm = norm_layer(self.num_features)
+        self.avgpool = nn.AdaptiveAvgPool1D(1)
+        self.head = nn.Linear(
+            self.num_features,
+            num_classes) if self.num_classes > 0 else nn.Identity()
+
+        self.apply(self._init_weights)
+
+    def _init_weights(self, m):
+        if isinstance(m, nn.Linear):
+            trunc_normal_(m.weight)
+            if isinstance(m, nn.Linear) and m.bias is not None:
+                zeros_(m.bias)
+        elif isinstance(m, nn.LayerNorm):
+            zeros_(m.bias)
+            ones_(m.weight)
+
+    def forward_features(self, x):
+        x = self.patch_embed(x)
+        if self.ape:
+            x = x + self.absolute_pos_embed
+        x = self.pos_drop(x)
+
+        for layer in self.layers:
+            x = layer(x)
+
+        x = self.norm(x)  # B L C
+        x = self.avgpool(x.transpose([0, 2, 1]))  # B C 1
+        # x = paddle.flatten(x, 1)
+        return x
+
+    def forward(self, x):
+        x = self.forward_features(x)
+        # x = self.head(x)
+        B, C, _ = x.shape
+        return x.reshape((B, C, 1, 1))
+
+    def flops(self):
+        flops = 0
+        flops += self.patch_embed.flops()
+        for _, layer in enumerate(self.layers):
+            flops += layer.flops()
+        flops += self.num_features * self.patches_resolution[
+            0] * self.patches_resolution[1] // (2**self.num_layers)
+        flops += self.num_features * self.num_classes
+        return flops
+
+
+def _load_pretrained(pretrained, model, model_url, use_ssld=False):
+    if pretrained is False:
+        pass
+    # elif pretrained is True:
+    #     load_dygraph_pretrain_from_url(model, model_url, use_ssld=use_ssld)
+    elif isinstance(pretrained, str):
+        load_dygraph_pretrain(model, pretrained)
+    else:
+        raise RuntimeError(
+            "pretrained type is not available. Please use `string` or `boolean` type."
+        )
+
+
+def resize_pos_embed(posemb, posemb_new, hight, width):
+    """
+    Rescale the grid of position embeddings when loading from state_dict. Adapted from
+    # https://github.com/google-research/vision_transformer/blob/00883dd691c63a6830751563748663526e811cee/vit_jax/checkpoint.py#L224
+    """
+    ntok_new = posemb_new.shape[1]
+
+    posemb_token, posemb_grid = posemb[:, :1], posemb[0, 1:]
+    ntok_new -= 1
+
+    gs_old = int(math.sqrt(len(posemb_grid)))
+    logger.info('Resized position embedding from size:{} to size: {} with height:{} width: {}'.format(posemb.shape,
+                                                                                                      posemb_new.shape,
+                                                                                                      hight,
+                                                                                                      width))
+    posemb_grid = posemb_grid.reshape((1, gs_old, gs_old, -1)).transpose((0, 3, 1, 2))
+    posemb_grid = F.interpolate(posemb_grid, size=(hight, width), mode='bilinear')
+    posemb_grid = posemb_grid.transpose((0, 2, 3, 1)).reshape((1, hight * width, -1))
+    posemb = paddle.concat([posemb_token, posemb_grid], axis=1)
+    return posemb
+
+
+def build_vit_backbone_lazy(pretrain=False, pretrain_path='', pretrain_npz=False, patch_size=16, 
+                            input_size=[256, 128], depth='base', sie_xishu=3.0, stride_size=[16, 16],
+                            drop_ratio=0.0, drop_path_ratio=0.1, attn_drop_rate=0.0,
+                            use_checkpointing=False, share_last=True):
+    """
+    Create a Vision Transformer instance from config.
+    Returns:
+        Vision Transformer: a :class:`VisionTransformer` instance.
+    """
+    model = SwinTransformer(
+        embed_dim=192,
+        depths=[2, 2, 18, 2],
+        num_heads=[6, 12, 24, 48],
+        window_size=7,
+        use_checkpoint=use_checkpointing)
+    if pretrain:
+        # _load_pretrained(
+        #     pretrain_path,
+        #     model,
+        #     MODEL_URLS["SwinTransformer_large_patch4_window7_224"],
+        #     use_ssld=False)
+        param_state_dict = paddle.load(pretrain_path)
+        model.set_dict(param_state_dict)
+    
+    return model
