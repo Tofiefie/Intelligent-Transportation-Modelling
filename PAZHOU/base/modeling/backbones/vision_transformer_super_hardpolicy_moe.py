@@ -584,4 +584,120 @@ def build_vit_backbone_lazy(pretrain=False, pretrain_path='', pretrain_npz=False
     embed_dim = {
         'small': 768,
         'base': 768,
-        'la
+        'large': 1024,
+        'huge': 1280,
+    }[depth]
+
+    num_depth = {
+        'small': 8,
+        'base': 12,
+        'large': 24,
+        'huge': 32,
+    }[depth]
+
+    num_heads = {
+        'small': 8,
+        'base': 12,
+        'large': 16,
+        'huge': 16,
+    }[depth]
+
+    mlp_ratio = {
+        'small': 3.,
+        'base': 4.,
+        'large': 4.,
+        'huge': 4.,
+    }[depth]
+
+    qkv_bias = {
+        'small': False,
+        'base': True,
+        'large': True,
+        'huge': True,
+    }[depth]
+
+    qk_scale = {
+        'small': 768 ** -0.5,
+        'base': None,
+        'large': None,
+        'huge': None,
+    }[depth]
+
+    model = VisionTransformerTaskMoE(img_size=input_size, sie_xishu=sie_xishu, patch_size=patch_size, stride_size=stride_size, depth=num_depth,
+                              num_heads=num_heads, mlp_ratio=mlp_ratio, qkv_bias=qkv_bias, qk_scale=qk_scale,
+                              drop_path_rate=drop_path_ratio, drop_rate=drop_ratio, attn_drop_rate=attn_drop_rate,
+                              embed_dim=embed_dim, use_checkpointing=use_checkpointing, share_last=share_last,
+                              change_qkv=change_qkv, n_tasks=n_tasks, task_names=task_names, sep_list=sep_list,
+                              predefined_head_dim=predefined_head_dim,
+                              taskname2learningscale=taskname2learningscale, globalrank2taskid=globalrank2taskid)
+
+    if pretrain:
+        if not os.path.exists(pretrain_path):
+            logger.info('{} is not found! Please check this path.'.format(pretrain_path))
+            assert os.path.exists(pretrain_path)
+
+        state_dict = paddle.load(pretrain_path)
+        logger.info("Loading pretrained model from {}".format(pretrain_path))
+
+        if 'model' in state_dict:
+            state_dict = state_dict.pop('model')
+        if 'state_dict' in state_dict:
+            state_dict = state_dict.pop('state_dict')
+        state_dict_new = OrderedDict()
+        for k, v in state_dict.items():
+            if 'head' in k or 'dist' in k:
+                continue
+            elif k == 'patch_embed.proj.weight':
+                if 'patch_embed' in sep_list:
+                    sel_task_names = task_names
+                else:
+                    sel_task_names = [task_names[0]]
+                for task_name in sel_task_names:
+                    if len(v.shape) < 4:
+                        # For old models that I trained prior to conv based patchification
+                        O, I, H, W = model.patch_embeds[task_name].proj.weight.shape
+                        v = v.reshape((O, -1, H, W))
+                        state_dict_new['patch_embeds.{}.proj.weight'.format(task_name)] = v
+                    else:
+                        state_dict_new['patch_embeds.{}.proj.weight'.format(task_name)] = v
+                continue
+            elif k == 'patch_embed.proj.bias':
+                if 'patch_embed' in sep_list:
+                    sel_task_names = task_names
+                else:
+                    sel_task_names = [task_names[0]]
+                for task_name in sel_task_names:
+                    state_dict_new['patch_embeds.{}.proj.bias'.format(task_name)] = v
+                continue
+            elif k == 'pos_embed':
+                if 'pos_embed' in sep_list:
+                    sel_task_names = task_names
+                else:
+                    sel_task_names = [task_names[0]]
+                for idx, task_name in enumerate(sel_task_names):
+                    if v.shape != model.pos_embeds[idx].shape:
+                        # To resize pos embedding when using model at different size from pretrained weights
+                        if 'distilled' in pretrain_path:
+                            logger.info("distill need to choose right cls token in the pth.")
+                            v = paddle.concat([v[:, 0:1], v[:, 2:]], axis=1)
+                        v = resize_pos_embed(v, model.pos_embeds[idx],
+                                            model.patch_embeds[task_name].num_y,
+                                            model.patch_embeds[task_name].num_x)
+                    state_dict_new['pos_embeds.{}'.format(idx)] = v
+            elif k == 'cls_token':
+                if 'cls_token' in sep_list:
+                    sel_task_names = task_names
+                else:
+                    sel_task_names = [task_names[0]]
+                for idx, task_name in enumerate(sel_task_names):
+                    state_dict_new['cls_tokens.{}'.format(idx)] = v
+                continue
+            elif 'mlp' in k:
+                k_new = k.replace('mlp', 'mlp.moe_mlp.common_expert')
+                state_dict_new[k_new] = v
+                k_new = k.replace('mlp', 'mlp.moe_mlp.specific_experts.0')
+                state_dict_new[k_new] = v
+            else:
+                state_dict_new[k] = v
+        model.set_state_dict(state_dict_new)
+    return model
