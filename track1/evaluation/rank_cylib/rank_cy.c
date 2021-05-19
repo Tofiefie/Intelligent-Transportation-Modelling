@@ -8242,4 +8242,952 @@ static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(stru
  *         elif self.mode == u"fortran":
  *             bufmode = PyBUF_F_CONTIGUOUS | PyBUF_ANY_CONTIGUOUS
  *         if not (flags & bufmode):             # <<<<<<<<<<<<<<
- *             raise ValueError("Can only create a buffer that is contig
+ *             raise ValueError("Can only create a buffer that is contiguous in memory.")
+ *         info.buf = self.data
+ */
+  __pyx_t_1 = ((!((__pyx_v_flags & __pyx_v_bufmode) != 0)) != 0);
+  if (unlikely(__pyx_t_1)) {
+
+    /* "View.MemoryView":192
+ *             bufmode = PyBUF_F_CONTIGUOUS | PyBUF_ANY_CONTIGUOUS
+ *         if not (flags & bufmode):
+ *             raise ValueError("Can only create a buffer that is contiguous in memory.")             # <<<<<<<<<<<<<<
+ *         info.buf = self.data
+ *         info.len = self.len
+ */
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 192, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __PYX_ERR(2, 192, __pyx_L1_error)
+
+    /* "View.MemoryView":191
+ *         elif self.mode == u"fortran":
+ *             bufmode = PyBUF_F_CONTIGUOUS | PyBUF_ANY_CONTIGUOUS
+ *         if not (flags & bufmode):             # <<<<<<<<<<<<<<
+ *             raise ValueError("Can only create a buffer that is contiguous in memory.")
+ *         info.buf = self.data
+ */
+  }
+
+  /* "View.MemoryView":193
+ *         if not (flags & bufmode):
+ *             raise ValueError("Can only create a buffer that is contiguous in memory.")
+ *         info.buf = self.data             # <<<<<<<<<<<<<<
+ *         info.len = self.len
+ *         info.ndim = self.ndim
+ */
+  __pyx_t_4 = __pyx_v_self->data;
+  __pyx_v_info->buf = __pyx_t_4;
+
+  /* "View.MemoryView":194
+ *             raise ValueError("Can only create a buffer that is contiguous in memory.")
+ *         info.buf = self.data
+ *         info.len = self.len             # <<<<<<<<<<<<<<
+ *         info.ndim = self.ndim
+ *         info.shape = self._shape
+ */
+  __pyx_t_5 = __pyx_v_self->len;
+  __pyx_v_info->len = __pyx_t_5;
+
+  /* "View.MemoryView":195
+ *         info.buf = self.data
+ *         info.len = self.len
+ *         info.ndim = self.ndim             # <<<<<<<<<<<<<<
+ *         info.shape = self._shape
+ *         info.strides = self._strides
+ */
+  __pyx_t_6 = __pyx_v_self->ndim;
+  __pyx_v_info->ndim = __pyx_t_6;
+
+  /* "View.MemoryView":196
+ *         info.len = self.len
+ *         info.ndim = self.ndim
+ *         info.shape = self._shape             # <<<<<<<<<<<<<<
+ *         info.strides = self._strides
+ *         info.suboffsets = NULL
+ */
+  __pyx_t_7 = __pyx_v_self->_shape;
+  __pyx_v_info->shape = __pyx_t_7;
+
+  /* "View.MemoryView":197
+ *         info.ndim = self.ndim
+ *         info.shape = self._shape
+ *         info.strides = self._strides             # <<<<<<<<<<<<<<
+ *         info.suboffsets = NULL
+ *         info.itemsize = self.itemsize
+ */
+  __pyx_t_7 = __pyx_v_self->_strides;
+  __pyx_v_info->strides = __pyx_t_7;
+
+  /* "View.MemoryView":198
+ *         info.shape = self._shape
+ *         info.strides = self._strides
+ *         info.suboffsets = NULL             # <<<<<<<<<<<<<<
+ *         info.itemsize = self.itemsize
+ *         info.readonly = 0
+ */
+  __pyx_v_info->suboffsets = NULL;
+
+  /* "View.MemoryView":199
+ *         info.strides = self._strides
+ *         info.suboffsets = NULL
+ *         info.itemsize = self.itemsize             # <<<<<<<<<<<<<<
+ *         info.readonly = 0
+ * 
+ */
+  __pyx_t_5 = __pyx_v_self->itemsize;
+  __pyx_v_info->itemsize = __pyx_t_5;
+
+  /* "View.MemoryView":200
+ *         info.suboffsets = NULL
+ *         info.itemsize = self.itemsize
+ *         info.readonly = 0             # <<<<<<<<<<<<<<
+ * 
+ *         if flags & PyBUF_FORMAT:
+ */
+  __pyx_v_info->readonly = 0;
+
+  /* "View.MemoryView":202
+ *         info.readonly = 0
+ * 
+ *         if flags & PyBUF_FORMAT:             # <<<<<<<<<<<<<<
+ *             info.format = self.format
+ *         else:
+ */
+  __pyx_t_1 = ((__pyx_v_flags & PyBUF_FORMAT) != 0);
+  if (__pyx_t_1) {
+
+    /* "View.MemoryView":203
+ * 
+ *         if flags & PyBUF_FORMAT:
+ *             info.format = self.format             # <<<<<<<<<<<<<<
+ *         else:
+ *             info.format = NULL
+ */
+    __pyx_t_4 = __pyx_v_self->format;
+    __pyx_v_info->format = __pyx_t_4;
+
+    /* "View.MemoryView":202
+ *         info.readonly = 0
+ * 
+ *         if flags & PyBUF_FORMAT:             # <<<<<<<<<<<<<<
+ *             info.format = self.format
+ *         else:
+ */
+    goto __pyx_L5;
+  }
+
+  /* "View.MemoryView":205
+ *             info.format = self.format
+ *         else:
+ *             info.format = NULL             # <<<<<<<<<<<<<<
+ * 
+ *         info.obj = self
+ */
+  /*else*/ {
+    __pyx_v_info->format = NULL;
+  }
+  __pyx_L5:;
+
+  /* "View.MemoryView":207
+ *             info.format = NULL
+ * 
+ *         info.obj = self             # <<<<<<<<<<<<<<
+ * 
+ *     __pyx_getbuffer = capsule(<void *> &__pyx_array_getbuffer, "getbuffer(obj, view, flags)")
+ */
+  __Pyx_INCREF(((PyObject *)__pyx_v_self));
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
+  __Pyx_GOTREF(__pyx_v_info->obj);
+  __Pyx_DECREF(__pyx_v_info->obj);
+  __pyx_v_info->obj = ((PyObject *)__pyx_v_self);
+
+  /* "View.MemoryView":185
+ * 
+ *     @cname('getbuffer')
+ *     def __getbuffer__(self, Py_buffer *info, int flags):             # <<<<<<<<<<<<<<
+ *         cdef int bufmode = -1
+ *         if self.mode == u"c":
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("View.MemoryView.array.__getbuffer__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  if (__pyx_v_info->obj != NULL) {
+    __Pyx_GOTREF(__pyx_v_info->obj);
+    __Pyx_DECREF(__pyx_v_info->obj); __pyx_v_info->obj = 0;
+  }
+  goto __pyx_L2;
+  __pyx_L0:;
+  if (__pyx_v_info->obj == Py_None) {
+    __Pyx_GOTREF(__pyx_v_info->obj);
+    __Pyx_DECREF(__pyx_v_info->obj); __pyx_v_info->obj = 0;
+  }
+  __pyx_L2:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "View.MemoryView":211
+ *     __pyx_getbuffer = capsule(<void *> &__pyx_array_getbuffer, "getbuffer(obj, view, flags)")
+ * 
+ *     def __dealloc__(array self):             # <<<<<<<<<<<<<<
+ *         if self.callback_free_data != NULL:
+ *             self.callback_free_data(self.data)
+ */
+
+/* Python wrapper */
+static void __pyx_array___dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_array___dealloc__(PyObject *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
+  __pyx_array___pyx_pf_15View_dot_MemoryView_5array_4__dealloc__(((struct __pyx_array_obj *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+static void __pyx_array___pyx_pf_15View_dot_MemoryView_5array_4__dealloc__(struct __pyx_array_obj *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  __Pyx_RefNannySetupContext("__dealloc__", 0);
+
+  /* "View.MemoryView":212
+ * 
+ *     def __dealloc__(array self):
+ *         if self.callback_free_data != NULL:             # <<<<<<<<<<<<<<
+ *             self.callback_free_data(self.data)
+ *         elif self.free_data:
+ */
+  __pyx_t_1 = ((__pyx_v_self->callback_free_data != NULL) != 0);
+  if (__pyx_t_1) {
+
+    /* "View.MemoryView":213
+ *     def __dealloc__(array self):
+ *         if self.callback_free_data != NULL:
+ *             self.callback_free_data(self.data)             # <<<<<<<<<<<<<<
+ *         elif self.free_data:
+ *             if self.dtype_is_object:
+ */
+    __pyx_v_self->callback_free_data(__pyx_v_self->data);
+
+    /* "View.MemoryView":212
+ * 
+ *     def __dealloc__(array self):
+ *         if self.callback_free_data != NULL:             # <<<<<<<<<<<<<<
+ *             self.callback_free_data(self.data)
+ *         elif self.free_data:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "View.MemoryView":214
+ *         if self.callback_free_data != NULL:
+ *             self.callback_free_data(self.data)
+ *         elif self.free_data:             # <<<<<<<<<<<<<<
+ *             if self.dtype_is_object:
+ *                 refcount_objects_in_slice(self.data, self._shape,
+ */
+  __pyx_t_1 = (__pyx_v_self->free_data != 0);
+  if (__pyx_t_1) {
+
+    /* "View.MemoryView":215
+ *             self.callback_free_data(self.data)
+ *         elif self.free_data:
+ *             if self.dtype_is_object:             # <<<<<<<<<<<<<<
+ *                 refcount_objects_in_slice(self.data, self._shape,
+ *                                           self._strides, self.ndim, False)
+ */
+    __pyx_t_1 = (__pyx_v_self->dtype_is_object != 0);
+    if (__pyx_t_1) {
+
+      /* "View.MemoryView":216
+ *         elif self.free_data:
+ *             if self.dtype_is_object:
+ *                 refcount_objects_in_slice(self.data, self._shape,             # <<<<<<<<<<<<<<
+ *                                           self._strides, self.ndim, False)
+ *             free(self.data)
+ */
+      __pyx_memoryview_refcount_objects_in_slice(__pyx_v_self->data, __pyx_v_self->_shape, __pyx_v_self->_strides, __pyx_v_self->ndim, 0);
+
+      /* "View.MemoryView":215
+ *             self.callback_free_data(self.data)
+ *         elif self.free_data:
+ *             if self.dtype_is_object:             # <<<<<<<<<<<<<<
+ *                 refcount_objects_in_slice(self.data, self._shape,
+ *                                           self._strides, self.ndim, False)
+ */
+    }
+
+    /* "View.MemoryView":218
+ *                 refcount_objects_in_slice(self.data, self._shape,
+ *                                           self._strides, self.ndim, False)
+ *             free(self.data)             # <<<<<<<<<<<<<<
+ *         PyObject_Free(self._shape)
+ * 
+ */
+    free(__pyx_v_self->data);
+
+    /* "View.MemoryView":214
+ *         if self.callback_free_data != NULL:
+ *             self.callback_free_data(self.data)
+ *         elif self.free_data:             # <<<<<<<<<<<<<<
+ *             if self.dtype_is_object:
+ *                 refcount_objects_in_slice(self.data, self._shape,
+ */
+  }
+  __pyx_L3:;
+
+  /* "View.MemoryView":219
+ *                                           self._strides, self.ndim, False)
+ *             free(self.data)
+ *         PyObject_Free(self._shape)             # <<<<<<<<<<<<<<
+ * 
+ *     @property
+ */
+  PyObject_Free(__pyx_v_self->_shape);
+
+  /* "View.MemoryView":211
+ *     __pyx_getbuffer = capsule(<void *> &__pyx_array_getbuffer, "getbuffer(obj, view, flags)")
+ * 
+ *     def __dealloc__(array self):             # <<<<<<<<<<<<<<
+ *         if self.callback_free_data != NULL:
+ *             self.callback_free_data(self.data)
+ */
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+/* "View.MemoryView":222
+ * 
+ *     @property
+ *     def memview(self):             # <<<<<<<<<<<<<<
+ *         return self.get_memview()
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_15View_dot_MemoryView_5array_7memview_1__get__(PyObject *__pyx_v_self); /*proto*/
+static PyObject *__pyx_pw_15View_dot_MemoryView_5array_7memview_1__get__(PyObject *__pyx_v_self) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__get__ (wrapper)", 0);
+  __pyx_r = __pyx_pf_15View_dot_MemoryView_5array_7memview___get__(((struct __pyx_array_obj *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_15View_dot_MemoryView_5array_7memview___get__(struct __pyx_array_obj *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__get__", 0);
+
+  /* "View.MemoryView":223
+ *     @property
+ *     def memview(self):
+ *         return self.get_memview()             # <<<<<<<<<<<<<<
+ * 
+ *     @cname('get_memview')
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = ((struct __pyx_vtabstruct_array *)__pyx_v_self->__pyx_vtab)->get_memview(__pyx_v_self); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 223, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = 0;
+  goto __pyx_L0;
+
+  /* "View.MemoryView":222
+ * 
+ *     @property
+ *     def memview(self):             # <<<<<<<<<<<<<<
+ *         return self.get_memview()
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("View.MemoryView.array.memview.__get__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "View.MemoryView":226
+ * 
+ *     @cname('get_memview')
+ *     cdef get_memview(self):             # <<<<<<<<<<<<<<
+ *         flags =  PyBUF_ANY_CONTIGUOUS|PyBUF_FORMAT|PyBUF_WRITABLE
+ *         return  memoryview(self, flags, self.dtype_is_object)
+ */
+
+static PyObject *__pyx_array_get_memview(struct __pyx_array_obj *__pyx_v_self) {
+  int __pyx_v_flags;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_memview", 0);
+
+  /* "View.MemoryView":227
+ *     @cname('get_memview')
+ *     cdef get_memview(self):
+ *         flags =  PyBUF_ANY_CONTIGUOUS|PyBUF_FORMAT|PyBUF_WRITABLE             # <<<<<<<<<<<<<<
+ *         return  memoryview(self, flags, self.dtype_is_object)
+ * 
+ */
+  __pyx_v_flags = ((PyBUF_ANY_CONTIGUOUS | PyBUF_FORMAT) | PyBUF_WRITABLE);
+
+  /* "View.MemoryView":228
+ *     cdef get_memview(self):
+ *         flags =  PyBUF_ANY_CONTIGUOUS|PyBUF_FORMAT|PyBUF_WRITABLE
+ *         return  memoryview(self, flags, self.dtype_is_object)             # <<<<<<<<<<<<<<
+ * 
+ *     def __len__(self):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_flags); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 228, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_v_self->dtype_is_object); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 228, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 228, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_INCREF(((PyObject *)__pyx_v_self));
+  __Pyx_GIVEREF(((PyObject *)__pyx_v_self));
+  PyTuple_SET_ITEM(__pyx_t_3, 0, ((PyObject *)__pyx_v_self));
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_3, 1, __pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_3, 2, __pyx_t_2);
+  __pyx_t_1 = 0;
+  __pyx_t_2 = 0;
+  __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)__pyx_memoryview_type), __pyx_t_3, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 228, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* "View.MemoryView":226
+ * 
+ *     @cname('get_memview')
+ *     cdef get_memview(self):             # <<<<<<<<<<<<<<
+ *         flags =  PyBUF_ANY_CONTIGUOUS|PyBUF_FORMAT|PyBUF_WRITABLE
+ *         return  memoryview(self, flags, self.dtype_is_object)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_AddTraceback("View.MemoryView.array.get_memview", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = 0;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "View.MemoryView":230
+ *         return  memoryview(self, flags, self.dtype_is_object)
+ * 
+ *     def __len__(self):             # <<<<<<<<<<<<<<
+ *         return self._shape[0]
+ * 
+ */
+
+/* Python wrapper */
+static Py_ssize_t __pyx_array___len__(PyObject *__pyx_v_self); /*proto*/
+static Py_ssize_t __pyx_array___len__(PyObject *__pyx_v_self) {
+  Py_ssize_t __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__len__ (wrapper)", 0);
+  __pyx_r = __pyx_array___pyx_pf_15View_dot_MemoryView_5array_6__len__(((struct __pyx_array_obj *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static Py_ssize_t __pyx_array___pyx_pf_15View_dot_MemoryView_5array_6__len__(struct __pyx_array_obj *__pyx_v_self) {
+  Py_ssize_t __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__len__", 0);
+
+  /* "View.MemoryView":231
+ * 
+ *     def __len__(self):
+ *         return self._shape[0]             # <<<<<<<<<<<<<<
+ * 
+ *     def __getattr__(self, attr):
+ */
+  __pyx_r = (__pyx_v_self->_shape[0]);
+  goto __pyx_L0;
+
+  /* "View.MemoryView":230
+ *         return  memoryview(self, flags, self.dtype_is_object)
+ * 
+ *     def __len__(self):             # <<<<<<<<<<<<<<
+ *         return self._shape[0]
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "View.MemoryView":233
+ *         return self._shape[0]
+ * 
+ *     def __getattr__(self, attr):             # <<<<<<<<<<<<<<
+ *         return getattr(self.memview, attr)
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_array___getattr__(PyObject *__pyx_v_self, PyObject *__pyx_v_attr); /*proto*/
+static PyObject *__pyx_array___getattr__(PyObject *__pyx_v_self, PyObject *__pyx_v_attr) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__getattr__ (wrapper)", 0);
+  __pyx_r = __pyx_array___pyx_pf_15View_dot_MemoryView_5array_8__getattr__(((struct __pyx_array_obj *)__pyx_v_self), ((PyObject *)__pyx_v_attr));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_array___pyx_pf_15View_dot_MemoryView_5array_8__getattr__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_attr) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__getattr__", 0);
+
+  /* "View.MemoryView":234
+ * 
+ *     def __getattr__(self, attr):
+ *         return getattr(self.memview, attr)             # <<<<<<<<<<<<<<
+ * 
+ *     def __getitem__(self, item):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_memview); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 234, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_GetAttr(__pyx_t_1, __pyx_v_attr); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 234, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* "View.MemoryView":233
+ *         return self._shape[0]
+ * 
+ *     def __getattr__(self, attr):             # <<<<<<<<<<<<<<
+ *         return getattr(self.memview, attr)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("View.MemoryView.array.__getattr__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "View.MemoryView":236
+ *         return getattr(self.memview, attr)
+ * 
+ *     def __getitem__(self, item):             # <<<<<<<<<<<<<<
+ *         return self.memview[item]
+ * 
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_array___getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_item); /*proto*/
+static PyObject *__pyx_array___getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_item) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__getitem__ (wrapper)", 0);
+  __pyx_r = __pyx_array___pyx_pf_15View_dot_MemoryView_5array_10__getitem__(((struct __pyx_array_obj *)__pyx_v_self), ((PyObject *)__pyx_v_item));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_array___pyx_pf_15View_dot_MemoryView_5array_10__getitem__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_item) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__getitem__", 0);
+
+  /* "View.MemoryView":237
+ * 
+ *     def __getitem__(self, item):
+ *         return self.memview[item]             # <<<<<<<<<<<<<<
+ * 
+ *     def __setitem__(self, item, value):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_memview); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 237, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_t_1, __pyx_v_item); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 237, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* "View.MemoryView":236
+ *         return getattr(self.memview, attr)
+ * 
+ *     def __getitem__(self, item):             # <<<<<<<<<<<<<<
+ *         return self.memview[item]
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("View.MemoryView.array.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "View.MemoryView":239
+ *         return self.memview[item]
+ * 
+ *     def __setitem__(self, item, value):             # <<<<<<<<<<<<<<
+ *         self.memview[item] = value
+ * 
+ */
+
+/* Python wrapper */
+static int __pyx_array___setitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_item, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_array___setitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_item, PyObject *__pyx_v_value) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__setitem__ (wrapper)", 0);
+  __pyx_r = __pyx_array___pyx_pf_15View_dot_MemoryView_5array_12__setitem__(((struct __pyx_array_obj *)__pyx_v_self), ((PyObject *)__pyx_v_item), ((PyObject *)__pyx_v_value));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_12__setitem__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_item, PyObject *__pyx_v_value) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__setitem__", 0);
+
+  /* "View.MemoryView":240
+ * 
+ *     def __setitem__(self, item, value):
+ *         self.memview[item] = value             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_memview); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 240, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (unlikely(PyObject_SetItem(__pyx_t_1, __pyx_v_item, __pyx_v_value) < 0)) __PYX_ERR(2, 240, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "View.MemoryView":239
+ *         return self.memview[item]
+ * 
+ *     def __setitem__(self, item, value):             # <<<<<<<<<<<<<<
+ *         self.memview[item] = value
+ * 
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("View.MemoryView.array.__setitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw___pyx_array_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyObject *__pyx_pw___pyx_array_1__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf___pyx_array___reduce_cython__(((struct __pyx_array_obj *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf___pyx_array___reduce_cython__(CYTHON_UNUSED struct __pyx_array_obj *__pyx_v_self) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__reduce_cython__", 0);
+
+  /* "(tree fragment)":2
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 2, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(2, 2, __pyx_L1_error)
+
+  /* "(tree fragment)":1
+ * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("View.MemoryView.array.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw___pyx_array_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
+static PyObject *__pyx_pw___pyx_array_3__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
+  __pyx_r = __pyx_pf___pyx_array_2__setstate_cython__(((struct __pyx_array_obj *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf___pyx_array_2__setstate_cython__(CYTHON_UNUSED struct __pyx_array_obj *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__setstate_cython__", 0);
+
+  /* "(tree fragment)":4
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 4, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(2, 4, __pyx_L1_error)
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("View.MemoryView.array.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "View.MemoryView":244
+ * 
+ * @cname("__pyx_array_new")
+ * cdef array array_cwrapper(tuple shape, Py_ssize_t itemsize, char *format,             # <<<<<<<<<<<<<<
+ *                           char *mode, char *buf):
+ *     cdef array result
+ */
+
+static struct __pyx_array_obj *__pyx_array_new(PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, char *__pyx_v_format, char *__pyx_v_mode, char *__pyx_v_buf) {
+  struct __pyx_array_obj *__pyx_v_result = 0;
+  struct __pyx_array_obj *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("array_cwrapper", 0);
+
+  /* "View.MemoryView":248
+ *     cdef array result
+ * 
+ *     if buf == NULL:             # <<<<<<<<<<<<<<
+ *         result = array(shape, itemsize, format, mode.decode('ASCII'))
+ *     else:
+ */
+  __pyx_t_1 = ((__pyx_v_buf == NULL) != 0);
+  if (__pyx_t_1) {
+
+    /* "View.MemoryView":249
+ * 
+ *     if buf == NULL:
+ *         result = array(shape, itemsize, format, mode.decode('ASCII'))             # <<<<<<<<<<<<<<
+ *     else:
+ *         result = array(shape, itemsize, format, mode.decode('ASCII'),
+ */
+    __pyx_t_2 = PyInt_FromSsize_t(__pyx_v_itemsize); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 249, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_3 = __Pyx_PyBytes_FromString(__pyx_v_format); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 249, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_4 = __Pyx_decode_c_string(__pyx_v_mode, 0, strlen(__pyx_v_mode), NULL, NULL, PyUnicode_DecodeASCII); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 249, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 249, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __Pyx_INCREF(__pyx_v_shape);
+    __Pyx_GIVEREF(__pyx_v_shape);
+    PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_v_shape);
+    __Pyx_GIVEREF(__pyx_t_2);
+    PyTuple_SET_ITEM(__pyx_t_5, 1, __pyx_t_2);
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_t_3);
+    __Pyx_GIVEREF(__pyx_t_4);
+    PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_t_4);
+    __pyx_t_2 = 0;
+    __pyx_t_3 = 0;
+    __pyx_t_4 = 0;
+    __pyx_t_4 = __Pyx_PyObject_Call(((PyObject *)__pyx_array_type), __pyx_t_5, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 249, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __pyx_v_result = ((struct __pyx_array_obj *)__pyx_t_4);
+    __pyx_t_4 = 0;
+
+    /* "View.MemoryView":248
+ *     cdef array result
+ * 
+ *     if buf == NULL:             # <<<<<<<<<<<<<<
+ *         result = array(shape, itemsize, format, mode.decode('ASCII'))
+ *     else:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "View.MemoryView":251
+ *         result = array(shape, itemsize, format, mode.decode('ASCII'))
+ *     else:
+ *         result = array(shape, itemsize, format, mode.decode('ASCII'),             # <<<<<<<<<<<<<<
+ *                        allocate_buffer=False)
+ *         result.data = buf
+ */
+  /*else*/ {
+    __pyx_t_4 = PyInt_FromSsize_t(__pyx_v_itemsize); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 251, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = __Pyx_PyBytes_FromString(__pyx_v_format); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 251, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_3 = __Pyx_decode_c_string(__pyx_v_mode, 0, strlen(__pyx_v_mode), NULL, NULL, PyUnicode_DecodeASCII); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 251, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_t_2 = PyTuple_New(4); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 251, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_INCREF(__pyx_v_shape);
+    __Pyx_GIVEREF(__pyx_v_shape);
+    PyTuple_SET_ITEM(__pyx_t_2, 0, __pyx_v_shape);
+    __Pyx_GIVEREF(__pyx_t_4);
+    PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_4);
+    __Pyx_GIVEREF(__pyx_t_5);
+    PyTuple_SET_ITEM(__pyx_t_2, 2, __pyx_t_5);
+    __Pyx_GIVEREF(__pyx_t_3);
+    PyTuple_SET_ITEM(__pyx_t_2, 3, __pyx_t_3);
+    __pyx_t_4 = 0;
+    __pyx_t_5 = 0;
+    __pyx_t_3 = 0;
+
+    /* "View.MemoryView":252
+ *     else:
+ *         result = array(shape, itemsize, format, mode.decode('ASCII'),
+ *                        allocate_buffer=False)             # <<<<<<<<<<<<<<
+ *         result.data = buf
+ * 
+ */
+    __pyx_t_3 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 252, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    if (PyDict_SetItem(__pyx_t_3, __pyx_n_s_allocate_buffer, Py_False) < 0) __PYX_ERR(2, 252, __pyx_L1_error)
+
+    /* "View.MemoryView":251
+ *         result = array(shape, itemsize, format, mode.decode('ASCII'))
+ *     else:
+ *         result = array(shape, itemsize, format, mode.decode('ASCII'),             # <<<<<<<<<<<<<<
+ *                        allocate_buffer=False)
+ *         result.data = buf
+ */
+    __pyx_t_5 = __Pyx_PyObject_Call(((PyObject *)__pyx_array_type), __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_5)
