@@ -2068,4 +2068,568 @@ static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_ds_lon
     static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_diff_float(__pyx_t_float_complex, __pyx_t_float_complex);
     static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_prod_float(__pyx_t_float_complex, __pyx_t_float_complex);
     static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_quot_float(__pyx_t_float_complex, __pyx_t_float_complex);
-    sta
+    static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_neg_float(__pyx_t_float_complex);
+    static CYTHON_INLINE int __Pyx_c_is_zero_float(__pyx_t_float_complex);
+    static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_conj_float(__pyx_t_float_complex);
+    #if 1
+        static CYTHON_INLINE float __Pyx_c_abs_float(__pyx_t_float_complex);
+        static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_pow_float(__pyx_t_float_complex, __pyx_t_float_complex);
+    #endif
+#endif
+
+/* Arithmetic.proto */
+#if CYTHON_CCOMPLEX
+    #define __Pyx_c_eq_double(a, b)   ((a)==(b))
+    #define __Pyx_c_sum_double(a, b)  ((a)+(b))
+    #define __Pyx_c_diff_double(a, b) ((a)-(b))
+    #define __Pyx_c_prod_double(a, b) ((a)*(b))
+    #define __Pyx_c_quot_double(a, b) ((a)/(b))
+    #define __Pyx_c_neg_double(a)     (-(a))
+  #ifdef __cplusplus
+    #define __Pyx_c_is_zero_double(z) ((z)==(double)0)
+    #define __Pyx_c_conj_double(z)    (::std::conj(z))
+    #if 1
+        #define __Pyx_c_abs_double(z)     (::std::abs(z))
+        #define __Pyx_c_pow_double(a, b)  (::std::pow(a, b))
+    #endif
+  #else
+    #define __Pyx_c_is_zero_double(z) ((z)==0)
+    #define __Pyx_c_conj_double(z)    (conj(z))
+    #if 1
+        #define __Pyx_c_abs_double(z)     (cabs(z))
+        #define __Pyx_c_pow_double(a, b)  (cpow(a, b))
+    #endif
+ #endif
+#else
+    static CYTHON_INLINE int __Pyx_c_eq_double(__pyx_t_double_complex, __pyx_t_double_complex);
+    static CYTHON_INLINE __pyx_t_double_complex __Pyx_c_sum_double(__pyx_t_double_complex, __pyx_t_double_complex);
+    static CYTHON_INLINE __pyx_t_double_complex __Pyx_c_diff_double(__pyx_t_double_complex, __pyx_t_double_complex);
+    static CYTHON_INLINE __pyx_t_double_complex __Pyx_c_prod_double(__pyx_t_double_complex, __pyx_t_double_complex);
+    static CYTHON_INLINE __pyx_t_double_complex __Pyx_c_quot_double(__pyx_t_double_complex, __pyx_t_double_complex);
+    static CYTHON_INLINE __pyx_t_double_complex __Pyx_c_neg_double(__pyx_t_double_complex);
+    static CYTHON_INLINE int __Pyx_c_is_zero_double(__pyx_t_double_complex);
+    static CYTHON_INLINE __pyx_t_double_complex __Pyx_c_conj_double(__pyx_t_double_complex);
+    #if 1
+        static CYTHON_INLINE double __Pyx_c_abs_double(__pyx_t_double_complex);
+        static CYTHON_INLINE __pyx_t_double_complex __Pyx_c_pow_double(__pyx_t_double_complex, __pyx_t_double_complex);
+    #endif
+#endif
+
+/* MemviewDtypeToObject.proto */
+static CYTHON_INLINE PyObject *__pyx_memview_get_float(const char *itemp);
+static CYTHON_INLINE int __pyx_memview_set_float(const char *itemp, PyObject *obj);
+
+/* GCCDiagnostics.proto */
+#if defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 6))
+#define __Pyx_HAS_GCC_DIAGNOSTIC
+#endif
+
+/* MemviewDtypeToObject.proto */
+static CYTHON_INLINE PyObject *__pyx_memview_get_long(const char *itemp);
+static CYTHON_INLINE int __pyx_memview_set_long(const char *itemp, PyObject *obj);
+
+/* ObjectToMemviewSlice.proto */
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_dsds_long(PyObject *, int writable_flag);
+
+/* ObjectToMemviewSlice.proto */
+static CYTHON_INLINE __Pyx_memviewslice __Pyx_PyObject_to_MemoryviewSlice_ds_float(PyObject *, int writable_flag);
+
+/* MemviewSliceCopyTemplate.proto */
+static __Pyx_memviewslice
+__pyx_memoryview_copy_new_contig(const __Pyx_memviewslice *from_mvs,
+                                 const char *mode, int ndim,
+                                 size_t sizeof_dtype, int contig_flag,
+                                 int dtype_is_object);
+
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
+
+/* CIntFromPy.proto */
+static CYTHON_INLINE long __Pyx_PyInt_As_long(PyObject *);
+
+/* CIntFromPy.proto */
+static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
+
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
+
+/* CIntFromPy.proto */
+static CYTHON_INLINE char __Pyx_PyInt_As_char(PyObject *);
+
+/* CheckBinaryVersion.proto */
+static int __Pyx_check_binary_version(void);
+
+/* InitStrings.proto */
+static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
+
+static PyObject *__pyx_array_get_memview(struct __pyx_array_obj *__pyx_v_self); /* proto*/
+static char *__pyx_memoryview_get_item_pointer(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_index); /* proto*/
+static PyObject *__pyx_memoryview_is_slice(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_obj); /* proto*/
+static PyObject *__pyx_memoryview_setitem_slice_assignment(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_dst, PyObject *__pyx_v_src); /* proto*/
+static PyObject *__pyx_memoryview_setitem_slice_assign_scalar(struct __pyx_memoryview_obj *__pyx_v_self, struct __pyx_memoryview_obj *__pyx_v_dst, PyObject *__pyx_v_value); /* proto*/
+static PyObject *__pyx_memoryview_setitem_indexed(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_index, PyObject *__pyx_v_value); /* proto*/
+static PyObject *__pyx_memoryview_convert_item_to_object(struct __pyx_memoryview_obj *__pyx_v_self, char *__pyx_v_itemp); /* proto*/
+static PyObject *__pyx_memoryview_assign_item_from_object(struct __pyx_memoryview_obj *__pyx_v_self, char *__pyx_v_itemp, PyObject *__pyx_v_value); /* proto*/
+static PyObject *__pyx_memoryviewslice_convert_item_to_object(struct __pyx_memoryviewslice_obj *__pyx_v_self, char *__pyx_v_itemp); /* proto*/
+static PyObject *__pyx_memoryviewslice_assign_item_from_object(struct __pyx_memoryviewslice_obj *__pyx_v_self, char *__pyx_v_itemp, PyObject *__pyx_v_value); /* proto*/
+
+/* Module declarations from 'cython.view' */
+
+/* Module declarations from 'cython' */
+
+/* Module declarations from 'cpython.buffer' */
+
+/* Module declarations from 'libc.string' */
+
+/* Module declarations from 'libc.stdio' */
+
+/* Module declarations from '__builtin__' */
+
+/* Module declarations from 'cpython.type' */
+static PyTypeObject *__pyx_ptype_7cpython_4type_type = 0;
+
+/* Module declarations from 'cpython' */
+
+/* Module declarations from 'cpython.object' */
+
+/* Module declarations from 'cpython.ref' */
+
+/* Module declarations from 'cpython.mem' */
+
+/* Module declarations from 'numpy' */
+
+/* Module declarations from 'numpy' */
+static PyTypeObject *__pyx_ptype_5numpy_dtype = 0;
+static PyTypeObject *__pyx_ptype_5numpy_flatiter = 0;
+static PyTypeObject *__pyx_ptype_5numpy_broadcast = 0;
+static PyTypeObject *__pyx_ptype_5numpy_ndarray = 0;
+static PyTypeObject *__pyx_ptype_5numpy_ufunc = 0;
+
+/* Module declarations from 'roc_cy' */
+static PyTypeObject *__pyx_array_type = 0;
+static PyTypeObject *__pyx_MemviewEnum_type = 0;
+static PyTypeObject *__pyx_memoryview_type = 0;
+static PyTypeObject *__pyx_memoryviewslice_type = 0;
+static PyObject *generic = 0;
+static PyObject *strided = 0;
+static PyObject *indirect = 0;
+static PyObject *contiguous = 0;
+static PyObject *indirect_contiguous = 0;
+static int __pyx_memoryview_thread_locks_used;
+static PyThread_type_lock __pyx_memoryview_thread_locks[8];
+static PyObject *__pyx_f_6roc_cy_evaluate_roc_cy(__Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, __Pyx_memviewslice, int __pyx_skip_dispatch); /*proto*/
+static struct __pyx_array_obj *__pyx_array_new(PyObject *, Py_ssize_t, char *, char *, char *); /*proto*/
+static void *__pyx_align_pointer(void *, size_t); /*proto*/
+static PyObject *__pyx_memoryview_new(PyObject *, int, int, __Pyx_TypeInfo *); /*proto*/
+static CYTHON_INLINE int __pyx_memoryview_check(PyObject *); /*proto*/
+static PyObject *_unellipsify(PyObject *, int); /*proto*/
+static PyObject *assert_direct_dimensions(Py_ssize_t *, int); /*proto*/
+static struct __pyx_memoryview_obj *__pyx_memview_slice(struct __pyx_memoryview_obj *, PyObject *); /*proto*/
+static int __pyx_memoryview_slice_memviewslice(__Pyx_memviewslice *, Py_ssize_t, Py_ssize_t, Py_ssize_t, int, int, int *, Py_ssize_t, Py_ssize_t, Py_ssize_t, int, int, int, int); /*proto*/
+static char *__pyx_pybuffer_index(Py_buffer *, char *, Py_ssize_t, Py_ssize_t); /*proto*/
+static int __pyx_memslice_transpose(__Pyx_memviewslice *); /*proto*/
+static PyObject *__pyx_memoryview_fromslice(__Pyx_memviewslice, int, PyObject *(*)(char *), int (*)(char *, PyObject *), int); /*proto*/
+static __Pyx_memviewslice *__pyx_memoryview_get_slice_from_memoryview(struct __pyx_memoryview_obj *, __Pyx_memviewslice *); /*proto*/
+static void __pyx_memoryview_slice_copy(struct __pyx_memoryview_obj *, __Pyx_memviewslice *); /*proto*/
+static PyObject *__pyx_memoryview_copy_object(struct __pyx_memoryview_obj *); /*proto*/
+static PyObject *__pyx_memoryview_copy_object_from_slice(struct __pyx_memoryview_obj *, __Pyx_memviewslice *); /*proto*/
+static Py_ssize_t abs_py_ssize_t(Py_ssize_t); /*proto*/
+static char __pyx_get_best_slice_order(__Pyx_memviewslice *, int); /*proto*/
+static void _copy_strided_to_strided(char *, Py_ssize_t *, char *, Py_ssize_t *, Py_ssize_t *, Py_ssize_t *, int, size_t); /*proto*/
+static void copy_strided_to_strided(__Pyx_memviewslice *, __Pyx_memviewslice *, int, size_t); /*proto*/
+static Py_ssize_t __pyx_memoryview_slice_get_size(__Pyx_memviewslice *, int); /*proto*/
+static Py_ssize_t __pyx_fill_contig_strides_array(Py_ssize_t *, Py_ssize_t *, Py_ssize_t, int, char); /*proto*/
+static void *__pyx_memoryview_copy_data_to_temp(__Pyx_memviewslice *, __Pyx_memviewslice *, char, int); /*proto*/
+static int __pyx_memoryview_err_extents(int, Py_ssize_t, Py_ssize_t); /*proto*/
+static int __pyx_memoryview_err_dim(PyObject *, char *, int); /*proto*/
+static int __pyx_memoryview_err(PyObject *, char *); /*proto*/
+static int __pyx_memoryview_copy_contents(__Pyx_memviewslice, __Pyx_memviewslice, int, int, int); /*proto*/
+static void __pyx_memoryview_broadcast_leading(__Pyx_memviewslice *, int, int); /*proto*/
+static void __pyx_memoryview_refcount_copying(__Pyx_memviewslice *, int, int, int); /*proto*/
+static void __pyx_memoryview_refcount_objects_in_slice_with_gil(char *, Py_ssize_t *, Py_ssize_t *, int, int); /*proto*/
+static void __pyx_memoryview_refcount_objects_in_slice(char *, Py_ssize_t *, Py_ssize_t *, int, int); /*proto*/
+static void __pyx_memoryview_slice_assign_scalar(__Pyx_memviewslice *, int, size_t, void *, int); /*proto*/
+static void __pyx_memoryview__slice_assign_scalar(char *, Py_ssize_t *, Py_ssize_t *, int, size_t, void *); /*proto*/
+static PyObject *__pyx_unpickle_Enum__set_state(struct __pyx_MemviewEnum_obj *, PyObject *); /*proto*/
+static __Pyx_TypeInfo __Pyx_TypeInfo_float = { "float", NULL, sizeof(float), { 0 }, 0, 'R', 0, 0 };
+static __Pyx_TypeInfo __Pyx_TypeInfo_long = { "long", NULL, sizeof(long), { 0 }, 0, IS_UNSIGNED(long) ? 'U' : 'I', IS_UNSIGNED(long), 0 };
+#define __Pyx_MODULE_NAME "roc_cy"
+extern int __pyx_module_is_main_roc_cy;
+int __pyx_module_is_main_roc_cy = 0;
+
+/* Implementation of 'roc_cy' */
+static PyObject *__pyx_builtin_range;
+static PyObject *__pyx_builtin_ImportError;
+static PyObject *__pyx_builtin_ValueError;
+static PyObject *__pyx_builtin_MemoryError;
+static PyObject *__pyx_builtin_enumerate;
+static PyObject *__pyx_builtin_TypeError;
+static PyObject *__pyx_builtin_Ellipsis;
+static PyObject *__pyx_builtin_id;
+static PyObject *__pyx_builtin_IndexError;
+static const char __pyx_k_O[] = "O";
+static const char __pyx_k_c[] = "c";
+static const char __pyx_k_id[] = "id";
+static const char __pyx_k_np[] = "np";
+static const char __pyx_k_new[] = "__new__";
+static const char __pyx_k_obj[] = "obj";
+static const char __pyx_k_axis[] = "axis";
+static const char __pyx_k_base[] = "base";
+static const char __pyx_k_dict[] = "__dict__";
+static const char __pyx_k_main[] = "__main__";
+static const char __pyx_k_mode[] = "mode";
+static const char __pyx_k_name[] = "name";
+static const char __pyx_k_ndim[] = "ndim";
+static const char __pyx_k_ones[] = "ones";
+static const char __pyx_k_pack[] = "pack";
+static const char __pyx_k_size[] = "size";
+static const char __pyx_k_step[] = "step";
+static const char __pyx_k_stop[] = "stop";
+static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_ASCII[] = "ASCII";
+static const char __pyx_k_class[] = "__class__";
+static const char __pyx_k_dtype[] = "dtype";
+static const char __pyx_k_error[] = "error";
+static const char __pyx_k_faiss[] = "faiss";
+static const char __pyx_k_flags[] = "flags";
+static const char __pyx_k_int64[] = "int64";
+static const char __pyx_k_numpy[] = "numpy";
+static const char __pyx_k_range[] = "range";
+static const char __pyx_k_shape[] = "shape";
+static const char __pyx_k_start[] = "start";
+static const char __pyx_k_zeros[] = "zeros";
+static const char __pyx_k_astype[] = "astype";
+static const char __pyx_k_encode[] = "encode";
+static const char __pyx_k_format[] = "format";
+static const char __pyx_k_g_pids[] = "g_pids";
+static const char __pyx_k_hstack[] = "hstack";
+static const char __pyx_k_import[] = "__import__";
+static const char __pyx_k_name_2[] = "__name__";
+static const char __pyx_k_pickle[] = "pickle";
+static const char __pyx_k_q_pids[] = "q_pids";
+static const char __pyx_k_reduce[] = "__reduce__";
+static const char __pyx_k_struct[] = "struct";
+static const char __pyx_k_unpack[] = "unpack";
+static const char __pyx_k_update[] = "update";
+static const char __pyx_k_argsort[] = "argsort";
+static const char __pyx_k_asarray[] = "asarray";
+static const char __pyx_k_distmat[] = "distmat";
+static const char __pyx_k_float32[] = "float32";
+static const char __pyx_k_fortran[] = "fortran";
+static const char __pyx_k_memview[] = "memview";
+static const char __pyx_k_newaxis[] = "newaxis";
+static const char __pyx_k_Ellipsis[] = "Ellipsis";
+static const char __pyx_k_g_camids[] = "g_camids";
+static const char __pyx_k_getstate[] = "__getstate__";
+static const char __pyx_k_itemsize[] = "itemsize";
+static const char __pyx_k_pyx_type[] = "__pyx_type";
+static const char __pyx_k_q_camids[] = "q_camids";
+static const char __pyx_k_setstate[] = "__setstate__";
+static const char __pyx_k_TypeError[] = "TypeError";
+static const char __pyx_k_enumerate[] = "enumerate";
+static const char __pyx_k_pyx_state[] = "__pyx_state";
+static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
+static const char __pyx_k_IndexError[] = "IndexError";
+static const char __pyx_k_ValueError[] = "ValueError";
+static const char __pyx_k_pyx_result[] = "__pyx_result";
+static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
+static const char __pyx_k_ImportError[] = "ImportError";
+static const char __pyx_k_MemoryError[] = "MemoryError";
+static const char __pyx_k_PickleError[] = "PickleError";
+static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
+static const char __pyx_k_stringsource[] = "stringsource";
+static const char __pyx_k_pyx_getbuffer[] = "__pyx_getbuffer";
+static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
+static const char __pyx_k_View_MemoryView[] = "View.MemoryView";
+static const char __pyx_k_allocate_buffer[] = "allocate_buffer";
+static const char __pyx_k_dtype_is_object[] = "dtype_is_object";
+static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
+static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
+static const char __pyx_k_pyx_unpickle_Enum[] = "__pyx_unpickle_Enum";
+static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
+static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
+static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
+static const char __pyx_k_contiguous_and_direct[] = "<contiguous and direct>";
+static const char __pyx_k_MemoryView_of_r_object[] = "<MemoryView of %r object>";
+static const char __pyx_k_MemoryView_of_r_at_0x_x[] = "<MemoryView of %r at 0x%x>";
+static const char __pyx_k_contiguous_and_indirect[] = "<contiguous and indirect>";
+static const char __pyx_k_Cannot_index_with_type_s[] = "Cannot index with type '%s'";
+static const char __pyx_k_Invalid_shape_in_axis_d_d[] = "Invalid shape in axis %d: %d.";
+static const char __pyx_k_itemsize_0_for_cython_array[] = "itemsize <= 0 for cython.array";
+static const char __pyx_k_unable_to_allocate_array_data[] = "unable to allocate array data.";
+static const char __pyx_k_strided_and_direct_or_indirect[] = "<strided and direct or indirect>";
+static const char __pyx_k_numpy_core_multiarray_failed_to[] = "numpy.core.multiarray failed to import";
+static const char __pyx_k_Buffer_view_does_not_expose_stri[] = "Buffer view does not expose strides";
+static const char __pyx_k_Can_only_create_a_buffer_that_is[] = "Can only create a buffer that is contiguous in memory.";
+static const char __pyx_k_Cannot_assign_to_read_only_memor[] = "Cannot assign to read-only memoryview";
+static const char __pyx_k_Cannot_create_writable_memory_vi[] = "Cannot create writable memory view from read-only memoryview";
+static const char __pyx_k_Empty_shape_tuple_for_cython_arr[] = "Empty shape tuple for cython.array";
+static const char __pyx_k_Incompatible_checksums_s_vs_0xb0[] = "Incompatible checksums (%s vs 0xb068931 = (name))";
+static const char __pyx_k_Indirect_dimensions_not_supporte[] = "Indirect dimensions not supported";
+static const char __pyx_k_Invalid_mode_expected_c_or_fortr[] = "Invalid mode, expected 'c' or 'fortran', got %s";
+static const char __pyx_k_Out_of_bounds_on_buffer_access_a[] = "Out of bounds on buffer access (axis %d)";
+static const char __pyx_k_Unable_to_convert_item_to_object[] = "Unable to convert item to object";
+static const char __pyx_k_got_differing_extents_in_dimensi[] = "got differing extents in dimension %d (got %d and %d)";
+static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
+static const char __pyx_k_numpy_core_umath_failed_to_impor[] = "numpy.core.umath failed to import";
+static const char __pyx_k_unable_to_allocate_shape_and_str[] = "unable to allocate shape and strides.";
+static PyObject *__pyx_n_s_ASCII;
+static PyObject *__pyx_kp_s_Buffer_view_does_not_expose_stri;
+static PyObject *__pyx_kp_s_Can_only_create_a_buffer_that_is;
+static PyObject *__pyx_kp_s_Cannot_assign_to_read_only_memor;
+static PyObject *__pyx_kp_s_Cannot_create_writable_memory_vi;
+static PyObject *__pyx_kp_s_Cannot_index_with_type_s;
+static PyObject *__pyx_n_s_Ellipsis;
+static PyObject *__pyx_kp_s_Empty_shape_tuple_for_cython_arr;
+static PyObject *__pyx_n_s_ImportError;
+static PyObject *__pyx_kp_s_Incompatible_checksums_s_vs_0xb0;
+static PyObject *__pyx_n_s_IndexError;
+static PyObject *__pyx_kp_s_Indirect_dimensions_not_supporte;
+static PyObject *__pyx_kp_s_Invalid_mode_expected_c_or_fortr;
+static PyObject *__pyx_kp_s_Invalid_shape_in_axis_d_d;
+static PyObject *__pyx_n_s_MemoryError;
+static PyObject *__pyx_kp_s_MemoryView_of_r_at_0x_x;
+static PyObject *__pyx_kp_s_MemoryView_of_r_object;
+static PyObject *__pyx_n_b_O;
+static PyObject *__pyx_kp_s_Out_of_bounds_on_buffer_access_a;
+static PyObject *__pyx_n_s_PickleError;
+static PyObject *__pyx_n_s_TypeError;
+static PyObject *__pyx_kp_s_Unable_to_convert_item_to_object;
+static PyObject *__pyx_n_s_ValueError;
+static PyObject *__pyx_n_s_View_MemoryView;
+static PyObject *__pyx_n_s_allocate_buffer;
+static PyObject *__pyx_n_s_argsort;
+static PyObject *__pyx_n_s_asarray;
+static PyObject *__pyx_n_s_astype;
+static PyObject *__pyx_n_s_axis;
+static PyObject *__pyx_n_s_base;
+static PyObject *__pyx_n_s_c;
+static PyObject *__pyx_n_u_c;
+static PyObject *__pyx_n_s_class;
+static PyObject *__pyx_n_s_cline_in_traceback;
+static PyObject *__pyx_kp_s_contiguous_and_direct;
+static PyObject *__pyx_kp_s_contiguous_and_indirect;
+static PyObject *__pyx_n_s_dict;
+static PyObject *__pyx_n_s_distmat;
+static PyObject *__pyx_n_s_dtype;
+static PyObject *__pyx_n_s_dtype_is_object;
+static PyObject *__pyx_n_s_encode;
+static PyObject *__pyx_n_s_enumerate;
+static PyObject *__pyx_n_s_error;
+static PyObject *__pyx_n_s_faiss;
+static PyObject *__pyx_n_s_flags;
+static PyObject *__pyx_n_s_float32;
+static PyObject *__pyx_n_s_format;
+static PyObject *__pyx_n_s_fortran;
+static PyObject *__pyx_n_u_fortran;
+static PyObject *__pyx_n_s_g_camids;
+static PyObject *__pyx_n_s_g_pids;
+static PyObject *__pyx_n_s_getstate;
+static PyObject *__pyx_kp_s_got_differing_extents_in_dimensi;
+static PyObject *__pyx_n_s_hstack;
+static PyObject *__pyx_n_s_id;
+static PyObject *__pyx_n_s_import;
+static PyObject *__pyx_n_s_int64;
+static PyObject *__pyx_n_s_itemsize;
+static PyObject *__pyx_kp_s_itemsize_0_for_cython_array;
+static PyObject *__pyx_n_s_main;
+static PyObject *__pyx_n_s_memview;
+static PyObject *__pyx_n_s_mode;
+static PyObject *__pyx_n_s_name;
+static PyObject *__pyx_n_s_name_2;
+static PyObject *__pyx_n_s_ndim;
+static PyObject *__pyx_n_s_new;
+static PyObject *__pyx_n_s_newaxis;
+static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
+static PyObject *__pyx_n_s_np;
+static PyObject *__pyx_n_s_numpy;
+static PyObject *__pyx_kp_s_numpy_core_multiarray_failed_to;
+static PyObject *__pyx_kp_s_numpy_core_umath_failed_to_impor;
+static PyObject *__pyx_n_s_obj;
+static PyObject *__pyx_n_s_ones;
+static PyObject *__pyx_n_s_pack;
+static PyObject *__pyx_n_s_pickle;
+static PyObject *__pyx_n_s_pyx_PickleError;
+static PyObject *__pyx_n_s_pyx_checksum;
+static PyObject *__pyx_n_s_pyx_getbuffer;
+static PyObject *__pyx_n_s_pyx_result;
+static PyObject *__pyx_n_s_pyx_state;
+static PyObject *__pyx_n_s_pyx_type;
+static PyObject *__pyx_n_s_pyx_unpickle_Enum;
+static PyObject *__pyx_n_s_pyx_vtable;
+static PyObject *__pyx_n_s_q_camids;
+static PyObject *__pyx_n_s_q_pids;
+static PyObject *__pyx_n_s_range;
+static PyObject *__pyx_n_s_reduce;
+static PyObject *__pyx_n_s_reduce_cython;
+static PyObject *__pyx_n_s_reduce_ex;
+static PyObject *__pyx_n_s_setstate;
+static PyObject *__pyx_n_s_setstate_cython;
+static PyObject *__pyx_n_s_shape;
+static PyObject *__pyx_n_s_size;
+static PyObject *__pyx_n_s_start;
+static PyObject *__pyx_n_s_step;
+static PyObject *__pyx_n_s_stop;
+static PyObject *__pyx_kp_s_strided_and_direct;
+static PyObject *__pyx_kp_s_strided_and_direct_or_indirect;
+static PyObject *__pyx_kp_s_strided_and_indirect;
+static PyObject *__pyx_kp_s_stringsource;
+static PyObject *__pyx_n_s_struct;
+static PyObject *__pyx_n_s_test;
+static PyObject *__pyx_kp_s_unable_to_allocate_array_data;
+static PyObject *__pyx_kp_s_unable_to_allocate_shape_and_str;
+static PyObject *__pyx_n_s_unpack;
+static PyObject *__pyx_n_s_update;
+static PyObject *__pyx_n_s_zeros;
+static PyObject *__pyx_pf_6roc_cy_evaluate_roc_cy(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_distmat, __Pyx_memviewslice __pyx_v_q_pids, __Pyx_memviewslice __pyx_v_g_pids, __Pyx_memviewslice __pyx_v_q_camids, __Pyx_memviewslice __pyx_v_g_camids); /* proto */
+static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array___cinit__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_shape, Py_ssize_t __pyx_v_itemsize, PyObject *__pyx_v_format, PyObject *__pyx_v_mode, int __pyx_v_allocate_buffer); /* proto */
+static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_2__getbuffer__(struct __pyx_array_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
+static void __pyx_array___pyx_pf_15View_dot_MemoryView_5array_4__dealloc__(struct __pyx_array_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_15View_dot_MemoryView_5array_7memview___get__(struct __pyx_array_obj *__pyx_v_self); /* proto */
+static Py_ssize_t __pyx_array___pyx_pf_15View_dot_MemoryView_5array_6__len__(struct __pyx_array_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_array___pyx_pf_15View_dot_MemoryView_5array_8__getattr__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_attr); /* proto */
+static PyObject *__pyx_array___pyx_pf_15View_dot_MemoryView_5array_10__getitem__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_item); /* proto */
+static int __pyx_array___pyx_pf_15View_dot_MemoryView_5array_12__setitem__(struct __pyx_array_obj *__pyx_v_self, PyObject *__pyx_v_item, PyObject *__pyx_v_value); /* proto */
+static PyObject *__pyx_pf___pyx_array___reduce_cython__(CYTHON_UNUSED struct __pyx_array_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf___pyx_array_2__setstate_cython__(CYTHON_UNUSED struct __pyx_array_obj *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_MemviewEnum___pyx_pf_15View_dot_MemoryView_4Enum___init__(struct __pyx_MemviewEnum_obj *__pyx_v_self, PyObject *__pyx_v_name); /* proto */
+static PyObject *__pyx_MemviewEnum___pyx_pf_15View_dot_MemoryView_4Enum_2__repr__(struct __pyx_MemviewEnum_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf___pyx_MemviewEnum___reduce_cython__(struct __pyx_MemviewEnum_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf___pyx_MemviewEnum_2__setstate_cython__(struct __pyx_MemviewEnum_obj *__pyx_v_self, PyObject *__pyx_v___pyx_state); /* proto */
+static int __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview___cinit__(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_obj, int __pyx_v_flags, int __pyx_v_dtype_is_object); /* proto */
+static void __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_2__dealloc__(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_4__getitem__(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_index); /* proto */
+static int __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_6__setitem__(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_index, PyObject *__pyx_v_value); /* proto */
+static int __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_8__getbuffer__(struct __pyx_memoryview_obj *__pyx_v_self, Py_buffer *__pyx_v_info, int __pyx_v_flags); /* proto */
+static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_1T___get__(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_4base___get__(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_5shape___get__(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_7strides___get__(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_10suboffsets___get__(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_4ndim___get__(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_8itemsize___get__(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_6nbytes___get__(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_15View_dot_MemoryView_10memoryview_4size___get__(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static Py_ssize_t __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_10__len__(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_12__repr__(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_14__str__(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_16is_c_contig(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_18is_f_contig(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_20copy(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_22copy_fortran(struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf___pyx_memoryview___reduce_cython__(CYTHON_UNUSED struct __pyx_memoryview_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf___pyx_memoryview_2__setstate_cython__(CYTHON_UNUSED struct __pyx_memoryview_obj *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static void __pyx_memoryviewslice___pyx_pf_15View_dot_MemoryView_16_memoryviewslice___dealloc__(struct __pyx_memoryviewslice_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_15View_dot_MemoryView_16_memoryviewslice_4base___get__(struct __pyx_memoryviewslice_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf___pyx_memoryviewslice___reduce_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf___pyx_memoryviewslice_2__setstate_cython__(CYTHON_UNUSED struct __pyx_memoryviewslice_obj *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_pf_15View_dot_MemoryView___pyx_unpickle_Enum(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v___pyx_type, long __pyx_v___pyx_checksum, PyObject *__pyx_v___pyx_state); /* proto */
+static PyObject *__pyx_tp_new_array(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_Enum(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new_memoryview(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_tp_new__memoryviewslice(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_int_0;
+static PyObject *__pyx_int_1;
+static PyObject *__pyx_int_184977713;
+static PyObject *__pyx_int_neg_1;
+static PyObject *__pyx_slice_;
+static PyObject *__pyx_tuple__2;
+static PyObject *__pyx_tuple__3;
+static PyObject *__pyx_tuple__4;
+static PyObject *__pyx_tuple__5;
+static PyObject *__pyx_tuple__6;
+static PyObject *__pyx_tuple__7;
+static PyObject *__pyx_tuple__8;
+static PyObject *__pyx_tuple__9;
+static PyObject *__pyx_tuple__10;
+static PyObject *__pyx_tuple__11;
+static PyObject *__pyx_tuple__12;
+static PyObject *__pyx_tuple__13;
+static PyObject *__pyx_tuple__14;
+static PyObject *__pyx_tuple__15;
+static PyObject *__pyx_tuple__16;
+static PyObject *__pyx_tuple__17;
+static PyObject *__pyx_tuple__18;
+static PyObject *__pyx_tuple__19;
+static PyObject *__pyx_tuple__20;
+static PyObject *__pyx_tuple__21;
+static PyObject *__pyx_tuple__22;
+static PyObject *__pyx_tuple__23;
+static PyObject *__pyx_tuple__24;
+static PyObject *__pyx_tuple__25;
+static PyObject *__pyx_tuple__26;
+static PyObject *__pyx_codeobj__27;
+/* Late includes */
+
+/* "roc_cy.pyx":20
+ * 
+ * # Main interface
+ * cpdef evaluate_roc_cy(float[:,:] distmat, long[:] q_pids, long[:]g_pids,             # <<<<<<<<<<<<<<
+ *                   long[:]q_camids, long[:]g_camids):
+ * 
+ */
+
+static PyObject *__pyx_pw_6roc_cy_1evaluate_roc_cy(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyObject *__pyx_f_6roc_cy_evaluate_roc_cy(__Pyx_memviewslice __pyx_v_distmat, __Pyx_memviewslice __pyx_v_q_pids, __Pyx_memviewslice __pyx_v_g_pids, __Pyx_memviewslice __pyx_v_q_camids, __Pyx_memviewslice __pyx_v_g_camids, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  long __pyx_v_num_q;
+  long __pyx_v_num_g;
+  __Pyx_memviewslice __pyx_v_indices = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_matches = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_pos = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_neg = { 0, 0, { 0 }, { 0 }, { 0 } };
+  long __pyx_v_valid_pos;
+  long __pyx_v_valid_neg;
+  long __pyx_v_q_idx;
+  long __pyx_v_q_pid;
+  long __pyx_v_q_camid;
+  long __pyx_v_g_idx;
+  __Pyx_memviewslice __pyx_v_order = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_raw_cmc = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_sort_idx = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_v_num_g_real = NULL;
+  PyObject *__pyx_v_q_dist = NULL;
+  PyObject *__pyx_v_valid_idx = NULL;
+  __Pyx_memviewslice __pyx_v_scores = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_v_labels = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  __Pyx_memviewslice __pyx_t_6 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_t_7 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  __Pyx_memviewslice __pyx_t_8 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  PyObject *__pyx_t_9 = NULL;
+  __Pyx_memviewslice __pyx_t_10 = { 0, 0, { 0 }, { 0 }, { 0 } };
+  long __pyx_t_11;
+  long __pyx_t_12;
+  long __pyx_t_13;
+  Py_ssize_t __pyx_t_14;
+  long __pyx_t_15;
+  long __pyx_t_16;
+  long __pyx_t_17;
+  Py_ssize_t __pyx_t_18;
+  Py_ssize_t __pyx_t_19;
+  int __pyx_t_20;
+  int __pyx_t_21;
+  Py_ssize_t __pyx_t_22;
+  PyObject *(*__pyx_t_23)(PyObject *);
+  Py_ssize_t __pyx_t_24;
+  float __pyx_t_25;
+  int __pyx_t_26;
+  PyObject *__pyx_t_27 = NULL;
+  PyObject *__pyx_t_28 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("evaluate_roc_cy", 0);
+  __PYX_INC_MEMVIEW(&__pyx_v_distmat, 1);
+  __PYX_INC_MEMVIEW(&__pyx_v_q_pids, 1);
+  __PYX_INC_MEMVIEW(&__pyx_v_g_pids, 1);
+  __PYX_INC_MEMVIEW(&__pyx_v_q_camids, 1);
+  __PYX_INC_MEMVIEW(&__pyx_v_g_camids, 1);
+
+  /* "roc_cy.pyx":23
+ *                   
