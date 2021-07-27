@@ -15334,4 +15334,1007 @@ static char __pyx_get_best_slice_order(__Pyx_memviewslice *__pyx_v_mslice, int _
  *             break
  * 
  *     if abs_py_ssize_t(c_stride) <= abs_py_ssize_t(f_stride):             # <<<<<<<<<<<<<<
- *  
+ *         return 'C'
+ *     else:
+ */
+  __pyx_t_2 = ((abs_py_ssize_t(__pyx_v_c_stride) <= abs_py_ssize_t(__pyx_v_f_stride)) != 0);
+  if (__pyx_t_2) {
+
+    /* "View.MemoryView":1135
+ * 
+ *     if abs_py_ssize_t(c_stride) <= abs_py_ssize_t(f_stride):
+ *         return 'C'             # <<<<<<<<<<<<<<
+ *     else:
+ *         return 'F'
+ */
+    __pyx_r = 'C';
+    goto __pyx_L0;
+
+    /* "View.MemoryView":1134
+ *             break
+ * 
+ *     if abs_py_ssize_t(c_stride) <= abs_py_ssize_t(f_stride):             # <<<<<<<<<<<<<<
+ *         return 'C'
+ *     else:
+ */
+  }
+
+  /* "View.MemoryView":1137
+ *         return 'C'
+ *     else:
+ *         return 'F'             # <<<<<<<<<<<<<<
+ * 
+ * @cython.cdivision(True)
+ */
+  /*else*/ {
+    __pyx_r = 'F';
+    goto __pyx_L0;
+  }
+
+  /* "View.MemoryView":1116
+ * 
+ * @cname('__pyx_get_best_slice_order')
+ * cdef char get_best_order(__Pyx_memviewslice *mslice, int ndim) nogil:             # <<<<<<<<<<<<<<
+ *     """
+ *     Figure out the best memory access order for a given slice.
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "View.MemoryView":1140
+ * 
+ * @cython.cdivision(True)
+ * cdef void _copy_strided_to_strided(char *src_data, Py_ssize_t *src_strides,             # <<<<<<<<<<<<<<
+ *                                    char *dst_data, Py_ssize_t *dst_strides,
+ *                                    Py_ssize_t *src_shape, Py_ssize_t *dst_shape,
+ */
+
+static void _copy_strided_to_strided(char *__pyx_v_src_data, Py_ssize_t *__pyx_v_src_strides, char *__pyx_v_dst_data, Py_ssize_t *__pyx_v_dst_strides, Py_ssize_t *__pyx_v_src_shape, Py_ssize_t *__pyx_v_dst_shape, int __pyx_v_ndim, size_t __pyx_v_itemsize) {
+  CYTHON_UNUSED Py_ssize_t __pyx_v_i;
+  CYTHON_UNUSED Py_ssize_t __pyx_v_src_extent;
+  Py_ssize_t __pyx_v_dst_extent;
+  Py_ssize_t __pyx_v_src_stride;
+  Py_ssize_t __pyx_v_dst_stride;
+  int __pyx_t_1;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  Py_ssize_t __pyx_t_4;
+  Py_ssize_t __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
+
+  /* "View.MemoryView":1147
+ * 
+ *     cdef Py_ssize_t i
+ *     cdef Py_ssize_t src_extent = src_shape[0]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t dst_extent = dst_shape[0]
+ *     cdef Py_ssize_t src_stride = src_strides[0]
+ */
+  __pyx_v_src_extent = (__pyx_v_src_shape[0]);
+
+  /* "View.MemoryView":1148
+ *     cdef Py_ssize_t i
+ *     cdef Py_ssize_t src_extent = src_shape[0]
+ *     cdef Py_ssize_t dst_extent = dst_shape[0]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t src_stride = src_strides[0]
+ *     cdef Py_ssize_t dst_stride = dst_strides[0]
+ */
+  __pyx_v_dst_extent = (__pyx_v_dst_shape[0]);
+
+  /* "View.MemoryView":1149
+ *     cdef Py_ssize_t src_extent = src_shape[0]
+ *     cdef Py_ssize_t dst_extent = dst_shape[0]
+ *     cdef Py_ssize_t src_stride = src_strides[0]             # <<<<<<<<<<<<<<
+ *     cdef Py_ssize_t dst_stride = dst_strides[0]
+ * 
+ */
+  __pyx_v_src_stride = (__pyx_v_src_strides[0]);
+
+  /* "View.MemoryView":1150
+ *     cdef Py_ssize_t dst_extent = dst_shape[0]
+ *     cdef Py_ssize_t src_stride = src_strides[0]
+ *     cdef Py_ssize_t dst_stride = dst_strides[0]             # <<<<<<<<<<<<<<
+ * 
+ *     if ndim == 1:
+ */
+  __pyx_v_dst_stride = (__pyx_v_dst_strides[0]);
+
+  /* "View.MemoryView":1152
+ *     cdef Py_ssize_t dst_stride = dst_strides[0]
+ * 
+ *     if ndim == 1:             # <<<<<<<<<<<<<<
+ *        if (src_stride > 0 and dst_stride > 0 and
+ *            <size_t> src_stride == itemsize == <size_t> dst_stride):
+ */
+  __pyx_t_1 = ((__pyx_v_ndim == 1) != 0);
+  if (__pyx_t_1) {
+
+    /* "View.MemoryView":1153
+ * 
+ *     if ndim == 1:
+ *        if (src_stride > 0 and dst_stride > 0 and             # <<<<<<<<<<<<<<
+ *            <size_t> src_stride == itemsize == <size_t> dst_stride):
+ *            memcpy(dst_data, src_data, itemsize * dst_extent)
+ */
+    __pyx_t_2 = ((__pyx_v_src_stride > 0) != 0);
+    if (__pyx_t_2) {
+    } else {
+      __pyx_t_1 = __pyx_t_2;
+      goto __pyx_L5_bool_binop_done;
+    }
+    __pyx_t_2 = ((__pyx_v_dst_stride > 0) != 0);
+    if (__pyx_t_2) {
+    } else {
+      __pyx_t_1 = __pyx_t_2;
+      goto __pyx_L5_bool_binop_done;
+    }
+
+    /* "View.MemoryView":1154
+ *     if ndim == 1:
+ *        if (src_stride > 0 and dst_stride > 0 and
+ *            <size_t> src_stride == itemsize == <size_t> dst_stride):             # <<<<<<<<<<<<<<
+ *            memcpy(dst_data, src_data, itemsize * dst_extent)
+ *        else:
+ */
+    __pyx_t_2 = (((size_t)__pyx_v_src_stride) == __pyx_v_itemsize);
+    if (__pyx_t_2) {
+      __pyx_t_2 = (__pyx_v_itemsize == ((size_t)__pyx_v_dst_stride));
+    }
+    __pyx_t_3 = (__pyx_t_2 != 0);
+    __pyx_t_1 = __pyx_t_3;
+    __pyx_L5_bool_binop_done:;
+
+    /* "View.MemoryView":1153
+ * 
+ *     if ndim == 1:
+ *        if (src_stride > 0 and dst_stride > 0 and             # <<<<<<<<<<<<<<
+ *            <size_t> src_stride == itemsize == <size_t> dst_stride):
+ *            memcpy(dst_data, src_data, itemsize * dst_extent)
+ */
+    if (__pyx_t_1) {
+
+      /* "View.MemoryView":1155
+ *        if (src_stride > 0 and dst_stride > 0 and
+ *            <size_t> src_stride == itemsize == <size_t> dst_stride):
+ *            memcpy(dst_data, src_data, itemsize * dst_extent)             # <<<<<<<<<<<<<<
+ *        else:
+ *            for i in range(dst_extent):
+ */
+      (void)(memcpy(__pyx_v_dst_data, __pyx_v_src_data, (__pyx_v_itemsize * __pyx_v_dst_extent)));
+
+      /* "View.MemoryView":1153
+ * 
+ *     if ndim == 1:
+ *        if (src_stride > 0 and dst_stride > 0 and             # <<<<<<<<<<<<<<
+ *            <size_t> src_stride == itemsize == <size_t> dst_stride):
+ *            memcpy(dst_data, src_data, itemsize * dst_extent)
+ */
+      goto __pyx_L4;
+    }
+
+    /* "View.MemoryView":1157
+ *            memcpy(dst_data, src_data, itemsize * dst_extent)
+ *        else:
+ *            for i in range(dst_extent):             # <<<<<<<<<<<<<<
+ *                memcpy(dst_data, src_data, itemsize)
+ *                src_data += src_stride
+ */
+    /*else*/ {
+      __pyx_t_4 = __pyx_v_dst_extent;
+      __pyx_t_5 = __pyx_t_4;
+      for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+        __pyx_v_i = __pyx_t_6;
+
+        /* "View.MemoryView":1158
+ *        else:
+ *            for i in range(dst_extent):
+ *                memcpy(dst_data, src_data, itemsize)             # <<<<<<<<<<<<<<
+ *                src_data += src_stride
+ *                dst_data += dst_stride
+ */
+        (void)(memcpy(__pyx_v_dst_data, __pyx_v_src_data, __pyx_v_itemsize));
+
+        /* "View.MemoryView":1159
+ *            for i in range(dst_extent):
+ *                memcpy(dst_data, src_data, itemsize)
+ *                src_data += src_stride             # <<<<<<<<<<<<<<
+ *                dst_data += dst_stride
+ *     else:
+ */
+        __pyx_v_src_data = (__pyx_v_src_data + __pyx_v_src_stride);
+
+        /* "View.MemoryView":1160
+ *                memcpy(dst_data, src_data, itemsize)
+ *                src_data += src_stride
+ *                dst_data += dst_stride             # <<<<<<<<<<<<<<
+ *     else:
+ *         for i in range(dst_extent):
+ */
+        __pyx_v_dst_data = (__pyx_v_dst_data + __pyx_v_dst_stride);
+      }
+    }
+    __pyx_L4:;
+
+    /* "View.MemoryView":1152
+ *     cdef Py_ssize_t dst_stride = dst_strides[0]
+ * 
+ *     if ndim == 1:             # <<<<<<<<<<<<<<
+ *        if (src_stride > 0 and dst_stride > 0 and
+ *            <size_t> src_stride == itemsize == <size_t> dst_stride):
+ */
+    goto __pyx_L3;
+  }
+
+  /* "View.MemoryView":1162
+ *                dst_data += dst_stride
+ *     else:
+ *         for i in range(dst_extent):             # <<<<<<<<<<<<<<
+ *             _copy_strided_to_strided(src_data, src_strides + 1,
+ *                                      dst_data, dst_strides + 1,
+ */
+  /*else*/ {
+    __pyx_t_4 = __pyx_v_dst_extent;
+    __pyx_t_5 = __pyx_t_4;
+    for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+      __pyx_v_i = __pyx_t_6;
+
+      /* "View.MemoryView":1163
+ *     else:
+ *         for i in range(dst_extent):
+ *             _copy_strided_to_strided(src_data, src_strides + 1,             # <<<<<<<<<<<<<<
+ *                                      dst_data, dst_strides + 1,
+ *                                      src_shape + 1, dst_shape + 1,
+ */
+      _copy_strided_to_strided(__pyx_v_src_data, (__pyx_v_src_strides + 1), __pyx_v_dst_data, (__pyx_v_dst_strides + 1), (__pyx_v_src_shape + 1), (__pyx_v_dst_shape + 1), (__pyx_v_ndim - 1), __pyx_v_itemsize);
+
+      /* "View.MemoryView":1167
+ *                                      src_shape + 1, dst_shape + 1,
+ *                                      ndim - 1, itemsize)
+ *             src_data += src_stride             # <<<<<<<<<<<<<<
+ *             dst_data += dst_stride
+ * 
+ */
+      __pyx_v_src_data = (__pyx_v_src_data + __pyx_v_src_stride);
+
+      /* "View.MemoryView":1168
+ *                                      ndim - 1, itemsize)
+ *             src_data += src_stride
+ *             dst_data += dst_stride             # <<<<<<<<<<<<<<
+ * 
+ * cdef void copy_strided_to_strided(__Pyx_memviewslice *src,
+ */
+      __pyx_v_dst_data = (__pyx_v_dst_data + __pyx_v_dst_stride);
+    }
+  }
+  __pyx_L3:;
+
+  /* "View.MemoryView":1140
+ * 
+ * @cython.cdivision(True)
+ * cdef void _copy_strided_to_strided(char *src_data, Py_ssize_t *src_strides,             # <<<<<<<<<<<<<<
+ *                                    char *dst_data, Py_ssize_t *dst_strides,
+ *                                    Py_ssize_t *src_shape, Py_ssize_t *dst_shape,
+ */
+
+  /* function exit code */
+}
+
+/* "View.MemoryView":1170
+ *             dst_data += dst_stride
+ * 
+ * cdef void copy_strided_to_strided(__Pyx_memviewslice *src,             # <<<<<<<<<<<<<<
+ *                                   __Pyx_memviewslice *dst,
+ *                                   int ndim, size_t itemsize) nogil:
+ */
+
+static void copy_strided_to_strided(__Pyx_memviewslice *__pyx_v_src, __Pyx_memviewslice *__pyx_v_dst, int __pyx_v_ndim, size_t __pyx_v_itemsize) {
+
+  /* "View.MemoryView":1173
+ *                                   __Pyx_memviewslice *dst,
+ *                                   int ndim, size_t itemsize) nogil:
+ *     _copy_strided_to_strided(src.data, src.strides, dst.data, dst.strides,             # <<<<<<<<<<<<<<
+ *                              src.shape, dst.shape, ndim, itemsize)
+ * 
+ */
+  _copy_strided_to_strided(__pyx_v_src->data, __pyx_v_src->strides, __pyx_v_dst->data, __pyx_v_dst->strides, __pyx_v_src->shape, __pyx_v_dst->shape, __pyx_v_ndim, __pyx_v_itemsize);
+
+  /* "View.MemoryView":1170
+ *             dst_data += dst_stride
+ * 
+ * cdef void copy_strided_to_strided(__Pyx_memviewslice *src,             # <<<<<<<<<<<<<<
+ *                                   __Pyx_memviewslice *dst,
+ *                                   int ndim, size_t itemsize) nogil:
+ */
+
+  /* function exit code */
+}
+
+/* "View.MemoryView":1177
+ * 
+ * @cname('__pyx_memoryview_slice_get_size')
+ * cdef Py_ssize_t slice_get_size(__Pyx_memviewslice *src, int ndim) nogil:             # <<<<<<<<<<<<<<
+ *     "Return the size of the memory occupied by the slice in number of bytes"
+ *     cdef Py_ssize_t shape, size = src.memview.view.itemsize
+ */
+
+static Py_ssize_t __pyx_memoryview_slice_get_size(__Pyx_memviewslice *__pyx_v_src, int __pyx_v_ndim) {
+  Py_ssize_t __pyx_v_shape;
+  Py_ssize_t __pyx_v_size;
+  Py_ssize_t __pyx_r;
+  Py_ssize_t __pyx_t_1;
+  Py_ssize_t *__pyx_t_2;
+  Py_ssize_t *__pyx_t_3;
+  Py_ssize_t *__pyx_t_4;
+
+  /* "View.MemoryView":1179
+ * cdef Py_ssize_t slice_get_size(__Pyx_memviewslice *src, int ndim) nogil:
+ *     "Return the size of the memory occupied by the slice in number of bytes"
+ *     cdef Py_ssize_t shape, size = src.memview.view.itemsize             # <<<<<<<<<<<<<<
+ * 
+ *     for shape in src.shape[:ndim]:
+ */
+  __pyx_t_1 = __pyx_v_src->memview->view.itemsize;
+  __pyx_v_size = __pyx_t_1;
+
+  /* "View.MemoryView":1181
+ *     cdef Py_ssize_t shape, size = src.memview.view.itemsize
+ * 
+ *     for shape in src.shape[:ndim]:             # <<<<<<<<<<<<<<
+ *         size *= shape
+ * 
+ */
+  __pyx_t_3 = (__pyx_v_src->shape + __pyx_v_ndim);
+  for (__pyx_t_4 = __pyx_v_src->shape; __pyx_t_4 < __pyx_t_3; __pyx_t_4++) {
+    __pyx_t_2 = __pyx_t_4;
+    __pyx_v_shape = (__pyx_t_2[0]);
+
+    /* "View.MemoryView":1182
+ * 
+ *     for shape in src.shape[:ndim]:
+ *         size *= shape             # <<<<<<<<<<<<<<
+ * 
+ *     return size
+ */
+    __pyx_v_size = (__pyx_v_size * __pyx_v_shape);
+  }
+
+  /* "View.MemoryView":1184
+ *         size *= shape
+ * 
+ *     return size             # <<<<<<<<<<<<<<
+ * 
+ * @cname('__pyx_fill_contig_strides_array')
+ */
+  __pyx_r = __pyx_v_size;
+  goto __pyx_L0;
+
+  /* "View.MemoryView":1177
+ * 
+ * @cname('__pyx_memoryview_slice_get_size')
+ * cdef Py_ssize_t slice_get_size(__Pyx_memviewslice *src, int ndim) nogil:             # <<<<<<<<<<<<<<
+ *     "Return the size of the memory occupied by the slice in number of bytes"
+ *     cdef Py_ssize_t shape, size = src.memview.view.itemsize
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "View.MemoryView":1187
+ * 
+ * @cname('__pyx_fill_contig_strides_array')
+ * cdef Py_ssize_t fill_contig_strides_array(             # <<<<<<<<<<<<<<
+ *                 Py_ssize_t *shape, Py_ssize_t *strides, Py_ssize_t stride,
+ *                 int ndim, char order) nogil:
+ */
+
+static Py_ssize_t __pyx_fill_contig_strides_array(Py_ssize_t *__pyx_v_shape, Py_ssize_t *__pyx_v_strides, Py_ssize_t __pyx_v_stride, int __pyx_v_ndim, char __pyx_v_order) {
+  int __pyx_v_idx;
+  Py_ssize_t __pyx_r;
+  int __pyx_t_1;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  int __pyx_t_4;
+
+  /* "View.MemoryView":1196
+ *     cdef int idx
+ * 
+ *     if order == 'F':             # <<<<<<<<<<<<<<
+ *         for idx in range(ndim):
+ *             strides[idx] = stride
+ */
+  __pyx_t_1 = ((__pyx_v_order == 'F') != 0);
+  if (__pyx_t_1) {
+
+    /* "View.MemoryView":1197
+ * 
+ *     if order == 'F':
+ *         for idx in range(ndim):             # <<<<<<<<<<<<<<
+ *             strides[idx] = stride
+ *             stride *= shape[idx]
+ */
+    __pyx_t_2 = __pyx_v_ndim;
+    __pyx_t_3 = __pyx_t_2;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_idx = __pyx_t_4;
+
+      /* "View.MemoryView":1198
+ *     if order == 'F':
+ *         for idx in range(ndim):
+ *             strides[idx] = stride             # <<<<<<<<<<<<<<
+ *             stride *= shape[idx]
+ *     else:
+ */
+      (__pyx_v_strides[__pyx_v_idx]) = __pyx_v_stride;
+
+      /* "View.MemoryView":1199
+ *         for idx in range(ndim):
+ *             strides[idx] = stride
+ *             stride *= shape[idx]             # <<<<<<<<<<<<<<
+ *     else:
+ *         for idx in range(ndim - 1, -1, -1):
+ */
+      __pyx_v_stride = (__pyx_v_stride * (__pyx_v_shape[__pyx_v_idx]));
+    }
+
+    /* "View.MemoryView":1196
+ *     cdef int idx
+ * 
+ *     if order == 'F':             # <<<<<<<<<<<<<<
+ *         for idx in range(ndim):
+ *             strides[idx] = stride
+ */
+    goto __pyx_L3;
+  }
+
+  /* "View.MemoryView":1201
+ *             stride *= shape[idx]
+ *     else:
+ *         for idx in range(ndim - 1, -1, -1):             # <<<<<<<<<<<<<<
+ *             strides[idx] = stride
+ *             stride *= shape[idx]
+ */
+  /*else*/ {
+    for (__pyx_t_2 = (__pyx_v_ndim - 1); __pyx_t_2 > -1; __pyx_t_2-=1) {
+      __pyx_v_idx = __pyx_t_2;
+
+      /* "View.MemoryView":1202
+ *     else:
+ *         for idx in range(ndim - 1, -1, -1):
+ *             strides[idx] = stride             # <<<<<<<<<<<<<<
+ *             stride *= shape[idx]
+ * 
+ */
+      (__pyx_v_strides[__pyx_v_idx]) = __pyx_v_stride;
+
+      /* "View.MemoryView":1203
+ *         for idx in range(ndim - 1, -1, -1):
+ *             strides[idx] = stride
+ *             stride *= shape[idx]             # <<<<<<<<<<<<<<
+ * 
+ *     return stride
+ */
+      __pyx_v_stride = (__pyx_v_stride * (__pyx_v_shape[__pyx_v_idx]));
+    }
+  }
+  __pyx_L3:;
+
+  /* "View.MemoryView":1205
+ *             stride *= shape[idx]
+ * 
+ *     return stride             # <<<<<<<<<<<<<<
+ * 
+ * @cname('__pyx_memoryview_copy_data_to_temp')
+ */
+  __pyx_r = __pyx_v_stride;
+  goto __pyx_L0;
+
+  /* "View.MemoryView":1187
+ * 
+ * @cname('__pyx_fill_contig_strides_array')
+ * cdef Py_ssize_t fill_contig_strides_array(             # <<<<<<<<<<<<<<
+ *                 Py_ssize_t *shape, Py_ssize_t *strides, Py_ssize_t stride,
+ *                 int ndim, char order) nogil:
+ */
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "View.MemoryView":1208
+ * 
+ * @cname('__pyx_memoryview_copy_data_to_temp')
+ * cdef void *copy_data_to_temp(__Pyx_memviewslice *src,             # <<<<<<<<<<<<<<
+ *                              __Pyx_memviewslice *tmpslice,
+ *                              char order,
+ */
+
+static void *__pyx_memoryview_copy_data_to_temp(__Pyx_memviewslice *__pyx_v_src, __Pyx_memviewslice *__pyx_v_tmpslice, char __pyx_v_order, int __pyx_v_ndim) {
+  int __pyx_v_i;
+  void *__pyx_v_result;
+  size_t __pyx_v_itemsize;
+  size_t __pyx_v_size;
+  void *__pyx_r;
+  Py_ssize_t __pyx_t_1;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  struct __pyx_memoryview_obj *__pyx_t_4;
+  int __pyx_t_5;
+  int __pyx_t_6;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "View.MemoryView":1219
+ *     cdef void *result
+ * 
+ *     cdef size_t itemsize = src.memview.view.itemsize             # <<<<<<<<<<<<<<
+ *     cdef size_t size = slice_get_size(src, ndim)
+ * 
+ */
+  __pyx_t_1 = __pyx_v_src->memview->view.itemsize;
+  __pyx_v_itemsize = __pyx_t_1;
+
+  /* "View.MemoryView":1220
+ * 
+ *     cdef size_t itemsize = src.memview.view.itemsize
+ *     cdef size_t size = slice_get_size(src, ndim)             # <<<<<<<<<<<<<<
+ * 
+ *     result = malloc(size)
+ */
+  __pyx_v_size = __pyx_memoryview_slice_get_size(__pyx_v_src, __pyx_v_ndim);
+
+  /* "View.MemoryView":1222
+ *     cdef size_t size = slice_get_size(src, ndim)
+ * 
+ *     result = malloc(size)             # <<<<<<<<<<<<<<
+ *     if not result:
+ *         _err(MemoryError, NULL)
+ */
+  __pyx_v_result = malloc(__pyx_v_size);
+
+  /* "View.MemoryView":1223
+ * 
+ *     result = malloc(size)
+ *     if not result:             # <<<<<<<<<<<<<<
+ *         _err(MemoryError, NULL)
+ * 
+ */
+  __pyx_t_2 = ((!(__pyx_v_result != 0)) != 0);
+  if (__pyx_t_2) {
+
+    /* "View.MemoryView":1224
+ *     result = malloc(size)
+ *     if not result:
+ *         _err(MemoryError, NULL)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+    __pyx_t_3 = __pyx_memoryview_err(__pyx_builtin_MemoryError, NULL); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(2, 1224, __pyx_L1_error)
+
+    /* "View.MemoryView":1223
+ * 
+ *     result = malloc(size)
+ *     if not result:             # <<<<<<<<<<<<<<
+ *         _err(MemoryError, NULL)
+ * 
+ */
+  }
+
+  /* "View.MemoryView":1227
+ * 
+ * 
+ *     tmpslice.data = <char *> result             # <<<<<<<<<<<<<<
+ *     tmpslice.memview = src.memview
+ *     for i in range(ndim):
+ */
+  __pyx_v_tmpslice->data = ((char *)__pyx_v_result);
+
+  /* "View.MemoryView":1228
+ * 
+ *     tmpslice.data = <char *> result
+ *     tmpslice.memview = src.memview             # <<<<<<<<<<<<<<
+ *     for i in range(ndim):
+ *         tmpslice.shape[i] = src.shape[i]
+ */
+  __pyx_t_4 = __pyx_v_src->memview;
+  __pyx_v_tmpslice->memview = __pyx_t_4;
+
+  /* "View.MemoryView":1229
+ *     tmpslice.data = <char *> result
+ *     tmpslice.memview = src.memview
+ *     for i in range(ndim):             # <<<<<<<<<<<<<<
+ *         tmpslice.shape[i] = src.shape[i]
+ *         tmpslice.suboffsets[i] = -1
+ */
+  __pyx_t_3 = __pyx_v_ndim;
+  __pyx_t_5 = __pyx_t_3;
+  for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+    __pyx_v_i = __pyx_t_6;
+
+    /* "View.MemoryView":1230
+ *     tmpslice.memview = src.memview
+ *     for i in range(ndim):
+ *         tmpslice.shape[i] = src.shape[i]             # <<<<<<<<<<<<<<
+ *         tmpslice.suboffsets[i] = -1
+ * 
+ */
+    (__pyx_v_tmpslice->shape[__pyx_v_i]) = (__pyx_v_src->shape[__pyx_v_i]);
+
+    /* "View.MemoryView":1231
+ *     for i in range(ndim):
+ *         tmpslice.shape[i] = src.shape[i]
+ *         tmpslice.suboffsets[i] = -1             # <<<<<<<<<<<<<<
+ * 
+ *     fill_contig_strides_array(&tmpslice.shape[0], &tmpslice.strides[0], itemsize,
+ */
+    (__pyx_v_tmpslice->suboffsets[__pyx_v_i]) = -1L;
+  }
+
+  /* "View.MemoryView":1233
+ *         tmpslice.suboffsets[i] = -1
+ * 
+ *     fill_contig_strides_array(&tmpslice.shape[0], &tmpslice.strides[0], itemsize,             # <<<<<<<<<<<<<<
+ *                               ndim, order)
+ * 
+ */
+  (void)(__pyx_fill_contig_strides_array((&(__pyx_v_tmpslice->shape[0])), (&(__pyx_v_tmpslice->strides[0])), __pyx_v_itemsize, __pyx_v_ndim, __pyx_v_order));
+
+  /* "View.MemoryView":1237
+ * 
+ * 
+ *     for i in range(ndim):             # <<<<<<<<<<<<<<
+ *         if tmpslice.shape[i] == 1:
+ *             tmpslice.strides[i] = 0
+ */
+  __pyx_t_3 = __pyx_v_ndim;
+  __pyx_t_5 = __pyx_t_3;
+  for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+    __pyx_v_i = __pyx_t_6;
+
+    /* "View.MemoryView":1238
+ * 
+ *     for i in range(ndim):
+ *         if tmpslice.shape[i] == 1:             # <<<<<<<<<<<<<<
+ *             tmpslice.strides[i] = 0
+ * 
+ */
+    __pyx_t_2 = (((__pyx_v_tmpslice->shape[__pyx_v_i]) == 1) != 0);
+    if (__pyx_t_2) {
+
+      /* "View.MemoryView":1239
+ *     for i in range(ndim):
+ *         if tmpslice.shape[i] == 1:
+ *             tmpslice.strides[i] = 0             # <<<<<<<<<<<<<<
+ * 
+ *     if slice_is_contig(src[0], order, ndim):
+ */
+      (__pyx_v_tmpslice->strides[__pyx_v_i]) = 0;
+
+      /* "View.MemoryView":1238
+ * 
+ *     for i in range(ndim):
+ *         if tmpslice.shape[i] == 1:             # <<<<<<<<<<<<<<
+ *             tmpslice.strides[i] = 0
+ * 
+ */
+    }
+  }
+
+  /* "View.MemoryView":1241
+ *             tmpslice.strides[i] = 0
+ * 
+ *     if slice_is_contig(src[0], order, ndim):             # <<<<<<<<<<<<<<
+ *         memcpy(result, src.data, size)
+ *     else:
+ */
+  __pyx_t_2 = (__pyx_memviewslice_is_contig((__pyx_v_src[0]), __pyx_v_order, __pyx_v_ndim) != 0);
+  if (__pyx_t_2) {
+
+    /* "View.MemoryView":1242
+ * 
+ *     if slice_is_contig(src[0], order, ndim):
+ *         memcpy(result, src.data, size)             # <<<<<<<<<<<<<<
+ *     else:
+ *         copy_strided_to_strided(src, tmpslice, ndim, itemsize)
+ */
+    (void)(memcpy(__pyx_v_result, __pyx_v_src->data, __pyx_v_size));
+
+    /* "View.MemoryView":1241
+ *             tmpslice.strides[i] = 0
+ * 
+ *     if slice_is_contig(src[0], order, ndim):             # <<<<<<<<<<<<<<
+ *         memcpy(result, src.data, size)
+ *     else:
+ */
+    goto __pyx_L9;
+  }
+
+  /* "View.MemoryView":1244
+ *         memcpy(result, src.data, size)
+ *     else:
+ *         copy_strided_to_strided(src, tmpslice, ndim, itemsize)             # <<<<<<<<<<<<<<
+ * 
+ *     return result
+ */
+  /*else*/ {
+    copy_strided_to_strided(__pyx_v_src, __pyx_v_tmpslice, __pyx_v_ndim, __pyx_v_itemsize);
+  }
+  __pyx_L9:;
+
+  /* "View.MemoryView":1246
+ *         copy_strided_to_strided(src, tmpslice, ndim, itemsize)
+ * 
+ *     return result             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = __pyx_v_result;
+  goto __pyx_L0;
+
+  /* "View.MemoryView":1208
+ * 
+ * @cname('__pyx_memoryview_copy_data_to_temp')
+ * cdef void *copy_data_to_temp(__Pyx_memviewslice *src,             # <<<<<<<<<<<<<<
+ *                              __Pyx_memviewslice *tmpslice,
+ *                              char order,
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  {
+    #ifdef WITH_THREAD
+    PyGILState_STATE __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
+    #endif
+    __Pyx_AddTraceback("View.MemoryView.copy_data_to_temp", __pyx_clineno, __pyx_lineno, __pyx_filename);
+    #ifdef WITH_THREAD
+    __Pyx_PyGILState_Release(__pyx_gilstate_save);
+    #endif
+  }
+  __pyx_r = NULL;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "View.MemoryView":1251
+ * 
+ * @cname('__pyx_memoryview_err_extents')
+ * cdef int _err_extents(int i, Py_ssize_t extent1,             # <<<<<<<<<<<<<<
+ *                              Py_ssize_t extent2) except -1 with gil:
+ *     raise ValueError("got differing extents in dimension %d (got %d and %d)" %
+ */
+
+static int __pyx_memoryview_err_extents(int __pyx_v_i, Py_ssize_t __pyx_v_extent1, Py_ssize_t __pyx_v_extent2) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  #ifdef WITH_THREAD
+  PyGILState_STATE __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
+  #endif
+  __Pyx_RefNannySetupContext("_err_extents", 0);
+
+  /* "View.MemoryView":1254
+ *                              Py_ssize_t extent2) except -1 with gil:
+ *     raise ValueError("got differing extents in dimension %d (got %d and %d)" %
+ *                                                         (i, extent1, extent2))             # <<<<<<<<<<<<<<
+ * 
+ * @cname('__pyx_memoryview_err_dim')
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_i); if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 1254, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = PyInt_FromSsize_t(__pyx_v_extent1); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 1254, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = PyInt_FromSsize_t(__pyx_v_extent2); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 1254, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = PyTuple_New(3); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 1254, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_GIVEREF(__pyx_t_1);
+  PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_2);
+  PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_2);
+  __Pyx_GIVEREF(__pyx_t_3);
+  PyTuple_SET_ITEM(__pyx_t_4, 2, __pyx_t_3);
+  __pyx_t_1 = 0;
+  __pyx_t_2 = 0;
+  __pyx_t_3 = 0;
+
+  /* "View.MemoryView":1253
+ * cdef int _err_extents(int i, Py_ssize_t extent1,
+ *                              Py_ssize_t extent2) except -1 with gil:
+ *     raise ValueError("got differing extents in dimension %d (got %d and %d)" %             # <<<<<<<<<<<<<<
+ *                                                         (i, extent1, extent2))
+ * 
+ */
+  __pyx_t_3 = __Pyx_PyString_Format(__pyx_kp_s_got_differing_extents_in_dimensi, __pyx_t_4); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 1253, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __pyx_t_4 = __Pyx_PyObject_CallOneArg(__pyx_builtin_ValueError, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 1253, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_Raise(__pyx_t_4, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  __PYX_ERR(2, 1253, __pyx_L1_error)
+
+  /* "View.MemoryView":1251
+ * 
+ * @cname('__pyx_memoryview_err_extents')
+ * cdef int _err_extents(int i, Py_ssize_t extent1,             # <<<<<<<<<<<<<<
+ *                              Py_ssize_t extent2) except -1 with gil:
+ *     raise ValueError("got differing extents in dimension %d (got %d and %d)" %
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("View.MemoryView._err_extents", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __Pyx_RefNannyFinishContext();
+  #ifdef WITH_THREAD
+  __Pyx_PyGILState_Release(__pyx_gilstate_save);
+  #endif
+  return __pyx_r;
+}
+
+/* "View.MemoryView":1257
+ * 
+ * @cname('__pyx_memoryview_err_dim')
+ * cdef int _err_dim(object error, char *msg, int dim) except -1 with gil:             # <<<<<<<<<<<<<<
+ *     raise error(msg.decode('ascii') % dim)
+ * 
+ */
+
+static int __pyx_memoryview_err_dim(PyObject *__pyx_v_error, char *__pyx_v_msg, int __pyx_v_dim) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  #ifdef WITH_THREAD
+  PyGILState_STATE __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
+  #endif
+  __Pyx_RefNannySetupContext("_err_dim", 0);
+  __Pyx_INCREF(__pyx_v_error);
+
+  /* "View.MemoryView":1258
+ * @cname('__pyx_memoryview_err_dim')
+ * cdef int _err_dim(object error, char *msg, int dim) except -1 with gil:
+ *     raise error(msg.decode('ascii') % dim)             # <<<<<<<<<<<<<<
+ * 
+ * @cname('__pyx_memoryview_err')
+ */
+  __pyx_t_2 = __Pyx_decode_c_string(__pyx_v_msg, 0, strlen(__pyx_v_msg), NULL, NULL, PyUnicode_DecodeASCII); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 1258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_dim); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 1258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  __pyx_t_4 = PyUnicode_Format(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 1258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_4);
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_INCREF(__pyx_v_error);
+  __pyx_t_3 = __pyx_v_error; __pyx_t_2 = NULL;
+  if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_3))) {
+    __pyx_t_2 = PyMethod_GET_SELF(__pyx_t_3);
+    if (likely(__pyx_t_2)) {
+      PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_3);
+      __Pyx_INCREF(__pyx_t_2);
+      __Pyx_INCREF(function);
+      __Pyx_DECREF_SET(__pyx_t_3, function);
+    }
+  }
+  __pyx_t_1 = (__pyx_t_2) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_2, __pyx_t_4) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(2, 1258, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __PYX_ERR(2, 1258, __pyx_L1_error)
+
+  /* "View.MemoryView":1257
+ * 
+ * @cname('__pyx_memoryview_err_dim')
+ * cdef int _err_dim(object error, char *msg, int dim) except -1 with gil:             # <<<<<<<<<<<<<<
+ *     raise error(msg.decode('ascii') % dim)
+ * 
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_AddTraceback("View.MemoryView._err_dim", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __Pyx_XDECREF(__pyx_v_error);
+  __Pyx_RefNannyFinishContext();
+  #ifdef WITH_THREAD
+  __Pyx_PyGILState_Release(__pyx_gilstate_save);
+  #endif
+  return __pyx_r;
+}
+
+/* "View.MemoryView":1261
+ * 
+ * @cname('__pyx_memoryview_err')
+ * cdef int _err(object error, char *msg) except -1 with gil:             # <<<<<<<<<<<<<<
+ *     if msg != NULL:
+ *         raise error(msg.decode('ascii'))
+ */
+
+static int __pyx_memoryview_err(PyObject *__pyx_v_error, char *__pyx_v_msg) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  #ifdef WITH_THREAD
+  PyGILState_STATE __pyx_gilstate_save = __Pyx_PyGILState_Ensure();
+  #endif
+  __Pyx_RefNannySetupContext("_err", 0);
+  __Pyx_INCREF(__pyx_v_error);
+
+  /* "View.MemoryView":1262
+ * @cname('__pyx_memoryview_err')
+ * cdef int _err(object error, char *msg) except -1 with gil:
+ *     if msg != NULL:             # <<<<<<<<<<<<<<
+ *         raise error(msg.decode('ascii'))
+ *     else:
+ */
+  __pyx_t_1 = ((__pyx_v_msg != NULL) != 0);
+  if (unlikely(__pyx_t_1)) {
+
+    /* "View.MemoryView":1263
+ * cdef int _err(object error, char *msg) except -1 with gil:
+ *     if msg != NULL:
+ *         raise error(msg.decode('ascii'))             # <<<<<<<<<<<<<<
+ *     else:
+ *         raise error
+ */
+    __pyx_t_3 = __Pyx_decode_c_string(__pyx_v_msg, 0, strlen(__pyx_v_msg), NULL, NULL, PyUnicode_DecodeASCII); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 1263, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_INCREF(__pyx_v_error);
+    __pyx_t_4 = __pyx_v_error; __pyx_t_5 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_5 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_5)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_5);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+      }
+    }
+    __pyx_t_2 = (__pyx_t_5) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_5, __pyx_t_3) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_3);
+    __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 1263, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_Raise(__pyx_t_2, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __PYX_ERR(2, 1263, __pyx_L1_error)
+
+    /* "View.MemoryView":
