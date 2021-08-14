@@ -70,4 +70,19 @@ cpdef evaluate_roc_cy(float[:,:] distmat, long[:] q_pids, long[:]g_pids,
             if raw_cmc[valid_idx] == 1:
                 pos[valid_pos] = q_dist[sort_idx[valid_idx]]
                 valid_pos += 1
-            el
+            elif raw_cmc[valid_idx] == 0:
+                neg[valid_neg] = q_dist[sort_idx[valid_idx]]
+                valid_neg += 1
+
+    cdef float[:] scores = np.hstack((pos[:valid_pos], neg[:valid_neg]))
+    cdef float[:] labels = np.hstack((np.zeros(valid_pos, dtype=np.float32),
+                                      np.ones(valid_neg, dtype=np.float32)))
+    return np.asarray(scores), np.asarray(labels)
+
+
+# Compute the cumulative sum
+cdef void function_cumsum(cython.numeric[:] src, cython.numeric[:] dst, long n):
+    cdef long i
+    dst[0] = src[0]
+    for i in range(1, n):
+        dst[i] = src[i] + dst[i - 1]
