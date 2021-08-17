@@ -315,4 +315,207 @@ class NativePathHandler(PathHandler):
 
 class PathManager:
     """
-    A class for users to op
+    A class for users to open generic paths or translate generic paths to file names.
+    """
+
+    _PATH_HANDLERS: MutableMapping[str, PathHandler] = OrderedDict()
+    _NATIVE_PATH_HANDLER = NativePathHandler()
+
+    @staticmethod
+    def __get_path_handler(path: str):
+        """
+        Finds a PathHandler that supports the given path. Falls back to the native
+        PathHandler if no other handler is found.
+        Args:
+            path (str): URI path to resource
+        Returns:
+            handler (PathHandler)
+        """
+        for p in PathManager._PATH_HANDLERS.keys():
+            if path.startswith(p):
+                return PathManager._PATH_HANDLERS[p]
+        return PathManager._NATIVE_PATH_HANDLER
+
+    @staticmethod
+    def open(
+            path: str, mode: str = "r", buffering: int = -1, **kwargs: Any
+    ) -> Union[IO[str], IO[bytes]]:
+        """
+        Open a stream to a URI, similar to the built-in `open`.
+        Args:
+            path (str): A URI supported by this PathHandler
+            mode (str): Specifies the mode in which the file is opened. It defaults
+                to 'r'.
+            buffering (int): An optional integer used to set the buffering policy.
+                Pass 0 to switch buffering off and an integer >= 1 to indicate the
+                size in bytes of a fixed-size chunk buffer. When no buffering
+                argument is given, the default buffering policy depends on the
+                underlying I/O implementation.
+        Returns:
+            file: a file-like object.
+        """
+        return PathManager.__get_path_handler(path)._open(  # type: ignore
+            path, mode, buffering=buffering, **kwargs
+        )
+
+    @staticmethod
+    def copy(
+            src_path: str, dst_path: str, overwrite: bool = False, **kwargs: Any
+    ):
+        """
+        Copies a source path to a destination path.
+        Args:
+            src_path (str): A URI supported by this PathHandler
+            dst_path (str): A URI supported by this PathHandler
+            overwrite (bool): Bool flag for forcing overwrite of existing file
+        Returns:
+            status (bool): True on success
+        """
+
+        # Copying across handlers is not supported.
+        assert PathManager.__get_path_handler(  # type: ignore
+            src_path
+        ) == PathManager.__get_path_handler(dst_path)
+        return PathManager.__get_path_handler(src_path)._copy(
+            src_path, dst_path, overwrite, **kwargs
+        )
+
+    @staticmethod
+    def get_local_path(path: str, **kwargs: Any) -> str:
+        """
+        Get a filepath which is compatible with native Python I/O such as `open`
+        and `os.path`.
+        If URI points to a remote resource, this function may download and cache
+        the resource to local disk.
+        Args:
+            path (str): A URI supported by this PathHandler
+        Returns:
+            local_path (str): a file path which exists on the local file system
+        """
+        return PathManager.__get_path_handler(  # type: ignore
+            path
+        )._get_local_path(path, **kwargs)
+
+    @staticmethod
+    def exists(path: str, **kwargs: Any):
+        """
+        Checks if there is a resource at the given URI.
+        Args:
+            path (str): A URI supported by this PathHandler
+        Returns:
+            bool: true if the path exists
+        """
+        return PathManager.__get_path_handler(path)._exists(  # type: ignore
+            path, **kwargs
+        )
+
+    @staticmethod
+    def isfile(path: str, **kwargs: Any):
+        """
+        Checks if there the resource at the given URI is a file.
+        Args:
+            path (str): A URI supported by this PathHandler
+        Returns:
+            bool: true if the path is a file
+        """
+        return PathManager.__get_path_handler(path)._isfile(  # type: ignore
+            path, **kwargs
+        )
+
+    @staticmethod
+    def isdir(path: str, **kwargs: Any):
+        """
+        Checks if the resource at the given URI is a directory.
+        Args:
+            path (str): A URI supported by this PathHandler
+        Returns:
+            bool: true if the path is a directory
+        """
+        return PathManager.__get_path_handler(path)._isdir(  # type: ignore
+            path, **kwargs
+        )
+
+    @staticmethod
+    def ls(path: str, **kwargs: Any):
+        """
+        List the contents of the directory at the provided URI.
+        Args:
+            path (str): A URI supported by this PathHandler
+        Returns:
+            List[str]: list of contents in given path
+        """
+        return PathManager.__get_path_handler(path)._ls(  # type: ignore
+            path, **kwargs
+        )
+
+    @staticmethod
+    def mkdirs(path: str, **kwargs: Any):
+        """
+        Recursive directory creation function. Like mkdir(), but makes all
+        intermediate-level directories needed to contain the leaf directory.
+        Similar to the native `os.makedirs`.
+        Args:
+            path (str): A URI supported by this PathHandler
+        """
+        return PathManager.__get_path_handler(path)._mkdirs(  # type: ignore
+            path, **kwargs
+        )
+
+    @staticmethod
+    def rm(path: str, **kwargs: Any):
+        """
+        Remove the file (not directory) at the provided URI.
+        Args:
+            path (str): A URI supported by this PathHandler
+        """
+        return PathManager.__get_path_handler(path)._rm(  # type: ignore
+            path, **kwargs
+        )
+
+    @staticmethod
+    def register_handler(handler: PathHandler):
+        """
+        Register a path handler associated with `handler._get_supported_prefixes`
+        URI prefixes.
+        Args:
+            handler (PathHandler)
+        """
+        assert isinstance(handler, PathHandler), handler
+        for prefix in handler._get_supported_prefixes():
+            assert prefix not in PathManager._PATH_HANDLERS
+            PathManager._PATH_HANDLERS[prefix] = handler
+
+        # Sort path handlers in reverse order so longer prefixes take priority,
+        # eg: http://foo/bar before http://foo
+        PathManager._PATH_HANDLERS = OrderedDict(
+            sorted(
+                PathManager._PATH_HANDLERS.items(),
+                key=lambda t: t[0],
+                reverse=True,
+            )
+        )
+
+    @staticmethod
+    def set_strict_kwargs_checking(enable: bool):
+        """
+        Toggles strict kwargs checking. If enabled, a ValueError is thrown if any
+        unused parameters are passed to a PathHandler function. If disabled, only
+        a warning is given.
+        With a centralized file API, there's a tradeoff of convenience and
+        correctness delegating arguments to the proper I/O layers. An underlying
+        `PathHandler` may support custom arguments which should not be statically
+        exposed on the `PathManager` function. For example, a custom `HTTPURLHandler`
+        may want to expose a `cache_timeout` argument for `open()` which specifies
+        how old a locally cached resource can be before it's refetched from the
+        remote server. This argument would not make sense for a `NativePathHandler`.
+        If strict kwargs checking is disabled, `cache_timeout` can be passed to
+        `PathManager.open` which will forward the arguments to the underlying
+        handler. By default, checking is enabled since it is innately unsafe:
+        multiple `PathHandler`s could reuse arguments with different semantic
+        meanings or types.
+        Args:
+            enable (bool)
+        """
+        PathManager._NATIVE_PATH_HANDLER._strict_kwargs_check = enable
+        for handler in PathManager._PATH_HANDLERS.values():
+            handler._strict_kwargs_check = enable
