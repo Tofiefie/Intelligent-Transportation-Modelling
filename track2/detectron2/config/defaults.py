@@ -354,4 +354,282 @@ _C.MODEL.ROI_MASK_HEAD.POOLER_TYPE = "ROIAlignV2"
 # Keypoint Head
 # ---------------------------------------------------------------------------- #
 _C.MODEL.ROI_KEYPOINT_HEAD = CN()
-_C.MODEL.ROI_KEYPOINT_HEAD.NAME = "KRCNNConvDeconvUpsampleH
+_C.MODEL.ROI_KEYPOINT_HEAD.NAME = "KRCNNConvDeconvUpsampleHead"
+_C.MODEL.ROI_KEYPOINT_HEAD.POOLER_RESOLUTION = 14
+_C.MODEL.ROI_KEYPOINT_HEAD.POOLER_SAMPLING_RATIO = 0
+_C.MODEL.ROI_KEYPOINT_HEAD.CONV_DIMS = tuple(512 for _ in range(8))
+_C.MODEL.ROI_KEYPOINT_HEAD.NUM_KEYPOINTS = 17  # 17 is the number of keypoints in COCO.
+
+# Images with too few (or no) keypoints are excluded from training.
+_C.MODEL.ROI_KEYPOINT_HEAD.MIN_KEYPOINTS_PER_IMAGE = 1
+# Normalize by the total number of visible keypoints in the minibatch if True.
+# Otherwise, normalize by the total number of keypoints that could ever exist
+# in the minibatch.
+# The keypoint softmax loss is only calculated on visible keypoints.
+# Since the number of visible keypoints can vary significantly between
+# minibatches, this has the effect of up-weighting the importance of
+# minibatches with few visible keypoints. (Imagine the extreme case of
+# only one visible keypoint versus N: in the case of N, each one
+# contributes 1/N to the gradient compared to the single keypoint
+# determining the gradient direction). Instead, we can normalize the
+# loss by the total number of keypoints, if it were the case that all
+# keypoints were visible in a full minibatch. (Returning to the example,
+# this means that the one visible keypoint contributes as much as each
+# of the N keypoints.)
+_C.MODEL.ROI_KEYPOINT_HEAD.NORMALIZE_LOSS_BY_VISIBLE_KEYPOINTS = True
+# Multi-task loss weight to use for keypoints
+# Recommended values:
+#   - use 1.0 if NORMALIZE_LOSS_BY_VISIBLE_KEYPOINTS is True
+#   - use 4.0 if NORMALIZE_LOSS_BY_VISIBLE_KEYPOINTS is False
+_C.MODEL.ROI_KEYPOINT_HEAD.LOSS_WEIGHT = 1.0
+# Type of pooling operation applied to the incoming feature map for each RoI
+_C.MODEL.ROI_KEYPOINT_HEAD.POOLER_TYPE = "ROIAlignV2"
+
+# ---------------------------------------------------------------------------- #
+# Semantic Segmentation Head
+# ---------------------------------------------------------------------------- #
+_C.MODEL.SEM_SEG_HEAD = CN()
+_C.MODEL.SEM_SEG_HEAD.NAME = "SemSegFPNHead"
+_C.MODEL.SEM_SEG_HEAD.IN_FEATURES = ["p2", "p3", "p4", "p5"]
+# Label in the semantic segmentation ground truth that is ignored, i.e., no loss is calculated for
+# the correposnding pixel.
+_C.MODEL.SEM_SEG_HEAD.IGNORE_VALUE = 255
+# Number of classes in the semantic segmentation head
+_C.MODEL.SEM_SEG_HEAD.NUM_CLASSES = 54
+# Number of channels in the 3x3 convs inside semantic-FPN heads.
+_C.MODEL.SEM_SEG_HEAD.CONVS_DIM = 128
+# Outputs from semantic-FPN heads are up-scaled to the COMMON_STRIDE stride.
+_C.MODEL.SEM_SEG_HEAD.COMMON_STRIDE = 4
+# Normalization method for the convolution layers. Options: "" (no norm), "GN".
+_C.MODEL.SEM_SEG_HEAD.NORM = "GN"
+_C.MODEL.SEM_SEG_HEAD.LOSS_WEIGHT = 1.0
+
+_C.MODEL.PANOPTIC_FPN = CN()
+# Scaling of all losses from instance detection / segmentation head.
+_C.MODEL.PANOPTIC_FPN.INSTANCE_LOSS_WEIGHT = 1.0
+
+# options when combining instance & semantic segmentation outputs
+_C.MODEL.PANOPTIC_FPN.COMBINE = CN({"ENABLED": True})  # "COMBINE.ENABLED" is deprecated & not used
+_C.MODEL.PANOPTIC_FPN.COMBINE.OVERLAP_THRESH = 0.5
+_C.MODEL.PANOPTIC_FPN.COMBINE.STUFF_AREA_LIMIT = 4096
+_C.MODEL.PANOPTIC_FPN.COMBINE.INSTANCES_CONFIDENCE_THRESH = 0.5
+
+
+# ---------------------------------------------------------------------------- #
+# RetinaNet Head
+# ---------------------------------------------------------------------------- #
+_C.MODEL.RETINANET = CN()
+
+# This is the number of foreground classes.
+_C.MODEL.RETINANET.NUM_CLASSES = 80
+
+_C.MODEL.RETINANET.IN_FEATURES = ["p3", "p4", "p5", "p6", "p7"]
+
+# Convolutions to use in the cls and bbox tower
+# NOTE: this doesn't include the last conv for logits
+_C.MODEL.RETINANET.NUM_CONVS = 4
+
+# IoU overlap ratio [bg, fg] for labeling anchors.
+# Anchors with < bg are labeled negative (0)
+# Anchors  with >= bg and < fg are ignored (-1)
+# Anchors with >= fg are labeled positive (1)
+_C.MODEL.RETINANET.IOU_THRESHOLDS = [0.4, 0.5]
+_C.MODEL.RETINANET.IOU_LABELS = [0, -1, 1]
+
+# Prior prob for rare case (i.e. foreground) at the beginning of training.
+# This is used to set the bias for the logits layer of the classifier subnet.
+# This improves training stability in the case of heavy class imbalance.
+_C.MODEL.RETINANET.PRIOR_PROB = 0.01
+
+# Inference cls score threshold, only anchors with score > INFERENCE_TH are
+# considered for inference (to improve speed)
+_C.MODEL.RETINANET.SCORE_THRESH_TEST = 0.05
+# Select topk candidates before NMS
+_C.MODEL.RETINANET.TOPK_CANDIDATES_TEST = 1000
+_C.MODEL.RETINANET.NMS_THRESH_TEST = 0.5
+
+# Weights on (dx, dy, dw, dh) for normalizing Retinanet anchor regression targets
+_C.MODEL.RETINANET.BBOX_REG_WEIGHTS = (1.0, 1.0, 1.0, 1.0)
+
+# Loss parameters
+_C.MODEL.RETINANET.FOCAL_LOSS_GAMMA = 2.0
+_C.MODEL.RETINANET.FOCAL_LOSS_ALPHA = 0.25
+_C.MODEL.RETINANET.SMOOTH_L1_LOSS_BETA = 0.1
+# Options are: "smooth_l1", "giou", "diou", "ciou"
+_C.MODEL.RETINANET.BBOX_REG_LOSS_TYPE = "smooth_l1"
+
+# One of BN, SyncBN, FrozenBN, GN
+# Only supports GN until unshared norm is implemented
+_C.MODEL.RETINANET.NORM = ""
+
+
+# ---------------------------------------------------------------------------- #
+# ResNe[X]t options (ResNets = {ResNet, ResNeXt}
+# Note that parts of a resnet may be used for both the backbone and the head
+# These options apply to both
+# ---------------------------------------------------------------------------- #
+_C.MODEL.RESNETS = CN()
+
+_C.MODEL.RESNETS.DEPTH = 50
+_C.MODEL.RESNETS.OUT_FEATURES = ["res4"]  # res4 for C4 backbone, res2..5 for FPN backbone
+
+# Number of groups to use; 1 ==> ResNet; > 1 ==> ResNeXt
+_C.MODEL.RESNETS.NUM_GROUPS = 1
+
+# Options: FrozenBN, GN, "SyncBN", "BN"
+_C.MODEL.RESNETS.NORM = "FrozenBN"
+
+# Baseline width of each group.
+# Scaling this parameters will scale the width of all bottleneck layers.
+_C.MODEL.RESNETS.WIDTH_PER_GROUP = 64
+
+# Place the stride 2 conv on the 1x1 filter
+# Use True only for the original MSRA ResNet; use False for C2 and Torch models
+_C.MODEL.RESNETS.STRIDE_IN_1X1 = True
+
+# Apply dilation in stage "res5"
+_C.MODEL.RESNETS.RES5_DILATION = 1
+
+# Output width of res2. Scaling this parameters will scale the width of all 1x1 convs in ResNet
+# For R18 and R34, this needs to be set to 64
+_C.MODEL.RESNETS.RES2_OUT_CHANNELS = 256
+_C.MODEL.RESNETS.STEM_OUT_CHANNELS = 64
+
+# Apply Deformable Convolution in stages
+# Specify if apply deform_conv on Res2, Res3, Res4, Res5
+_C.MODEL.RESNETS.DEFORM_ON_PER_STAGE = [False, False, False, False]
+# Use True to use modulated deform_conv (DeformableV2, https://arxiv.org/abs/1811.11168);
+# Use False for DeformableV1.
+_C.MODEL.RESNETS.DEFORM_MODULATED = False
+# Number of groups in deformable conv.
+_C.MODEL.RESNETS.DEFORM_NUM_GROUPS = 1
+
+
+# ---------------------------------------------------------------------------- #
+# Solver
+# ---------------------------------------------------------------------------- #
+_C.SOLVER = CN()
+
+# Options: WarmupMultiStepLR, WarmupCosineLR.
+# See detectron2/solver/build.py for definition.
+_C.SOLVER.LR_SCHEDULER_NAME = "WarmupMultiStepLR"
+
+_C.SOLVER.MAX_ITER = 40000
+
+_C.SOLVER.BASE_LR = 0.001
+
+_C.SOLVER.MOMENTUM = 0.9
+
+_C.SOLVER.NESTEROV = False
+
+_C.SOLVER.WEIGHT_DECAY = 0.0001
+# The weight decay that's applied to parameters of normalization layers
+# (typically the affine transformation)
+_C.SOLVER.WEIGHT_DECAY_NORM = 0.0
+
+_C.SOLVER.GAMMA = 0.1
+# The iteration number to decrease learning rate by GAMMA.
+_C.SOLVER.STEPS = (30000,)
+
+_C.SOLVER.WARMUP_FACTOR = 1.0 / 1000
+_C.SOLVER.WARMUP_ITERS = 1000
+_C.SOLVER.WARMUP_METHOD = "linear"
+
+# Save a checkpoint after every this number of iterations
+_C.SOLVER.CHECKPOINT_PERIOD = 5000
+
+# Number of images per batch across all machines. This is also the number
+# of training images per step (i.e. per iteration). If we use 16 GPUs
+# and IMS_PER_BATCH = 32, each GPU will see 2 images per batch.
+# May be adjusted automatically if REFERENCE_WORLD_SIZE is set.
+_C.SOLVER.IMS_PER_BATCH = 16
+
+# The reference number of workers (GPUs) this config is meant to train with.
+# It takes no effect when set to 0.
+# With a non-zero value, it will be used by DefaultTrainer to compute a desired
+# per-worker batch size, and then scale the other related configs (total batch size,
+# learning rate, etc) to match the per-worker batch size.
+# See documentation of `DefaultTrainer.auto_scale_workers` for details:
+_C.SOLVER.REFERENCE_WORLD_SIZE = 0
+
+# Detectron v1 (and previous detection code) used a 2x higher LR and 0 WD for
+# biases. This is not useful (at least for recent models). You should avoid
+# changing these and they exist only to reproduce Detectron v1 training if
+# desired.
+_C.SOLVER.BIAS_LR_FACTOR = 1.0
+# _C.SOLVER.WEIGHT_DECAY_BIAS = None  # None means following WEIGHT_DECAY
+
+# Gradient clipping
+_C.SOLVER.CLIP_GRADIENTS = CN({"ENABLED": False})
+# Type of gradient clipping, currently 2 values are supported:
+# - "value": the absolute values of elements of each gradients are clipped
+# - "norm": the norm of the gradient for each parameter is clipped thus
+#   affecting all elements in the parameter
+_C.SOLVER.CLIP_GRADIENTS.CLIP_TYPE = "value"
+# Maximum absolute value used for clipping gradients
+_C.SOLVER.CLIP_GRADIENTS.CLIP_VALUE = 1.0
+# Floating point number p for L-p norm to be used with the "norm"
+# gradient clipping type; for L-inf, please specify .inf
+_C.SOLVER.CLIP_GRADIENTS.NORM_TYPE = 2.0
+
+# Enable automatic mixed precision for training
+# Note that this does not change model's inference behavior.
+# To use AMP in inference, run inference under autocast()
+_C.SOLVER.AMP = CN({"ENABLED": False})
+
+# ---------------------------------------------------------------------------- #
+# Specific test options
+# ---------------------------------------------------------------------------- #
+_C.TEST = CN()
+# For end-to-end tests to verify the expected accuracy.
+# Each item is [task, metric, value, tolerance]
+# e.g.: [['bbox', 'AP', 38.5, 0.2]]
+_C.TEST.EXPECTED_RESULTS = []
+# The period (in terms of steps) to evaluate the model during training.
+# Set to 0 to disable.
+_C.TEST.EVAL_PERIOD = 0
+# The sigmas used to calculate keypoint OKS. See http://cocodataset.org/#keypoints-eval
+# When empty, it will use the defaults in COCO.
+# Otherwise it should be a list[float] with the same length as ROI_KEYPOINT_HEAD.NUM_KEYPOINTS.
+_C.TEST.KEYPOINT_OKS_SIGMAS = []
+# Maximum number of detections to return per image during inference (100 is
+# based on the limit established for the COCO dataset).
+_C.TEST.DETECTIONS_PER_IMAGE = 100
+
+_C.TEST.AUG = CN({"ENABLED": False})
+_C.TEST.AUG.MIN_SIZES = (400, 500, 600, 700, 800, 900, 1000, 1100, 1200)
+_C.TEST.AUG.MAX_SIZE = 4000
+_C.TEST.AUG.FLIP = True
+
+_C.TEST.PRECISE_BN = CN({"ENABLED": False})
+_C.TEST.PRECISE_BN.NUM_ITER = 200
+
+# ---------------------------------------------------------------------------- #
+# Misc options
+# ---------------------------------------------------------------------------- #
+# Directory where output files are written
+_C.OUTPUT_DIR = "./output"
+# Set seed to negative to fully randomize everything.
+# Set seed to positive to use a fixed seed. Note that a fixed seed increases
+# reproducibility but does not guarantee fully deterministic behavior.
+# Disabling all parallelism further increases reproducibility.
+_C.SEED = -1
+# Benchmark different cudnn algorithms.
+# If input images have very different sizes, this option will have large overhead
+# for about 10k iterations. It usually hurts total time, but can benefit for certain models.
+# If input images have the same or similar sizes, benchmark is often helpful.
+_C.CUDNN_BENCHMARK = False
+# The period (in terms of steps) for minibatch visualization at train time.
+# Set to 0 to disable.
+_C.VIS_PERIOD = 0
+
+# global config is for quick hack purposes.
+# You can set them in command line or config files,
+# and access it with:
+#
+# from detectron2.config import global_cfg
+# print(global_cfg.HACK)
+#
+# Do not commit any configs into it.
+_C.GLOBAL = CN()
+_C.GLOBAL.HACK = 1.0
