@@ -451,4 +451,165 @@ class RandomCrop_CategoryAreaConstraint(Augmentation):
                 y0 = np.random.randint(h - crop_size[0] + 1)
                 x0 = np.random.randint(w - crop_size[1] + 1)
                 sem_seg_temp = sem_seg[y0 : y0 + crop_size[0], x0 : x0 + crop_size[1]]
-                labels, cnt = np.unique(sem_seg_temp, return_c
+                labels, cnt = np.unique(sem_seg_temp, return_counts=True)
+                if self.ignored_category is not None:
+                    cnt = cnt[labels != self.ignored_category]
+                if len(cnt) > 1 and np.max(cnt) < np.sum(cnt) * self.single_category_max_area:
+                    break
+            crop_tfm = CropTransform(x0, y0, crop_size[1], crop_size[0])
+            return crop_tfm
+
+
+class RandomExtent(Augmentation):
+    """
+    Outputs an image by cropping a random "subrect" of the source image.
+
+    The subrect can be parameterized to include pixels outside the source image,
+    in which case they will be set to zeros (i.e. black). The size of the output
+    image will vary with the size of the random subrect.
+    """
+
+    def __init__(self, scale_range, shift_range):
+        """
+        Args:
+            output_size (h, w): Dimensions of output image
+            scale_range (l, h): Range of input-to-output size scaling factor
+            shift_range (x, y): Range of shifts of the cropped subrect. The rect
+                is shifted by [w / 2 * Uniform(-x, x), h / 2 * Uniform(-y, y)],
+                where (w, h) is the (width, height) of the input image. Set each
+                component to zero to crop at the image's center.
+        """
+        super().__init__()
+        self._init(locals())
+
+    def get_transform(self, image):
+        img_h, img_w = image.shape[:2]
+
+        # Initialize src_rect to fit the input image.
+        src_rect = np.array([-0.5 * img_w, -0.5 * img_h, 0.5 * img_w, 0.5 * img_h])
+
+        # Apply a random scaling to the src_rect.
+        src_rect *= np.random.uniform(self.scale_range[0], self.scale_range[1])
+
+        # Apply a random shift to the coordinates origin.
+        src_rect[0::2] += self.shift_range[0] * img_w * (np.random.rand() - 0.5)
+        src_rect[1::2] += self.shift_range[1] * img_h * (np.random.rand() - 0.5)
+
+        # Map src_rect coordinates into image coordinates (center at corner).
+        src_rect[0::2] += 0.5 * img_w
+        src_rect[1::2] += 0.5 * img_h
+
+        return ExtentTransform(
+            src_rect=(src_rect[0], src_rect[1], src_rect[2], src_rect[3]),
+            output_size=(int(src_rect[3] - src_rect[1]), int(src_rect[2] - src_rect[0])),
+        )
+
+
+class RandomContrast(Augmentation):
+    """
+    Randomly transforms image contrast.
+
+    Contrast intensity is uniformly sampled in (intensity_min, intensity_max).
+    - intensity < 1 will reduce contrast
+    - intensity = 1 will preserve the input image
+    - intensity > 1 will increase contrast
+
+    See: https://pillow.readthedocs.io/en/3.0.x/reference/ImageEnhance.html
+    """
+
+    def __init__(self, intensity_min, intensity_max):
+        """
+        Args:
+            intensity_min (float): Minimum augmentation
+            intensity_max (float): Maximum augmentation
+        """
+        super().__init__()
+        self._init(locals())
+
+    def get_transform(self, image):
+        w = np.random.uniform(self.intensity_min, self.intensity_max)
+        return BlendTransform(src_image=image.mean(), src_weight=1 - w, dst_weight=w)
+
+
+class RandomBrightness(Augmentation):
+    """
+    Randomly transforms image brightness.
+
+    Brightness intensity is uniformly sampled in (intensity_min, intensity_max).
+    - intensity < 1 will reduce brightness
+    - intensity = 1 will preserve the input image
+    - intensity > 1 will increase brightness
+
+    See: https://pillow.readthedocs.io/en/3.0.x/reference/ImageEnhance.html
+    """
+
+    def __init__(self, intensity_min, intensity_max):
+        """
+        Args:
+            intensity_min (float): Minimum augmentation
+            intensity_max (float): Maximum augmentation
+        """
+        super().__init__()
+        self._init(locals())
+
+    def get_transform(self, image):
+        w = np.random.uniform(self.intensity_min, self.intensity_max)
+        return BlendTransform(src_image=0, src_weight=1 - w, dst_weight=w)
+
+
+class RandomSaturation(Augmentation):
+    """
+    Randomly transforms saturation of an RGB image.
+    Input images are assumed to have 'RGB' channel order.
+
+    Saturation intensity is uniformly sampled in (intensity_min, intensity_max).
+    - intensity < 1 will reduce saturation (make the image more grayscale)
+    - intensity = 1 will preserve the input image
+    - intensity > 1 will increase saturation
+
+    See: https://pillow.readthedocs.io/en/3.0.x/reference/ImageEnhance.html
+    """
+
+    def __init__(self, intensity_min, intensity_max):
+        """
+        Args:
+            intensity_min (float): Minimum augmentation (1 preserves input).
+            intensity_max (float): Maximum augmentation (1 preserves input).
+        """
+        super().__init__()
+        self._init(locals())
+
+    def get_transform(self, image):
+        assert image.shape[-1] == 3, "RandomSaturation only works on RGB images"
+        w = np.random.uniform(self.intensity_min, self.intensity_max)
+        grayscale = image.dot([0.299, 0.587, 0.114])[:, :, np.newaxis]
+        return BlendTransform(src_image=grayscale, src_weight=1 - w, dst_weight=w)
+
+
+class RandomLighting(Augmentation):
+    """
+    The "lighting" augmentation described in AlexNet, using fixed PCA over ImageNet.
+    Input images are assumed to have 'RGB' channel order.
+
+    The degree of color jittering is randomly sampled via a normal distribution,
+    with standard deviation given by the scale parameter.
+    """
+
+    def __init__(self, scale):
+        """
+        Args:
+            scale (float): Standard deviation of principal component weighting.
+        """
+        super().__init__()
+        self._init(locals())
+        self.eigen_vecs = np.array(
+            [[-0.5675, 0.7192, 0.4009], [-0.5808, -0.0045, -0.8140], [-0.5836, -0.6948, 0.4203]]
+        )
+        self.eigen_vals = np.array([0.2175, 0.0188, 0.0045])
+
+    def get_transform(self, image):
+        assert image.shape[-1] == 3, "RandomLighting only works on RGB images"
+        weights = np.random.normal(scale=self.scale, size=3)
+        return BlendTransform(
+            src_image=self.eigen_vecs.dot(weights * self.eigen_vals), src_weight=1.0, dst_weight=1.0
+        )
