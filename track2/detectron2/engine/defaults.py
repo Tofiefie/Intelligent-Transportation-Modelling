@@ -692,4 +692,18 @@ Alternatively, you can call evaluation functions yourself (see Colab balloon tut
 
         if frozen:
             cfg.freeze()
-     
+        return cfg
+
+
+# Access basic attributes from the underlying trainer
+for _attr in ["model", "data_loader", "optimizer", "grad_scaler"]:
+    setattr(
+        DefaultTrainer,
+        _attr,
+        property(
+            # getter
+            lambda self, x=_attr: getattr(self._trainer, x),
+            # setter
+            lambda self, value, x=_attr: setattr(self._trainer, x, value),
+        ),
+    )
