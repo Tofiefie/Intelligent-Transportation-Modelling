@@ -7328,4 +7328,890 @@ static int __pyx_memoryview___cinit__(PyObject *__pyx_v_self, PyObject *__pyx_ar
   __pyx_L4_argument_unpacking_done:;
   __pyx_r = __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview___cinit__(((struct __pyx_memoryview_obj *)__pyx_v_self), __pyx_v_obj, __pyx_v_flags, __pyx_v_dtype_is_object);
 
-  /* function exit code *
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview___cinit__(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_obj, int __pyx_v_flags, int __pyx_v_dtype_is_object) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  int __pyx_t_4;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__cinit__", 0);
+
+  /* "View.MemoryView":346
+ * 
+ *     def __cinit__(memoryview self, object obj, int flags, bint dtype_is_object=False):
+ *         self.obj = obj             # <<<<<<<<<<<<<<
+ *         self.flags = flags
+ *         if type(self) is memoryview or obj is not None:
+ */
+  __Pyx_INCREF(__pyx_v_obj);
+  __Pyx_GIVEREF(__pyx_v_obj);
+  __Pyx_GOTREF(__pyx_v_self->obj);
+  __Pyx_DECREF(__pyx_v_self->obj);
+  __pyx_v_self->obj = __pyx_v_obj;
+
+  /* "View.MemoryView":347
+ *     def __cinit__(memoryview self, object obj, int flags, bint dtype_is_object=False):
+ *         self.obj = obj
+ *         self.flags = flags             # <<<<<<<<<<<<<<
+ *         if type(self) is memoryview or obj is not None:
+ *             __Pyx_GetBuffer(obj, &self.view, flags)
+ */
+  __pyx_v_self->flags = __pyx_v_flags;
+
+  /* "View.MemoryView":348
+ *         self.obj = obj
+ *         self.flags = flags
+ *         if type(self) is memoryview or obj is not None:             # <<<<<<<<<<<<<<
+ *             __Pyx_GetBuffer(obj, &self.view, flags)
+ *             if <PyObject *> self.view.obj == NULL:
+ */
+  __pyx_t_2 = (((PyObject *)Py_TYPE(((PyObject *)__pyx_v_self))) == ((PyObject *)__pyx_memoryview_type));
+  __pyx_t_3 = (__pyx_t_2 != 0);
+  if (!__pyx_t_3) {
+  } else {
+    __pyx_t_1 = __pyx_t_3;
+    goto __pyx_L4_bool_binop_done;
+  }
+  __pyx_t_3 = (__pyx_v_obj != Py_None);
+  __pyx_t_2 = (__pyx_t_3 != 0);
+  __pyx_t_1 = __pyx_t_2;
+  __pyx_L4_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "View.MemoryView":349
+ *         self.flags = flags
+ *         if type(self) is memoryview or obj is not None:
+ *             __Pyx_GetBuffer(obj, &self.view, flags)             # <<<<<<<<<<<<<<
+ *             if <PyObject *> self.view.obj == NULL:
+ *                 (<__pyx_buffer *> &self.view).obj = Py_None
+ */
+    __pyx_t_4 = __Pyx_GetBuffer(__pyx_v_obj, (&__pyx_v_self->view), __pyx_v_flags); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(2, 349, __pyx_L1_error)
+
+    /* "View.MemoryView":350
+ *         if type(self) is memoryview or obj is not None:
+ *             __Pyx_GetBuffer(obj, &self.view, flags)
+ *             if <PyObject *> self.view.obj == NULL:             # <<<<<<<<<<<<<<
+ *                 (<__pyx_buffer *> &self.view).obj = Py_None
+ *                 Py_INCREF(Py_None)
+ */
+    __pyx_t_1 = ((((PyObject *)__pyx_v_self->view.obj) == NULL) != 0);
+    if (__pyx_t_1) {
+
+      /* "View.MemoryView":351
+ *             __Pyx_GetBuffer(obj, &self.view, flags)
+ *             if <PyObject *> self.view.obj == NULL:
+ *                 (<__pyx_buffer *> &self.view).obj = Py_None             # <<<<<<<<<<<<<<
+ *                 Py_INCREF(Py_None)
+ * 
+ */
+      ((Py_buffer *)(&__pyx_v_self->view))->obj = Py_None;
+
+      /* "View.MemoryView":352
+ *             if <PyObject *> self.view.obj == NULL:
+ *                 (<__pyx_buffer *> &self.view).obj = Py_None
+ *                 Py_INCREF(Py_None)             # <<<<<<<<<<<<<<
+ * 
+ *         global __pyx_memoryview_thread_locks_used
+ */
+      Py_INCREF(Py_None);
+
+      /* "View.MemoryView":350
+ *         if type(self) is memoryview or obj is not None:
+ *             __Pyx_GetBuffer(obj, &self.view, flags)
+ *             if <PyObject *> self.view.obj == NULL:             # <<<<<<<<<<<<<<
+ *                 (<__pyx_buffer *> &self.view).obj = Py_None
+ *                 Py_INCREF(Py_None)
+ */
+    }
+
+    /* "View.MemoryView":348
+ *         self.obj = obj
+ *         self.flags = flags
+ *         if type(self) is memoryview or obj is not None:             # <<<<<<<<<<<<<<
+ *             __Pyx_GetBuffer(obj, &self.view, flags)
+ *             if <PyObject *> self.view.obj == NULL:
+ */
+  }
+
+  /* "View.MemoryView":355
+ * 
+ *         global __pyx_memoryview_thread_locks_used
+ *         if __pyx_memoryview_thread_locks_used < THREAD_LOCKS_PREALLOCATED:             # <<<<<<<<<<<<<<
+ *             self.lock = __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used]
+ *             __pyx_memoryview_thread_locks_used += 1
+ */
+  __pyx_t_1 = ((__pyx_memoryview_thread_locks_used < 8) != 0);
+  if (__pyx_t_1) {
+
+    /* "View.MemoryView":356
+ *         global __pyx_memoryview_thread_locks_used
+ *         if __pyx_memoryview_thread_locks_used < THREAD_LOCKS_PREALLOCATED:
+ *             self.lock = __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used]             # <<<<<<<<<<<<<<
+ *             __pyx_memoryview_thread_locks_used += 1
+ *         if self.lock is NULL:
+ */
+    __pyx_v_self->lock = (__pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used]);
+
+    /* "View.MemoryView":357
+ *         if __pyx_memoryview_thread_locks_used < THREAD_LOCKS_PREALLOCATED:
+ *             self.lock = __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used]
+ *             __pyx_memoryview_thread_locks_used += 1             # <<<<<<<<<<<<<<
+ *         if self.lock is NULL:
+ *             self.lock = PyThread_allocate_lock()
+ */
+    __pyx_memoryview_thread_locks_used = (__pyx_memoryview_thread_locks_used + 1);
+
+    /* "View.MemoryView":355
+ * 
+ *         global __pyx_memoryview_thread_locks_used
+ *         if __pyx_memoryview_thread_locks_used < THREAD_LOCKS_PREALLOCATED:             # <<<<<<<<<<<<<<
+ *             self.lock = __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used]
+ *             __pyx_memoryview_thread_locks_used += 1
+ */
+  }
+
+  /* "View.MemoryView":358
+ *             self.lock = __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used]
+ *             __pyx_memoryview_thread_locks_used += 1
+ *         if self.lock is NULL:             # <<<<<<<<<<<<<<
+ *             self.lock = PyThread_allocate_lock()
+ *             if self.lock is NULL:
+ */
+  __pyx_t_1 = ((__pyx_v_self->lock == NULL) != 0);
+  if (__pyx_t_1) {
+
+    /* "View.MemoryView":359
+ *             __pyx_memoryview_thread_locks_used += 1
+ *         if self.lock is NULL:
+ *             self.lock = PyThread_allocate_lock()             # <<<<<<<<<<<<<<
+ *             if self.lock is NULL:
+ *                 raise MemoryError
+ */
+    __pyx_v_self->lock = PyThread_allocate_lock();
+
+    /* "View.MemoryView":360
+ *         if self.lock is NULL:
+ *             self.lock = PyThread_allocate_lock()
+ *             if self.lock is NULL:             # <<<<<<<<<<<<<<
+ *                 raise MemoryError
+ * 
+ */
+    __pyx_t_1 = ((__pyx_v_self->lock == NULL) != 0);
+    if (unlikely(__pyx_t_1)) {
+
+      /* "View.MemoryView":361
+ *             self.lock = PyThread_allocate_lock()
+ *             if self.lock is NULL:
+ *                 raise MemoryError             # <<<<<<<<<<<<<<
+ * 
+ *         if flags & PyBUF_FORMAT:
+ */
+      PyErr_NoMemory(); __PYX_ERR(2, 361, __pyx_L1_error)
+
+      /* "View.MemoryView":360
+ *         if self.lock is NULL:
+ *             self.lock = PyThread_allocate_lock()
+ *             if self.lock is NULL:             # <<<<<<<<<<<<<<
+ *                 raise MemoryError
+ * 
+ */
+    }
+
+    /* "View.MemoryView":358
+ *             self.lock = __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used]
+ *             __pyx_memoryview_thread_locks_used += 1
+ *         if self.lock is NULL:             # <<<<<<<<<<<<<<
+ *             self.lock = PyThread_allocate_lock()
+ *             if self.lock is NULL:
+ */
+  }
+
+  /* "View.MemoryView":363
+ *                 raise MemoryError
+ * 
+ *         if flags & PyBUF_FORMAT:             # <<<<<<<<<<<<<<
+ *             self.dtype_is_object = (self.view.format[0] == b'O' and self.view.format[1] == b'\0')
+ *         else:
+ */
+  __pyx_t_1 = ((__pyx_v_flags & PyBUF_FORMAT) != 0);
+  if (__pyx_t_1) {
+
+    /* "View.MemoryView":364
+ * 
+ *         if flags & PyBUF_FORMAT:
+ *             self.dtype_is_object = (self.view.format[0] == b'O' and self.view.format[1] == b'\0')             # <<<<<<<<<<<<<<
+ *         else:
+ *             self.dtype_is_object = dtype_is_object
+ */
+    __pyx_t_2 = (((__pyx_v_self->view.format[0]) == 'O') != 0);
+    if (__pyx_t_2) {
+    } else {
+      __pyx_t_1 = __pyx_t_2;
+      goto __pyx_L11_bool_binop_done;
+    }
+    __pyx_t_2 = (((__pyx_v_self->view.format[1]) == '\x00') != 0);
+    __pyx_t_1 = __pyx_t_2;
+    __pyx_L11_bool_binop_done:;
+    __pyx_v_self->dtype_is_object = __pyx_t_1;
+
+    /* "View.MemoryView":363
+ *                 raise MemoryError
+ * 
+ *         if flags & PyBUF_FORMAT:             # <<<<<<<<<<<<<<
+ *             self.dtype_is_object = (self.view.format[0] == b'O' and self.view.format[1] == b'\0')
+ *         else:
+ */
+    goto __pyx_L10;
+  }
+
+  /* "View.MemoryView":366
+ *             self.dtype_is_object = (self.view.format[0] == b'O' and self.view.format[1] == b'\0')
+ *         else:
+ *             self.dtype_is_object = dtype_is_object             # <<<<<<<<<<<<<<
+ * 
+ *         self.acquisition_count_aligned_p = <__pyx_atomic_int *> align_pointer(
+ */
+  /*else*/ {
+    __pyx_v_self->dtype_is_object = __pyx_v_dtype_is_object;
+  }
+  __pyx_L10:;
+
+  /* "View.MemoryView":368
+ *             self.dtype_is_object = dtype_is_object
+ * 
+ *         self.acquisition_count_aligned_p = <__pyx_atomic_int *> align_pointer(             # <<<<<<<<<<<<<<
+ *                   <void *> &self.acquisition_count[0], sizeof(__pyx_atomic_int))
+ *         self.typeinfo = NULL
+ */
+  __pyx_v_self->acquisition_count_aligned_p = ((__pyx_atomic_int *)__pyx_align_pointer(((void *)(&(__pyx_v_self->acquisition_count[0]))), (sizeof(__pyx_atomic_int))));
+
+  /* "View.MemoryView":370
+ *         self.acquisition_count_aligned_p = <__pyx_atomic_int *> align_pointer(
+ *                   <void *> &self.acquisition_count[0], sizeof(__pyx_atomic_int))
+ *         self.typeinfo = NULL             # <<<<<<<<<<<<<<
+ * 
+ *     def __dealloc__(memoryview self):
+ */
+  __pyx_v_self->typeinfo = NULL;
+
+  /* "View.MemoryView":345
+ *     cdef __Pyx_TypeInfo *typeinfo
+ * 
+ *     def __cinit__(memoryview self, object obj, int flags, bint dtype_is_object=False):             # <<<<<<<<<<<<<<
+ *         self.obj = obj
+ *         self.flags = flags
+ */
+
+  /* function exit code */
+  __pyx_r = 0;
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("View.MemoryView.memoryview.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "View.MemoryView":372
+ *         self.typeinfo = NULL
+ * 
+ *     def __dealloc__(memoryview self):             # <<<<<<<<<<<<<<
+ *         if self.obj is not None:
+ *             __Pyx_ReleaseBuffer(&self.view)
+ */
+
+/* Python wrapper */
+static void __pyx_memoryview___dealloc__(PyObject *__pyx_v_self); /*proto*/
+static void __pyx_memoryview___dealloc__(PyObject *__pyx_v_self) {
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
+  __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_2__dealloc__(((struct __pyx_memoryview_obj *)__pyx_v_self));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+static void __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_2__dealloc__(struct __pyx_memoryview_obj *__pyx_v_self) {
+  int __pyx_v_i;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  int __pyx_t_4;
+  int __pyx_t_5;
+  PyThread_type_lock __pyx_t_6;
+  PyThread_type_lock __pyx_t_7;
+  __Pyx_RefNannySetupContext("__dealloc__", 0);
+
+  /* "View.MemoryView":373
+ * 
+ *     def __dealloc__(memoryview self):
+ *         if self.obj is not None:             # <<<<<<<<<<<<<<
+ *             __Pyx_ReleaseBuffer(&self.view)
+ *         elif (<__pyx_buffer *> &self.view).obj == Py_None:
+ */
+  __pyx_t_1 = (__pyx_v_self->obj != Py_None);
+  __pyx_t_2 = (__pyx_t_1 != 0);
+  if (__pyx_t_2) {
+
+    /* "View.MemoryView":374
+ *     def __dealloc__(memoryview self):
+ *         if self.obj is not None:
+ *             __Pyx_ReleaseBuffer(&self.view)             # <<<<<<<<<<<<<<
+ *         elif (<__pyx_buffer *> &self.view).obj == Py_None:
+ * 
+ */
+    __Pyx_ReleaseBuffer((&__pyx_v_self->view));
+
+    /* "View.MemoryView":373
+ * 
+ *     def __dealloc__(memoryview self):
+ *         if self.obj is not None:             # <<<<<<<<<<<<<<
+ *             __Pyx_ReleaseBuffer(&self.view)
+ *         elif (<__pyx_buffer *> &self.view).obj == Py_None:
+ */
+    goto __pyx_L3;
+  }
+
+  /* "View.MemoryView":375
+ *         if self.obj is not None:
+ *             __Pyx_ReleaseBuffer(&self.view)
+ *         elif (<__pyx_buffer *> &self.view).obj == Py_None:             # <<<<<<<<<<<<<<
+ * 
+ *             (<__pyx_buffer *> &self.view).obj = NULL
+ */
+  __pyx_t_2 = ((((Py_buffer *)(&__pyx_v_self->view))->obj == Py_None) != 0);
+  if (__pyx_t_2) {
+
+    /* "View.MemoryView":377
+ *         elif (<__pyx_buffer *> &self.view).obj == Py_None:
+ * 
+ *             (<__pyx_buffer *> &self.view).obj = NULL             # <<<<<<<<<<<<<<
+ *             Py_DECREF(Py_None)
+ * 
+ */
+    ((Py_buffer *)(&__pyx_v_self->view))->obj = NULL;
+
+    /* "View.MemoryView":378
+ * 
+ *             (<__pyx_buffer *> &self.view).obj = NULL
+ *             Py_DECREF(Py_None)             # <<<<<<<<<<<<<<
+ * 
+ *         cdef int i
+ */
+    Py_DECREF(Py_None);
+
+    /* "View.MemoryView":375
+ *         if self.obj is not None:
+ *             __Pyx_ReleaseBuffer(&self.view)
+ *         elif (<__pyx_buffer *> &self.view).obj == Py_None:             # <<<<<<<<<<<<<<
+ * 
+ *             (<__pyx_buffer *> &self.view).obj = NULL
+ */
+  }
+  __pyx_L3:;
+
+  /* "View.MemoryView":382
+ *         cdef int i
+ *         global __pyx_memoryview_thread_locks_used
+ *         if self.lock != NULL:             # <<<<<<<<<<<<<<
+ *             for i in range(__pyx_memoryview_thread_locks_used):
+ *                 if __pyx_memoryview_thread_locks[i] is self.lock:
+ */
+  __pyx_t_2 = ((__pyx_v_self->lock != NULL) != 0);
+  if (__pyx_t_2) {
+
+    /* "View.MemoryView":383
+ *         global __pyx_memoryview_thread_locks_used
+ *         if self.lock != NULL:
+ *             for i in range(__pyx_memoryview_thread_locks_used):             # <<<<<<<<<<<<<<
+ *                 if __pyx_memoryview_thread_locks[i] is self.lock:
+ *                     __pyx_memoryview_thread_locks_used -= 1
+ */
+    __pyx_t_3 = __pyx_memoryview_thread_locks_used;
+    __pyx_t_4 = __pyx_t_3;
+    for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
+      __pyx_v_i = __pyx_t_5;
+
+      /* "View.MemoryView":384
+ *         if self.lock != NULL:
+ *             for i in range(__pyx_memoryview_thread_locks_used):
+ *                 if __pyx_memoryview_thread_locks[i] is self.lock:             # <<<<<<<<<<<<<<
+ *                     __pyx_memoryview_thread_locks_used -= 1
+ *                     if i != __pyx_memoryview_thread_locks_used:
+ */
+      __pyx_t_2 = (((__pyx_memoryview_thread_locks[__pyx_v_i]) == __pyx_v_self->lock) != 0);
+      if (__pyx_t_2) {
+
+        /* "View.MemoryView":385
+ *             for i in range(__pyx_memoryview_thread_locks_used):
+ *                 if __pyx_memoryview_thread_locks[i] is self.lock:
+ *                     __pyx_memoryview_thread_locks_used -= 1             # <<<<<<<<<<<<<<
+ *                     if i != __pyx_memoryview_thread_locks_used:
+ *                         __pyx_memoryview_thread_locks[i], __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used] = (
+ */
+        __pyx_memoryview_thread_locks_used = (__pyx_memoryview_thread_locks_used - 1);
+
+        /* "View.MemoryView":386
+ *                 if __pyx_memoryview_thread_locks[i] is self.lock:
+ *                     __pyx_memoryview_thread_locks_used -= 1
+ *                     if i != __pyx_memoryview_thread_locks_used:             # <<<<<<<<<<<<<<
+ *                         __pyx_memoryview_thread_locks[i], __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used] = (
+ *                             __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used], __pyx_memoryview_thread_locks[i])
+ */
+        __pyx_t_2 = ((__pyx_v_i != __pyx_memoryview_thread_locks_used) != 0);
+        if (__pyx_t_2) {
+
+          /* "View.MemoryView":388
+ *                     if i != __pyx_memoryview_thread_locks_used:
+ *                         __pyx_memoryview_thread_locks[i], __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used] = (
+ *                             __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used], __pyx_memoryview_thread_locks[i])             # <<<<<<<<<<<<<<
+ *                     break
+ *             else:
+ */
+          __pyx_t_6 = (__pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used]);
+          __pyx_t_7 = (__pyx_memoryview_thread_locks[__pyx_v_i]);
+
+          /* "View.MemoryView":387
+ *                     __pyx_memoryview_thread_locks_used -= 1
+ *                     if i != __pyx_memoryview_thread_locks_used:
+ *                         __pyx_memoryview_thread_locks[i], __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used] = (             # <<<<<<<<<<<<<<
+ *                             __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used], __pyx_memoryview_thread_locks[i])
+ *                     break
+ */
+          (__pyx_memoryview_thread_locks[__pyx_v_i]) = __pyx_t_6;
+          (__pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used]) = __pyx_t_7;
+
+          /* "View.MemoryView":386
+ *                 if __pyx_memoryview_thread_locks[i] is self.lock:
+ *                     __pyx_memoryview_thread_locks_used -= 1
+ *                     if i != __pyx_memoryview_thread_locks_used:             # <<<<<<<<<<<<<<
+ *                         __pyx_memoryview_thread_locks[i], __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used] = (
+ *                             __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used], __pyx_memoryview_thread_locks[i])
+ */
+        }
+
+        /* "View.MemoryView":389
+ *                         __pyx_memoryview_thread_locks[i], __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used] = (
+ *                             __pyx_memoryview_thread_locks[__pyx_memoryview_thread_locks_used], __pyx_memoryview_thread_locks[i])
+ *                     break             # <<<<<<<<<<<<<<
+ *             else:
+ *                 PyThread_free_lock(self.lock)
+ */
+        goto __pyx_L6_break;
+
+        /* "View.MemoryView":384
+ *         if self.lock != NULL:
+ *             for i in range(__pyx_memoryview_thread_locks_used):
+ *                 if __pyx_memoryview_thread_locks[i] is self.lock:             # <<<<<<<<<<<<<<
+ *                     __pyx_memoryview_thread_locks_used -= 1
+ *                     if i != __pyx_memoryview_thread_locks_used:
+ */
+      }
+    }
+    /*else*/ {
+
+      /* "View.MemoryView":391
+ *                     break
+ *             else:
+ *                 PyThread_free_lock(self.lock)             # <<<<<<<<<<<<<<
+ * 
+ *     cdef char *get_item_pointer(memoryview self, object index) except NULL:
+ */
+      PyThread_free_lock(__pyx_v_self->lock);
+    }
+    __pyx_L6_break:;
+
+    /* "View.MemoryView":382
+ *         cdef int i
+ *         global __pyx_memoryview_thread_locks_used
+ *         if self.lock != NULL:             # <<<<<<<<<<<<<<
+ *             for i in range(__pyx_memoryview_thread_locks_used):
+ *                 if __pyx_memoryview_thread_locks[i] is self.lock:
+ */
+  }
+
+  /* "View.MemoryView":372
+ *         self.typeinfo = NULL
+ * 
+ *     def __dealloc__(memoryview self):             # <<<<<<<<<<<<<<
+ *         if self.obj is not None:
+ *             __Pyx_ReleaseBuffer(&self.view)
+ */
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+}
+
+/* "View.MemoryView":393
+ *                 PyThread_free_lock(self.lock)
+ * 
+ *     cdef char *get_item_pointer(memoryview self, object index) except NULL:             # <<<<<<<<<<<<<<
+ *         cdef Py_ssize_t dim
+ *         cdef char *itemp = <char *> self.view.buf
+ */
+
+static char *__pyx_memoryview_get_item_pointer(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_index) {
+  Py_ssize_t __pyx_v_dim;
+  char *__pyx_v_itemp;
+  PyObject *__pyx_v_idx = NULL;
+  char *__pyx_r;
+  __Pyx_RefNannyDeclarations
+  Py_ssize_t __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  Py_ssize_t __pyx_t_3;
+  PyObject *(*__pyx_t_4)(PyObject *);
+  PyObject *__pyx_t_5 = NULL;
+  Py_ssize_t __pyx_t_6;
+  char *__pyx_t_7;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("get_item_pointer", 0);
+
+  /* "View.MemoryView":395
+ *     cdef char *get_item_pointer(memoryview self, object index) except NULL:
+ *         cdef Py_ssize_t dim
+ *         cdef char *itemp = <char *> self.view.buf             # <<<<<<<<<<<<<<
+ * 
+ *         for dim, idx in enumerate(index):
+ */
+  __pyx_v_itemp = ((char *)__pyx_v_self->view.buf);
+
+  /* "View.MemoryView":397
+ *         cdef char *itemp = <char *> self.view.buf
+ * 
+ *         for dim, idx in enumerate(index):             # <<<<<<<<<<<<<<
+ *             itemp = pybuffer_index(&self.view, itemp, idx, dim)
+ * 
+ */
+  __pyx_t_1 = 0;
+  if (likely(PyList_CheckExact(__pyx_v_index)) || PyTuple_CheckExact(__pyx_v_index)) {
+    __pyx_t_2 = __pyx_v_index; __Pyx_INCREF(__pyx_t_2); __pyx_t_3 = 0;
+    __pyx_t_4 = NULL;
+  } else {
+    __pyx_t_3 = -1; __pyx_t_2 = PyObject_GetIter(__pyx_v_index); if (unlikely(!__pyx_t_2)) __PYX_ERR(2, 397, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_4 = Py_TYPE(__pyx_t_2)->tp_iternext; if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 397, __pyx_L1_error)
+  }
+  for (;;) {
+    if (likely(!__pyx_t_4)) {
+      if (likely(PyList_CheckExact(__pyx_t_2))) {
+        if (__pyx_t_3 >= PyList_GET_SIZE(__pyx_t_2)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_5 = PyList_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(2, 397, __pyx_L1_error)
+        #else
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 397, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        #endif
+      } else {
+        if (__pyx_t_3 >= PyTuple_GET_SIZE(__pyx_t_2)) break;
+        #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+        __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_2, __pyx_t_3); __Pyx_INCREF(__pyx_t_5); __pyx_t_3++; if (unlikely(0 < 0)) __PYX_ERR(2, 397, __pyx_L1_error)
+        #else
+        __pyx_t_5 = PySequence_ITEM(__pyx_t_2, __pyx_t_3); __pyx_t_3++; if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 397, __pyx_L1_error)
+        __Pyx_GOTREF(__pyx_t_5);
+        #endif
+      }
+    } else {
+      __pyx_t_5 = __pyx_t_4(__pyx_t_2);
+      if (unlikely(!__pyx_t_5)) {
+        PyObject* exc_type = PyErr_Occurred();
+        if (exc_type) {
+          if (likely(__Pyx_PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
+          else __PYX_ERR(2, 397, __pyx_L1_error)
+        }
+        break;
+      }
+      __Pyx_GOTREF(__pyx_t_5);
+    }
+    __Pyx_XDECREF_SET(__pyx_v_idx, __pyx_t_5);
+    __pyx_t_5 = 0;
+    __pyx_v_dim = __pyx_t_1;
+    __pyx_t_1 = (__pyx_t_1 + 1);
+
+    /* "View.MemoryView":398
+ * 
+ *         for dim, idx in enumerate(index):
+ *             itemp = pybuffer_index(&self.view, itemp, idx, dim)             # <<<<<<<<<<<<<<
+ * 
+ *         return itemp
+ */
+    __pyx_t_6 = __Pyx_PyIndex_AsSsize_t(__pyx_v_idx); if (unlikely((__pyx_t_6 == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(2, 398, __pyx_L1_error)
+    __pyx_t_7 = __pyx_pybuffer_index((&__pyx_v_self->view), __pyx_v_itemp, __pyx_t_6, __pyx_v_dim); if (unlikely(__pyx_t_7 == ((char *)NULL))) __PYX_ERR(2, 398, __pyx_L1_error)
+    __pyx_v_itemp = __pyx_t_7;
+
+    /* "View.MemoryView":397
+ *         cdef char *itemp = <char *> self.view.buf
+ * 
+ *         for dim, idx in enumerate(index):             # <<<<<<<<<<<<<<
+ *             itemp = pybuffer_index(&self.view, itemp, idx, dim)
+ * 
+ */
+  }
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "View.MemoryView":400
+ *             itemp = pybuffer_index(&self.view, itemp, idx, dim)
+ * 
+ *         return itemp             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = __pyx_v_itemp;
+  goto __pyx_L0;
+
+  /* "View.MemoryView":393
+ *                 PyThread_free_lock(self.lock)
+ * 
+ *     cdef char *get_item_pointer(memoryview self, object index) except NULL:             # <<<<<<<<<<<<<<
+ *         cdef Py_ssize_t dim
+ *         cdef char *itemp = <char *> self.view.buf
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("View.MemoryView.memoryview.get_item_pointer", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_idx);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "View.MemoryView":403
+ * 
+ * 
+ *     def __getitem__(memoryview self, object index):             # <<<<<<<<<<<<<<
+ *         if index is Ellipsis:
+ *             return self
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_memoryview___getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index); /*proto*/
+static PyObject *__pyx_memoryview___getitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__getitem__ (wrapper)", 0);
+  __pyx_r = __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_4__getitem__(((struct __pyx_memoryview_obj *)__pyx_v_self), ((PyObject *)__pyx_v_index));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_4__getitem__(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_index) {
+  PyObject *__pyx_v_have_slices = NULL;
+  PyObject *__pyx_v_indices = NULL;
+  char *__pyx_v_itemp;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  char *__pyx_t_6;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__getitem__", 0);
+
+  /* "View.MemoryView":404
+ * 
+ *     def __getitem__(memoryview self, object index):
+ *         if index is Ellipsis:             # <<<<<<<<<<<<<<
+ *             return self
+ * 
+ */
+  __pyx_t_1 = (__pyx_v_index == __pyx_builtin_Ellipsis);
+  __pyx_t_2 = (__pyx_t_1 != 0);
+  if (__pyx_t_2) {
+
+    /* "View.MemoryView":405
+ *     def __getitem__(memoryview self, object index):
+ *         if index is Ellipsis:
+ *             return self             # <<<<<<<<<<<<<<
+ * 
+ *         have_slices, indices = _unellipsify(index, self.view.ndim)
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __Pyx_INCREF(((PyObject *)__pyx_v_self));
+    __pyx_r = ((PyObject *)__pyx_v_self);
+    goto __pyx_L0;
+
+    /* "View.MemoryView":404
+ * 
+ *     def __getitem__(memoryview self, object index):
+ *         if index is Ellipsis:             # <<<<<<<<<<<<<<
+ *             return self
+ * 
+ */
+  }
+
+  /* "View.MemoryView":407
+ *             return self
+ * 
+ *         have_slices, indices = _unellipsify(index, self.view.ndim)             # <<<<<<<<<<<<<<
+ * 
+ *         cdef char *itemp
+ */
+  __pyx_t_3 = _unellipsify(__pyx_v_index, __pyx_v_self->view.ndim); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 407, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_3);
+  if (likely(__pyx_t_3 != Py_None)) {
+    PyObject* sequence = __pyx_t_3;
+    Py_ssize_t size = __Pyx_PySequence_SIZE(sequence);
+    if (unlikely(size != 2)) {
+      if (size > 2) __Pyx_RaiseTooManyValuesError(2);
+      else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
+      __PYX_ERR(2, 407, __pyx_L1_error)
+    }
+    #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
+    __pyx_t_4 = PyTuple_GET_ITEM(sequence, 0); 
+    __pyx_t_5 = PyTuple_GET_ITEM(sequence, 1); 
+    __Pyx_INCREF(__pyx_t_4);
+    __Pyx_INCREF(__pyx_t_5);
+    #else
+    __pyx_t_4 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(2, 407, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(2, 407, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    #endif
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+  } else {
+    __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(2, 407, __pyx_L1_error)
+  }
+  __pyx_v_have_slices = __pyx_t_4;
+  __pyx_t_4 = 0;
+  __pyx_v_indices = __pyx_t_5;
+  __pyx_t_5 = 0;
+
+  /* "View.MemoryView":410
+ * 
+ *         cdef char *itemp
+ *         if have_slices:             # <<<<<<<<<<<<<<
+ *             return memview_slice(self, indices)
+ *         else:
+ */
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_v_have_slices); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(2, 410, __pyx_L1_error)
+  if (__pyx_t_2) {
+
+    /* "View.MemoryView":411
+ *         cdef char *itemp
+ *         if have_slices:
+ *             return memview_slice(self, indices)             # <<<<<<<<<<<<<<
+ *         else:
+ *             itemp = self.get_item_pointer(indices)
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_3 = ((PyObject *)__pyx_memview_slice(__pyx_v_self, __pyx_v_indices)); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 411, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_r = __pyx_t_3;
+    __pyx_t_3 = 0;
+    goto __pyx_L0;
+
+    /* "View.MemoryView":410
+ * 
+ *         cdef char *itemp
+ *         if have_slices:             # <<<<<<<<<<<<<<
+ *             return memview_slice(self, indices)
+ *         else:
+ */
+  }
+
+  /* "View.MemoryView":413
+ *             return memview_slice(self, indices)
+ *         else:
+ *             itemp = self.get_item_pointer(indices)             # <<<<<<<<<<<<<<
+ *             return self.convert_item_to_object(itemp)
+ * 
+ */
+  /*else*/ {
+    __pyx_t_6 = ((struct __pyx_vtabstruct_memoryview *)__pyx_v_self->__pyx_vtab)->get_item_pointer(__pyx_v_self, __pyx_v_indices); if (unlikely(__pyx_t_6 == ((char *)NULL))) __PYX_ERR(2, 413, __pyx_L1_error)
+    __pyx_v_itemp = __pyx_t_6;
+
+    /* "View.MemoryView":414
+ *         else:
+ *             itemp = self.get_item_pointer(indices)
+ *             return self.convert_item_to_object(itemp)             # <<<<<<<<<<<<<<
+ * 
+ *     def __setitem__(memoryview self, object index, object value):
+ */
+    __Pyx_XDECREF(__pyx_r);
+    __pyx_t_3 = ((struct __pyx_vtabstruct_memoryview *)__pyx_v_self->__pyx_vtab)->convert_item_to_object(__pyx_v_self, __pyx_v_itemp); if (unlikely(!__pyx_t_3)) __PYX_ERR(2, 414, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __pyx_r = __pyx_t_3;
+    __pyx_t_3 = 0;
+    goto __pyx_L0;
+  }
+
+  /* "View.MemoryView":403
+ * 
+ * 
+ *     def __getitem__(memoryview self, object index):             # <<<<<<<<<<<<<<
+ *         if index is Ellipsis:
+ *             return self
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_AddTraceback("View.MemoryView.memoryview.__getitem__", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XDECREF(__pyx_v_have_slices);
+  __Pyx_XDECREF(__pyx_v_indices);
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "View.MemoryView":416
+ *             return self.convert_item_to_object(itemp)
+ * 
+ *     def __setitem__(memoryview self, object index, object value):             # <<<<<<<<<<<<<<
+ *         if self.view.readonly:
+ *             raise TypeError("Cannot assign to read-only memoryview")
+ */
+
+/* Python wrapper */
+static int __pyx_memoryview___setitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index, PyObject *__pyx_v_value); /*proto*/
+static int __pyx_memoryview___setitem__(PyObject *__pyx_v_self, PyObject *__pyx_v_index, PyObject *__pyx_v_value) {
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("__setitem__ (wrapper)", 0);
+  __pyx_r = __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_6__setitem__(((struct __pyx_memoryview_obj *)__pyx_v_self), ((PyObject *)__pyx_v_index), ((PyObject *)__pyx_v_value));
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static int __pyx_memoryview___pyx_pf_15View_dot_MemoryView_10memoryview_6__setitem__(struct __pyx_memoryview_obj *__pyx_v_self, PyObject *__pyx_v_index, PyObject *__pyx_v_value) {
+  PyObject *__pyx_v_have_slices = NULL;
+  PyObject *__pyx_v_obj = NULL;
+  int __pyx_r;
+  __Pyx_RefNannyDeclarations
+  int __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("__setitem__", 0);
+  _
