@@ -246,4 +246,105 @@ class COCODataSet(DetDataset):
         logger.debug('{} samples in file {}'.format(ct, anno_path))
         if self.allow_empty and len(empty_records) > 0:
             empty_records = self._sample_empty(empty_records, len(records))
-          
+            records += empty_records
+        self.roidbs = records
+
+
+@DATASET_REGISTRY.register()
+class COCOInferDataSet(DetDataset):
+    """
+    Infer Dataset
+    """
+    dataset_name = 'COCOInferDataSet'
+
+    def __init__(self,
+                 dataset_dir=None,
+                 image_dir=None,
+                 anno_path=None,
+                 sample_num=-1,
+                 use_default_label=None,
+                 **kwargs):
+        super(COCOInferDataSet, self).__init__(
+            dataset_dir,
+            image_dir,
+            sample_num=sample_num,
+            use_default_label=use_default_label)
+        self._imid2path = {}
+        self.roidbs = None
+
+        self.anno_path = os.path.join(dataset_dir, anno_path)
+        from pycocotools.coco import COCO
+        coco = COCO(self.anno_path)
+        cat_ids = coco.getCatIds()
+        self.catid2clsid = dict({catid: i for i, catid in enumerate(cat_ids)})
+
+        self.sample_num = sample_num
+
+    def get_anno(self):
+        if self.anno_path is None:
+            return
+        if self.dataset_dir:
+            return os.path.join(self.dataset_dir, self.anno_path)
+        else:
+            return self.anno_path
+
+    def parse_dataset(self, ):
+        if not self.roidbs:
+            self.roidbs = self._load_images()
+
+    def _load_images(self):
+        images = self.get_test_images()
+        ct = 1
+        records = []
+        for image in images:
+            assert image != '' and os.path.isfile(image), \
+                    "Image {} not found".format(image)
+            if self.sample_num > 0 and ct >= self.sample_num:
+                break
+            rec = {'im_id': np.array([ct]), 'im_file': image}
+            self._imid2path[ct] = image
+            ct += 1
+            records.append(rec)
+        assert len(records) > 0, "No image file found"
+        return records
+
+    def get_imid2path(self):
+        return self._imid2path
+
+    def set_images(self,):
+        self.roidbs = self._load_images()
+
+    def get_label_list(self):
+        # Only VOC dataset needs label list in ImageFold 
+        return self.anno_path
+
+    def get_test_images(self):
+        images = list()
+        infer_dir = os.path.join(self.dataset_dir, self.image_dir)
+        with open(infer_dir, 'r') as f:
+            content = f.readlines()
+        for name in content:
+            name = name.strip()
+            path = os.path.join(self.dataset_dir, 'test', name)
+            images.append(path)
+
+        # assert infer_dir is None or os.path.isdir(infer_dir), \
+        #         "{} is not a directory".format(infer_dir)
+
+        
+        # infer_dir = os.path.abspath(infer_dir)
+        # assert os.path.isdir(infer_dir), \
+        #     "infer_dir {} is not a directory".format(infer_dir)
+        # exts = ['jpg', 'jpeg', 'png', 'bmp']
+        # exts += [ext.upper() for ext in exts]
+        # for ext in exts:
+        #     if len(glob.glob('{}/*.{}'.format(infer_dir, ext))) != 0:
+        #         images.update(glob.glob('{}/*.{}'.format(infer_dir, ext)))
+        #     elif len(glob.glob('{}/*/*.{}'.format(infer_dir, ext))) != 0:
+        #         images.update(glob.glob('{}/*/*.{}'.format(infer_dir, ext)))
+        # images = list(images)
+
+        # assert len(images) > 0, "no image found in {}".format(infer_dir)
+        # logger.info("Found {} inference images in total.".format(len(images)))
+
+        return images
