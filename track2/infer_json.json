@@ -111471,4 +111471,985 @@
                 "vehicle_0001928.jpg",
                 "vehicle_0009825.jpg",
                 "vehicle_0001929.jpg",
-                "vehicle_0001641
+                "vehicle_0001641.jpg",
+                "vehicle_0003403.jpg",
+                "vehicle_0001640.jpg",
+                "vehicle_0009523.jpg",
+                "vehicle_0006887.jpg",
+                "vehicle_0002190.jpg",
+                "vehicle_0000518.jpg"
+            ]
+        },
+        {
+            "text": "This is a white KINGLONG Bus.",
+            "image_names": [
+                "vehicle_0003186.jpg",
+                "vehicle_0004189.jpg",
+                "vehicle_0002936.jpg",
+                "vehicle_0002972.jpg",
+                "vehicle_0001202.jpg",
+                "vehicle_0002291.jpg",
+                "vehicle_0000034.jpg",
+                "vehicle_0002452.jpg",
+                "vehicle_0002529.jpg",
+                "vehicle_0008170.jpg"
+            ]
+        },
+        {
+            "text": "A black Chery Sedan.",
+            "image_names": [
+                "vehicle_0000912.jpg",
+                "vehicle_0000954.jpg",
+                "vehicle_0000335.jpg",
+                "vehicle_0000332.jpg",
+                "vehicle_0006179.jpg",
+                "vehicle_0000919.jpg",
+                "vehicle_0007361.jpg",
+                "vehicle_0001295.jpg",
+                "vehicle_0001107.jpg",
+                "vehicle_0000597.jpg"
+            ]
+        },
+        {
+            "text": "A white Audi Sedan.",
+            "image_names": [
+                "vehicle_0000749.jpg",
+                "vehicle_0007156.jpg",
+                "vehicle_0005909.jpg",
+                "vehicle_0005187.jpg",
+                "vehicle_0000363.jpg",
+                "vehicle_0008315.jpg",
+                "vehicle_0001341.jpg",
+                "vehicle_0000227.jpg",
+                "vehicle_0001232.jpg",
+                "vehicle_0001672.jpg"
+            ]
+        },
+        {
+            "text": "This is a white Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001463.jpg",
+                "vehicle_0000474.jpg",
+                "vehicle_0002116.jpg",
+                "vehicle_0002120.jpg",
+                "vehicle_0000244.jpg",
+                "vehicle_0001341.jpg",
+                "vehicle_0000245.jpg",
+                "vehicle_0001464.jpg",
+                "vehicle_0000093.jpg",
+                "vehicle_0002115.jpg"
+            ]
+        },
+        {
+            "text": "A white Citroen Sedan.",
+            "image_names": [
+                "vehicle_0001659.jpg",
+                "vehicle_0001669.jpg",
+                "vehicle_0001684.jpg",
+                "vehicle_0001248.jpg",
+                "vehicle_0001247.jpg",
+                "vehicle_0003972.jpg",
+                "vehicle_0001097.jpg",
+                "vehicle_0001658.jpg",
+                "vehicle_0001560.jpg",
+                "vehicle_0006162.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Toyota Sedan.",
+            "image_names": [
+                "vehicle_0000597.jpg",
+                "vehicle_0000003.jpg",
+                "vehicle_0004238.jpg",
+                "vehicle_0005503.jpg",
+                "vehicle_0000399.jpg",
+                "vehicle_0000611.jpg",
+                "vehicle_0005381.jpg",
+                "vehicle_0006079.jpg",
+                "vehicle_0000236.jpg",
+                "vehicle_0000912.jpg"
+            ]
+        },
+        {
+            "text": "This is a red Landrover SUV.",
+            "image_names": [
+                "vehicle_0009679.jpg",
+                "vehicle_0009424.jpg",
+                "vehicle_0009566.jpg",
+                "vehicle_0001233.jpg",
+                "vehicle_0007337.jpg",
+                "vehicle_0009585.jpg",
+                "vehicle_0009292.jpg",
+                "vehicle_0009229.jpg",
+                "vehicle_0009504.jpg",
+                "vehicle_0009129.jpg"
+            ]
+        },
+        {
+            "text": "A red Chevrolet Sedan.",
+            "image_names": [
+                "vehicle_0000580.jpg",
+                "vehicle_0007857.jpg",
+                "vehicle_0002042.jpg",
+                "vehicle_0001524.jpg",
+                "vehicle_0001219.jpg",
+                "vehicle_0000678.jpg",
+                "vehicle_0008587.jpg",
+                "vehicle_0001095.jpg",
+                "vehicle_0001969.jpg",
+                "vehicle_0001466.jpg"
+            ]
+        },
+        {
+            "text": "A black Honda SUV.",
+            "image_names": [
+                "vehicle_0000321.jpg",
+                "vehicle_0000019.jpg",
+                "vehicle_0002033.jpg",
+                "vehicle_0000647.jpg",
+                "vehicle_0000499.jpg",
+                "vehicle_0004577.jpg",
+                "vehicle_0006140.jpg",
+                "vehicle_0000351.jpg",
+                "vehicle_0007158.jpg",
+                "vehicle_0006141.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001243.jpg",
+                "vehicle_0000819.jpg",
+                "vehicle_0000786.jpg",
+                "vehicle_0000049.jpg",
+                "vehicle_0000207.jpg",
+                "vehicle_0000337.jpg",
+                "vehicle_0000912.jpg",
+                "vehicle_0000785.jpg",
+                "vehicle_0001143.jpg",
+                "vehicle_0000435.jpg"
+            ]
+        },
+        {
+            "text": "A black Honda Sedan.",
+            "image_names": [
+                "vehicle_0000321.jpg",
+                "vehicle_0001335.jpg",
+                "vehicle_0000919.jpg",
+                "vehicle_0000437.jpg",
+                "vehicle_0000972.jpg",
+                "vehicle_0000912.jpg",
+                "vehicle_0000575.jpg",
+                "vehicle_0006395.jpg",
+                "vehicle_0000647.jpg",
+                "vehicle_0000335.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Audi Sedan.",
+            "image_names": [
+                "vehicle_0000611.jpg",
+                "vehicle_0001300.jpg",
+                "vehicle_0000912.jpg",
+                "vehicle_0000334.jpg",
+                "vehicle_0005859.jpg",
+                "vehicle_0001244.jpg",
+                "vehicle_0001301.jpg",
+                "vehicle_0006414.jpg",
+                "vehicle_0000297.jpg",
+                "vehicle_0006306.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Buick Sedan.",
+            "image_names": [
+                "vehicle_0000955.jpg",
+                "vehicle_0000312.jpg",
+                "vehicle_0001069.jpg",
+                "vehicle_0004903.jpg",
+                "vehicle_0007511.jpg",
+                "vehicle_0006287.jpg",
+                "vehicle_0000578.jpg",
+                "vehicle_0000313.jpg",
+                "vehicle_0000956.jpg",
+                "vehicle_0000311.jpg"
+            ]
+        },
+        {
+            "text": "This is a grey SGMW Microbus.",
+            "image_names": [
+                "vehicle_0001501.jpg",
+                "vehicle_0001831.jpg",
+                "vehicle_0001769.jpg",
+                "vehicle_0001930.jpg",
+                "vehicle_0001811.jpg",
+                "vehicle_0001805.jpg",
+                "vehicle_0001806.jpg",
+                "vehicle_0000219.jpg",
+                "vehicle_0001770.jpg",
+                "vehicle_0002160.jpg"
+            ]
+        },
+        {
+            "text": "This is a grey Hyundai SUV.",
+            "image_names": [
+                "vehicle_0002004.jpg",
+                "vehicle_0002109.jpg",
+                "vehicle_0002110.jpg",
+                "vehicle_0002149.jpg",
+                "vehicle_0002205.jpg",
+                "vehicle_0001910.jpg",
+                "vehicle_0002003.jpg",
+                "vehicle_0005393.jpg",
+                "vehicle_0001977.jpg",
+                "vehicle_0002043.jpg"
+            ]
+        },
+        {
+            "text": "A black Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0000912.jpg",
+                "vehicle_0001109.jpg",
+                "vehicle_0001243.jpg",
+                "vehicle_0001143.jpg",
+                "vehicle_0000349.jpg",
+                "vehicle_0000785.jpg",
+                "vehicle_0000786.jpg",
+                "vehicle_0001244.jpg",
+                "vehicle_0000647.jpg",
+                "vehicle_0000839.jpg"
+            ]
+        },
+        {
+            "text": "A white Jinbei Minivan.",
+            "image_names": [
+                "vehicle_0000034.jpg",
+                "vehicle_0001035.jpg",
+                "vehicle_0000894.jpg",
+                "vehicle_0003031.jpg",
+                "vehicle_0001013.jpg",
+                "vehicle_0007455.jpg",
+                "vehicle_0002953.jpg",
+                "vehicle_0001103.jpg",
+                "vehicle_0001202.jpg",
+                "vehicle_0001566.jpg"
+            ]
+        },
+        {
+            "text": "A grey Mazda Sedan.",
+            "image_names": [
+                "vehicle_0001348.jpg",
+                "vehicle_0002198.jpg",
+                "vehicle_0002004.jpg",
+                "vehicle_0002151.jpg",
+                "vehicle_0002138.jpg",
+                "vehicle_0002086.jpg",
+                "vehicle_0000315.jpg",
+                "vehicle_0001997.jpg",
+                "vehicle_0002065.jpg",
+                "vehicle_0000209.jpg"
+            ]
+        },
+        {
+            "text": "A white Jinbei Microbus.",
+            "image_names": [
+                "vehicle_0000034.jpg",
+                "vehicle_0001202.jpg",
+                "vehicle_0001013.jpg",
+                "vehicle_0000894.jpg",
+                "vehicle_0003031.jpg",
+                "vehicle_0008010.jpg",
+                "vehicle_0001435.jpg",
+                "vehicle_0003010.jpg",
+                "vehicle_0007455.jpg",
+                "vehicle_0004333.jpg"
+            ]
+        },
+        {
+            "text": "A black Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0000912.jpg",
+                "vehicle_0001109.jpg",
+                "vehicle_0001243.jpg",
+                "vehicle_0001143.jpg",
+                "vehicle_0000349.jpg",
+                "vehicle_0000785.jpg",
+                "vehicle_0000786.jpg",
+                "vehicle_0001244.jpg",
+                "vehicle_0000647.jpg",
+                "vehicle_0000839.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Volkswagen SUV.",
+            "image_names": [
+                "vehicle_0000207.jpg",
+                "vehicle_0000819.jpg",
+                "vehicle_0001793.jpg",
+                "vehicle_0000647.jpg",
+                "vehicle_0002038.jpg",
+                "vehicle_0000049.jpg",
+                "vehicle_0000479.jpg",
+                "vehicle_0000839.jpg",
+                "vehicle_0000786.jpg",
+                "vehicle_0000445.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001243.jpg",
+                "vehicle_0000819.jpg",
+                "vehicle_0000786.jpg",
+                "vehicle_0000049.jpg",
+                "vehicle_0000207.jpg",
+                "vehicle_0000337.jpg",
+                "vehicle_0000912.jpg",
+                "vehicle_0000785.jpg",
+                "vehicle_0001143.jpg",
+                "vehicle_0000435.jpg"
+            ]
+        },
+        {
+            "text": "A red Kia SUV.",
+            "image_names": [
+                "vehicle_0000580.jpg",
+                "vehicle_0000678.jpg",
+                "vehicle_0004478.jpg",
+                "vehicle_0001670.jpg",
+                "vehicle_0000628.jpg",
+                "vehicle_0001498.jpg",
+                "vehicle_0002053.jpg",
+                "vehicle_0000629.jpg",
+                "vehicle_0002705.jpg",
+                "vehicle_0004875.jpg"
+            ]
+        },
+        {
+            "text": "This is a white GreatWall SUV.",
+            "image_names": [
+                "vehicle_0000707.jpg",
+                "vehicle_0005491.jpg",
+                "vehicle_0008405.jpg",
+                "vehicle_0000541.jpg",
+                "vehicle_0005397.jpg",
+                "vehicle_0004011.jpg",
+                "vehicle_0004086.jpg",
+                "vehicle_0004175.jpg",
+                "vehicle_0004396.jpg",
+                "vehicle_0004863.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Chevrolet Sedan.",
+            "image_names": [
+                "vehicle_0000912.jpg",
+                "vehicle_0000919.jpg",
+                "vehicle_0000647.jpg",
+                "vehicle_0001335.jpg",
+                "vehicle_0000335.jpg",
+                "vehicle_0001109.jpg",
+                "vehicle_0000881.jpg",
+                "vehicle_0001406.jpg",
+                "vehicle_0000360.jpg",
+                "vehicle_0000066.jpg"
+            ]
+        },
+        {
+            "text": "A grey Hyundai Sedan.",
+            "image_names": [
+                "vehicle_0002004.jpg",
+                "vehicle_0001348.jpg",
+                "vehicle_0002109.jpg",
+                "vehicle_0002198.jpg",
+                "vehicle_0002110.jpg",
+                "vehicle_0001801.jpg",
+                "vehicle_0002003.jpg",
+                "vehicle_0001910.jpg",
+                "vehicle_0002138.jpg",
+                "vehicle_0002151.jpg"
+            ]
+        },
+        {
+            "text": "This is a blue Chery Sedan.",
+            "image_names": [
+                "vehicle_0001189.jpg",
+                "vehicle_0001007.jpg",
+                "vehicle_0004038.jpg",
+                "vehicle_0001008.jpg",
+                "vehicle_0000896.jpg",
+                "vehicle_0004037.jpg",
+                "vehicle_0001106.jpg",
+                "vehicle_0009044.jpg",
+                "vehicle_0008643.jpg",
+                "vehicle_0006416.jpg"
+            ]
+        },
+        {
+            "text": "A black Buick Sedan.",
+            "image_names": [
+                "vehicle_0008746.jpg",
+                "vehicle_0004903.jpg",
+                "vehicle_0000919.jpg",
+                "vehicle_0000955.jpg",
+                "vehicle_0001069.jpg",
+                "vehicle_0007511.jpg",
+                "vehicle_0001335.jpg",
+                "vehicle_0004902.jpg",
+                "vehicle_0000393.jpg",
+                "vehicle_0000575.jpg"
+            ]
+        },
+        {
+            "text": "This is a grey Chana Microbus.",
+            "image_names": [
+                "vehicle_0001691.jpg",
+                "vehicle_0001690.jpg",
+                "vehicle_0001805.jpg",
+                "vehicle_0001966.jpg",
+                "vehicle_0001593.jpg",
+                "vehicle_0001570.jpg",
+                "vehicle_0001930.jpg",
+                "vehicle_0001592.jpg",
+                "vehicle_0001806.jpg",
+                "vehicle_0001014.jpg"
+            ]
+        },
+        {
+            "text": "A grey Chana Microbus.",
+            "image_names": [
+                "vehicle_0001691.jpg",
+                "vehicle_0001690.jpg",
+                "vehicle_0001805.jpg",
+                "vehicle_0001593.jpg",
+                "vehicle_0001570.jpg",
+                "vehicle_0001592.jpg",
+                "vehicle_0001806.jpg",
+                "vehicle_0001966.jpg",
+                "vehicle_0001930.jpg",
+                "vehicle_0002243.jpg"
+            ]
+        },
+        {
+            "text": "A black Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0000912.jpg",
+                "vehicle_0001109.jpg",
+                "vehicle_0001243.jpg",
+                "vehicle_0001143.jpg",
+                "vehicle_0000349.jpg",
+                "vehicle_0000785.jpg",
+                "vehicle_0000786.jpg",
+                "vehicle_0001244.jpg",
+                "vehicle_0000647.jpg",
+                "vehicle_0000839.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001243.jpg",
+                "vehicle_0000819.jpg",
+                "vehicle_0000786.jpg",
+                "vehicle_0000049.jpg",
+                "vehicle_0000207.jpg",
+                "vehicle_0000337.jpg",
+                "vehicle_0000912.jpg",
+                "vehicle_0000785.jpg",
+                "vehicle_0001143.jpg",
+                "vehicle_0000435.jpg"
+            ]
+        },
+        {
+            "text": "This is a white Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001463.jpg",
+                "vehicle_0000474.jpg",
+                "vehicle_0002116.jpg",
+                "vehicle_0002120.jpg",
+                "vehicle_0000244.jpg",
+                "vehicle_0001341.jpg",
+                "vehicle_0000245.jpg",
+                "vehicle_0001464.jpg",
+                "vehicle_0000093.jpg",
+                "vehicle_0002115.jpg"
+            ]
+        },
+        {
+            "text": "A white Jinbei Microbus.",
+            "image_names": [
+                "vehicle_0000034.jpg",
+                "vehicle_0001202.jpg",
+                "vehicle_0001013.jpg",
+                "vehicle_0000894.jpg",
+                "vehicle_0003031.jpg",
+                "vehicle_0008010.jpg",
+                "vehicle_0001435.jpg",
+                "vehicle_0003010.jpg",
+                "vehicle_0007455.jpg",
+                "vehicle_0004333.jpg"
+            ]
+        },
+        {
+            "text": "This is a white Karma Minivan.",
+            "image_names": [
+                "vehicle_0003566.jpg",
+                "vehicle_0003543.jpg",
+                "vehicle_0003465.jpg",
+                "vehicle_0003552.jpg",
+                "vehicle_0003409.jpg",
+                "vehicle_0009160.jpg",
+                "vehicle_0000964.jpg",
+                "vehicle_0003431.jpg",
+                "vehicle_0003106.jpg",
+                "vehicle_0003424.jpg"
+            ]
+        },
+        {
+            "text": "A white Geely Sedan.",
+            "image_names": [
+                "vehicle_0001346.jpg",
+                "vehicle_0001543.jpg",
+                "vehicle_0001629.jpg",
+                "vehicle_0001542.jpg",
+                "vehicle_0000749.jpg",
+                "vehicle_0000227.jpg",
+                "vehicle_0001686.jpg",
+                "vehicle_0005187.jpg",
+                "vehicle_0001232.jpg",
+                "vehicle_0000363.jpg"
+            ]
+        },
+        {
+            "text": "This is a black China-Moto Sedan.",
+            "image_names": [
+                "vehicle_0005859.jpg",
+                "vehicle_0006608.jpg",
+                "vehicle_0008239.jpg",
+                "vehicle_0004982.jpg",
+                "vehicle_0007361.jpg",
+                "vehicle_0001529.jpg",
+                "vehicle_0000611.jpg",
+                "vehicle_0005381.jpg",
+                "vehicle_0006612.jpg",
+                "vehicle_0005591.jpg"
+            ]
+        },
+        {
+            "text": "A white Haima Sedan.",
+            "image_names": [
+                "vehicle_0006104.jpg",
+                "vehicle_0001582.jpg",
+                "vehicle_0006403.jpg",
+                "vehicle_0000676.jpg",
+                "vehicle_0001462.jpg",
+                "vehicle_0005669.jpg",
+                "vehicle_0007282.jpg",
+                "vehicle_0001583.jpg",
+                "vehicle_0000809.jpg",
+                "vehicle_0008041.jpg"
+            ]
+        },
+        {
+            "text": "A red FOTON Truck.",
+            "image_names": [
+                "vehicle_0001928.jpg",
+                "vehicle_0009825.jpg",
+                "vehicle_0009523.jpg",
+                "vehicle_0003403.jpg",
+                "vehicle_0001641.jpg",
+                "vehicle_0001929.jpg",
+                "vehicle_0009272.jpg",
+                "vehicle_0001640.jpg",
+                "vehicle_0000518.jpg",
+                "vehicle_0006887.jpg"
+            ]
+        },
+        {
+            "text": "A white Ford Microbus.",
+            "image_names": [
+                "vehicle_0005667.jpg",
+                "vehicle_0007905.jpg",
+                "vehicle_0003929.jpg",
+                "vehicle_0004551.jpg",
+                "vehicle_0007906.jpg",
+                "vehicle_0004120.jpg",
+                "vehicle_0006351.jpg",
+                "vehicle_0006813.jpg",
+                "vehicle_0003969.jpg",
+                "vehicle_0003160.jpg"
+            ]
+        },
+        {
+            "text": "This is a black GreatWall SUV.",
+            "image_names": [
+                "vehicle_0007855.jpg",
+                "vehicle_0000113.jpg",
+                "vehicle_0007076.jpg",
+                "vehicle_0000969.jpg",
+                "vehicle_0000269.jpg",
+                "vehicle_0003995.jpg",
+                "vehicle_0005778.jpg",
+                "vehicle_0001117.jpg",
+                "vehicle_0004734.jpg",
+                "vehicle_0001401.jpg"
+            ]
+        },
+        {
+            "text": "A black Hyundai SUV.",
+            "image_names": [
+                "vehicle_0000817.jpg",
+                "vehicle_0000070.jpg",
+                "vehicle_0001107.jpg",
+                "vehicle_0007821.jpg",
+                "vehicle_0000003.jpg",
+                "vehicle_0006032.jpg",
+                "vehicle_0000165.jpg",
+                "vehicle_0006395.jpg",
+                "vehicle_0006030.jpg",
+                "vehicle_0001335.jpg"
+            ]
+        },
+        {
+            "text": "A blue JAC Minivan.",
+            "image_names": [
+                "vehicle_0001145.jpg",
+                "vehicle_0003270.jpg",
+                "vehicle_0005945.jpg",
+                "vehicle_0003228.jpg",
+                "vehicle_0003406.jpg",
+                "vehicle_0008481.jpg",
+                "vehicle_0003225.jpg",
+                "vehicle_0005256.jpg",
+                "vehicle_0003415.jpg",
+                "vehicle_0006272.jpg"
+            ]
+        },
+        {
+            "text": "A black Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0000912.jpg",
+                "vehicle_0001109.jpg",
+                "vehicle_0001243.jpg",
+                "vehicle_0001143.jpg",
+                "vehicle_0000349.jpg",
+                "vehicle_0000785.jpg",
+                "vehicle_0000786.jpg",
+                "vehicle_0001244.jpg",
+                "vehicle_0000647.jpg",
+                "vehicle_0000839.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Toyota Sedan.",
+            "image_names": [
+                "vehicle_0000597.jpg",
+                "vehicle_0000003.jpg",
+                "vehicle_0004238.jpg",
+                "vehicle_0005503.jpg",
+                "vehicle_0000399.jpg",
+                "vehicle_0000611.jpg",
+                "vehicle_0005381.jpg",
+                "vehicle_0006079.jpg",
+                "vehicle_0000236.jpg",
+                "vehicle_0000912.jpg"
+            ]
+        },
+        {
+            "text": "A grey Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001973.jpg",
+                "vehicle_0001974.jpg",
+                "vehicle_0002209.jpg",
+                "vehicle_0001482.jpg",
+                "vehicle_0001078.jpg",
+                "vehicle_0001699.jpg",
+                "vehicle_0002119.jpg",
+                "vehicle_0001077.jpg",
+                "vehicle_0002088.jpg",
+                "vehicle_0001855.jpg"
+            ]
+        },
+        {
+            "text": "A white Toyota SUV.",
+            "image_names": [
+                "vehicle_0007280.jpg",
+                "vehicle_0008965.jpg",
+                "vehicle_0008755.jpg",
+                "vehicle_0006397.jpg",
+                "vehicle_0000046.jpg",
+                "vehicle_0008405.jpg",
+                "vehicle_0001738.jpg",
+                "vehicle_0000045.jpg",
+                "vehicle_0006352.jpg",
+                "vehicle_0006403.jpg"
+            ]
+        },
+        {
+            "text": "A white Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001463.jpg",
+                "vehicle_0001341.jpg",
+                "vehicle_0002120.jpg",
+                "vehicle_0000093.jpg",
+                "vehicle_0000474.jpg",
+                "vehicle_0001662.jpg",
+                "vehicle_0000703.jpg",
+                "vehicle_0000363.jpg",
+                "vehicle_0001464.jpg",
+                "vehicle_0000473.jpg"
+            ]
+        },
+        {
+            "text": "This is a red SGMW Microbus.",
+            "image_names": [
+                "vehicle_0007207.jpg",
+                "vehicle_0007187.jpg",
+                "vehicle_0007191.jpg",
+                "vehicle_0007193.jpg",
+                "vehicle_0006243.jpg",
+                "vehicle_0006022.jpg",
+                "vehicle_0003090.jpg",
+                "vehicle_0000889.jpg",
+                "vehicle_0006656.jpg",
+                "vehicle_0002959.jpg"
+            ]
+        },
+        {
+            "text": "This is a red BESTUNE Sedan.",
+            "image_names": [
+                "vehicle_0001096.jpg",
+                "vehicle_0008587.jpg",
+                "vehicle_0000629.jpg",
+                "vehicle_0001095.jpg",
+                "vehicle_0000678.jpg",
+                "vehicle_0001499.jpg",
+                "vehicle_0002052.jpg",
+                "vehicle_0005376.jpg",
+                "vehicle_0009101.jpg",
+                "vehicle_0008060.jpg"
+            ]
+        },
+        {
+            "text": "This is a grey Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001974.jpg",
+                "vehicle_0001973.jpg",
+                "vehicle_0001699.jpg",
+                "vehicle_0002209.jpg",
+                "vehicle_0001482.jpg",
+                "vehicle_0001077.jpg",
+                "vehicle_0001078.jpg",
+                "vehicle_0001698.jpg",
+                "vehicle_0001241.jpg",
+                "vehicle_0002236.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Audi Sedan.",
+            "image_names": [
+                "vehicle_0000611.jpg",
+                "vehicle_0001300.jpg",
+                "vehicle_0000912.jpg",
+                "vehicle_0000334.jpg",
+                "vehicle_0005859.jpg",
+                "vehicle_0001244.jpg",
+                "vehicle_0001301.jpg",
+                "vehicle_0006414.jpg",
+                "vehicle_0000297.jpg",
+                "vehicle_0006306.jpg"
+            ]
+        },
+        {
+            "text": "A grey Chana Microbus.",
+            "image_names": [
+                "vehicle_0001691.jpg",
+                "vehicle_0001690.jpg",
+                "vehicle_0001805.jpg",
+                "vehicle_0001593.jpg",
+                "vehicle_0001570.jpg",
+                "vehicle_0001592.jpg",
+                "vehicle_0001806.jpg",
+                "vehicle_0001966.jpg",
+                "vehicle_0001930.jpg",
+                "vehicle_0002243.jpg"
+            ]
+        },
+        {
+            "text": "This is a grey Hyundai Sedan.",
+            "image_names": [
+                "vehicle_0002004.jpg",
+                "vehicle_0002109.jpg",
+                "vehicle_0001910.jpg",
+                "vehicle_0002110.jpg",
+                "vehicle_0001348.jpg",
+                "vehicle_0002198.jpg",
+                "vehicle_0002048.jpg",
+                "vehicle_0001801.jpg",
+                "vehicle_0002065.jpg",
+                "vehicle_0002138.jpg"
+            ]
+        },
+        {
+            "text": "A white Toyota SUV.",
+            "image_names": [
+                "vehicle_0007280.jpg",
+                "vehicle_0008965.jpg",
+                "vehicle_0008755.jpg",
+                "vehicle_0006397.jpg",
+                "vehicle_0000046.jpg",
+                "vehicle_0008405.jpg",
+                "vehicle_0001738.jpg",
+                "vehicle_0000045.jpg",
+                "vehicle_0006352.jpg",
+                "vehicle_0006403.jpg"
+            ]
+        },
+        {
+            "text": "This is a red Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001479.jpg",
+                "vehicle_0008587.jpg",
+                "vehicle_0001877.jpg",
+                "vehicle_0000678.jpg",
+                "vehicle_0002042.jpg",
+                "vehicle_0000402.jpg",
+                "vehicle_0001475.jpg",
+                "vehicle_0007857.jpg",
+                "vehicle_0001241.jpg",
+                "vehicle_0001141.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001243.jpg",
+                "vehicle_0000819.jpg",
+                "vehicle_0000786.jpg",
+                "vehicle_0000049.jpg",
+                "vehicle_0000207.jpg",
+                "vehicle_0000337.jpg",
+                "vehicle_0000912.jpg",
+                "vehicle_0000785.jpg",
+                "vehicle_0001143.jpg",
+                "vehicle_0000435.jpg"
+            ]
+        },
+        {
+            "text": "This is a blue FAW Minivan.",
+            "image_names": [
+                "vehicle_0008881.jpg",
+                "vehicle_0001882.jpg",
+                "vehicle_0005038.jpg",
+                "vehicle_0002024.jpg",
+                "vehicle_0005241.jpg",
+                "vehicle_0000660.jpg",
+                "vehicle_0004194.jpg",
+                "vehicle_0005240.jpg",
+                "vehicle_0000658.jpg",
+                "vehicle_0000659.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Honda Sedan.",
+            "image_names": [
+                "vehicle_0000321.jpg",
+                "vehicle_0000973.jpg",
+                "vehicle_0000972.jpg",
+                "vehicle_0006140.jpg",
+                "vehicle_0000351.jpg",
+                "vehicle_0006031.jpg",
+                "vehicle_0000070.jpg",
+                "vehicle_0000019.jpg",
+                "vehicle_0000499.jpg",
+                "vehicle_0007158.jpg"
+            ]
+        },
+        {
+            "text": "A grey XIALI Sedan.",
+            "image_names": [
+                "vehicle_0001720.jpg",
+                "vehicle_0001971.jpg",
+                "vehicle_0001953.jpg",
+                "vehicle_0002103.jpg",
+                "vehicle_0000315.jpg",
+                "vehicle_0000389.jpg",
+                "vehicle_0002198.jpg",
+                "vehicle_0002010.jpg",
+                "vehicle_0002065.jpg",
+                "vehicle_0002015.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001243.jpg",
+                "vehicle_0000819.jpg",
+                "vehicle_0000786.jpg",
+                "vehicle_0000049.jpg",
+                "vehicle_0000207.jpg",
+                "vehicle_0000337.jpg",
+                "vehicle_0000912.jpg",
+                "vehicle_0000785.jpg",
+                "vehicle_0001143.jpg",
+                "vehicle_0000435.jpg"
+            ]
+        },
+        {
+            "text": "This is a red Nissan SUV.",
+            "image_names": [
+                "vehicle_0001467.jpg",
+                "vehicle_0001765.jpg",
+                "vehicle_0000123.jpg",
+                "vehicle_0001766.jpg",
+                "vehicle_0000763.jpg",
+                "vehicle_0001617.jpg",
+                "vehicle_0000762.jpg",
+                "vehicle_0001113.jpg",
+                "vehicle_0002192.jpg",
+                "vehicle_0002190.jpg"
+            ]
+        },
+        {
+            "text": "A black China-Moto Sedan.",
+            "image_names": [
+                "vehicle_0005859.jpg",
+                "vehicle_0006608.jpg",
+                "vehicle_0001529.jpg",
+                "vehicle_0004982.jpg",
+                "vehicle_0008239.jpg",
+                "vehicle_0005591.jpg",
+                "vehicle_0006612.jpg",
+                "vehicle_0001244.jpg",
+                "vehicle_0000611.jpg",
+                "vehicle_0007361.jpg"
+            ]
+        },
+        {
+            "text": "A white Isuzu Minivan.",
+            "image_names": [
+                "vehicle_0003389.jpg",
+                "vehicle_0003475.jpg",
+                "vehicle_0003289.jpg",
+                "vehicle_0003436.jpg",
+                "vehicle_0000944.jpg",
+                "vehicle_0003596.jpg",
+                "vehicle_0003272.jpg",
+                "vehicle_0003587.jpg",
+                "vehicle_0003410.jpg",
+                "vehicle_0002914.jpg"
+            ]
+        },
+        {
+            "text": "This is a grey Soueast Sedan.",
+            "image_names": [
+                "vehicle_0002007.jpg",
+                "vehicle_0002048.jpg",
+                "vehicle_0002109.jpg",
+                "vehicle_0002137.jpg",
+                "vehicle_0002004.jpg",
+                "vehicle_0002198.jpg",
+                "vehicle_0001348.jpg",
+                "vehicle_0000208.jpg",
+                "vehicle_0002168.jpg",
+                "vehicle_0002065.jpg
