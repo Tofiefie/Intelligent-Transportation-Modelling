@@ -113442,4 +113442,983 @@
                 "vehicle_0000786.jpg",
                 "vehicle_0001244.jpg",
                 "vehicle_0000647.jpg",
-                "
+                "vehicle_0000839.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001243.jpg",
+                "vehicle_0000819.jpg",
+                "vehicle_0000786.jpg",
+                "vehicle_0000049.jpg",
+                "vehicle_0000207.jpg",
+                "vehicle_0000337.jpg",
+                "vehicle_0000912.jpg",
+                "vehicle_0000785.jpg",
+                "vehicle_0001143.jpg",
+                "vehicle_0000435.jpg"
+            ]
+        },
+        {
+            "text": "This is a black BYD Sedan.",
+            "image_names": [
+                "vehicle_0006031.jpg",
+                "vehicle_0000071.jpg",
+                "vehicle_0006032.jpg",
+                "vehicle_0000597.jpg",
+                "vehicle_0000165.jpg",
+                "vehicle_0000052.jpg",
+                "vehicle_0000817.jpg",
+                "vehicle_0000811.jpg",
+                "vehicle_0000003.jpg",
+                "vehicle_0006377.jpg"
+            ]
+        },
+        {
+            "text": "This is a white Isuzu Minivan.",
+            "image_names": [
+                "vehicle_0003389.jpg",
+                "vehicle_0003475.jpg",
+                "vehicle_0003289.jpg",
+                "vehicle_0003436.jpg",
+                "vehicle_0000944.jpg",
+                "vehicle_0003596.jpg",
+                "vehicle_0003587.jpg",
+                "vehicle_0003410.jpg",
+                "vehicle_0003272.jpg",
+                "vehicle_0002914.jpg"
+            ]
+        },
+        {
+            "text": "This is a black BESTUNE Sedan.",
+            "image_names": [
+                "vehicle_0000911.jpg",
+                "vehicle_0001300.jpg",
+                "vehicle_0000611.jpg",
+                "vehicle_0001409.jpg",
+                "vehicle_0005859.jpg",
+                "vehicle_0001025.jpg",
+                "vehicle_0006306.jpg",
+                "vehicle_0006414.jpg",
+                "vehicle_0002117.jpg",
+                "vehicle_0004597.jpg"
+            ]
+        },
+        {
+            "text": "A white Nissan Sedan.",
+            "image_names": [
+                "vehicle_0007156.jpg",
+                "vehicle_0000899.jpg",
+                "vehicle_0005187.jpg",
+                "vehicle_0008627.jpg",
+                "vehicle_0000676.jpg",
+                "vehicle_0008752.jpg",
+                "vehicle_0005909.jpg",
+                "vehicle_0000059.jpg",
+                "vehicle_0000749.jpg",
+                "vehicle_0005544.jpg"
+            ]
+        },
+        {
+            "text": "A black Audi Sedan.",
+            "image_names": [
+                "vehicle_0000912.jpg",
+                "vehicle_0001300.jpg",
+                "vehicle_0000611.jpg",
+                "vehicle_0006414.jpg",
+                "vehicle_0005859.jpg",
+                "vehicle_0007361.jpg",
+                "vehicle_0000335.jpg",
+                "vehicle_0006179.jpg",
+                "vehicle_0001244.jpg",
+                "vehicle_0000297.jpg"
+            ]
+        },
+        {
+            "text": "A white Chana Microbus.",
+            "image_names": [
+                "vehicle_0005447.jpg",
+                "vehicle_0008393.jpg",
+                "vehicle_0003081.jpg",
+                "vehicle_0008392.jpg",
+                "vehicle_0004009.jpg",
+                "vehicle_0005948.jpg",
+                "vehicle_0005954.jpg",
+                "vehicle_0008113.jpg",
+                "vehicle_0004177.jpg",
+                "vehicle_0000139.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Audi Sedan.",
+            "image_names": [
+                "vehicle_0000611.jpg",
+                "vehicle_0001300.jpg",
+                "vehicle_0000912.jpg",
+                "vehicle_0000334.jpg",
+                "vehicle_0005859.jpg",
+                "vehicle_0001244.jpg",
+                "vehicle_0001301.jpg",
+                "vehicle_0006414.jpg",
+                "vehicle_0000297.jpg",
+                "vehicle_0006306.jpg"
+            ]
+        },
+        {
+            "text": "A white Dongfeng Minivan.",
+            "image_names": [
+                "vehicle_0000893.jpg",
+                "vehicle_0001555.jpg",
+                "vehicle_0000892.jpg",
+                "vehicle_0001513.jpg",
+                "vehicle_0008958.jpg",
+                "vehicle_0002036.jpg",
+                "vehicle_0001476.jpg",
+                "vehicle_0006294.jpg",
+                "vehicle_0000042.jpg",
+                "vehicle_0001512.jpg"
+            ]
+        },
+        {
+            "text": "A blue Dongfeng Truck.",
+            "image_names": [
+                "vehicle_0009698.jpg",
+                "vehicle_0009697.jpg",
+                "vehicle_0009492.jpg",
+                "vehicle_0003565.jpg",
+                "vehicle_0009322.jpg",
+                "vehicle_0003384.jpg",
+                "vehicle_0003514.jpg",
+                "vehicle_0009812.jpg",
+                "vehicle_0003501.jpg",
+                "vehicle_0001883.jpg"
+            ]
+        },
+        {
+            "text": "This is a white Citroen Sedan.",
+            "image_names": [
+                "vehicle_0001669.jpg",
+                "vehicle_0001659.jpg",
+                "vehicle_0001247.jpg",
+                "vehicle_0001248.jpg",
+                "vehicle_0000046.jpg",
+                "vehicle_0000474.jpg",
+                "vehicle_0001684.jpg",
+                "vehicle_0000653.jpg",
+                "vehicle_0001097.jpg",
+                "vehicle_0001658.jpg"
+            ]
+        },
+        {
+            "text": "A black Chevrolet Sedan.",
+            "image_names": [
+                "vehicle_0000912.jpg",
+                "vehicle_0000919.jpg",
+                "vehicle_0001335.jpg",
+                "vehicle_0001109.jpg",
+                "vehicle_0001295.jpg",
+                "vehicle_0001406.jpg",
+                "vehicle_0000647.jpg",
+                "vehicle_0000335.jpg",
+                "vehicle_0000360.jpg",
+                "vehicle_0001950.jpg"
+            ]
+        },
+        {
+            "text": "A white Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001463.jpg",
+                "vehicle_0001341.jpg",
+                "vehicle_0002120.jpg",
+                "vehicle_0000093.jpg",
+                "vehicle_0000474.jpg",
+                "vehicle_0001662.jpg",
+                "vehicle_0000703.jpg",
+                "vehicle_0000363.jpg",
+                "vehicle_0001464.jpg",
+                "vehicle_0000473.jpg"
+            ]
+        },
+        {
+            "text": "This is a white KINGLONG Bus.",
+            "image_names": [
+                "vehicle_0003186.jpg",
+                "vehicle_0004189.jpg",
+                "vehicle_0002936.jpg",
+                "vehicle_0002972.jpg",
+                "vehicle_0001202.jpg",
+                "vehicle_0002291.jpg",
+                "vehicle_0000034.jpg",
+                "vehicle_0002452.jpg",
+                "vehicle_0002529.jpg",
+                "vehicle_0008170.jpg"
+            ]
+        },
+        {
+            "text": "A black Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0000912.jpg",
+                "vehicle_0001109.jpg",
+                "vehicle_0001243.jpg",
+                "vehicle_0001143.jpg",
+                "vehicle_0000349.jpg",
+                "vehicle_0000785.jpg",
+                "vehicle_0000786.jpg",
+                "vehicle_0001244.jpg",
+                "vehicle_0000647.jpg",
+                "vehicle_0000839.jpg"
+            ]
+        },
+        {
+            "text": "A black Dongfeng SUV.",
+            "image_names": [
+                "vehicle_0003890.jpg",
+                "vehicle_0000832.jpg",
+                "vehicle_0001503.jpg",
+                "vehicle_0000647.jpg",
+                "vehicle_0001276.jpg",
+                "vehicle_0001538.jpg",
+                "vehicle_0000839.jpg",
+                "vehicle_0000646.jpg",
+                "vehicle_0000546.jpg",
+                "vehicle_0003748.jpg"
+            ]
+        },
+        {
+            "text": "This is a white Suzuki SUV.",
+            "image_names": [
+                "vehicle_0006972.jpg",
+                "vehicle_0004086.jpg",
+                "vehicle_0006857.jpg",
+                "vehicle_0006360.jpg",
+                "vehicle_0004815.jpg",
+                "vehicle_0004134.jpg",
+                "vehicle_0003879.jpg",
+                "vehicle_0004175.jpg",
+                "vehicle_0004542.jpg",
+                "vehicle_0005351.jpg"
+            ]
+        },
+        {
+            "text": "A black Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0000912.jpg",
+                "vehicle_0001109.jpg",
+                "vehicle_0001243.jpg",
+                "vehicle_0001143.jpg",
+                "vehicle_0000349.jpg",
+                "vehicle_0000785.jpg",
+                "vehicle_0000786.jpg",
+                "vehicle_0001244.jpg",
+                "vehicle_0000647.jpg",
+                "vehicle_0000839.jpg"
+            ]
+        },
+        {
+            "text": "This is a white Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001463.jpg",
+                "vehicle_0000474.jpg",
+                "vehicle_0002116.jpg",
+                "vehicle_0002120.jpg",
+                "vehicle_0000244.jpg",
+                "vehicle_0001341.jpg",
+                "vehicle_0000245.jpg",
+                "vehicle_0001464.jpg",
+                "vehicle_0000093.jpg",
+                "vehicle_0002115.jpg"
+            ]
+        },
+        {
+            "text": "This is a black BYD Sedan.",
+            "image_names": [
+                "vehicle_0006031.jpg",
+                "vehicle_0000071.jpg",
+                "vehicle_0006032.jpg",
+                "vehicle_0000597.jpg",
+                "vehicle_0000165.jpg",
+                "vehicle_0000052.jpg",
+                "vehicle_0000817.jpg",
+                "vehicle_0000811.jpg",
+                "vehicle_0000003.jpg",
+                "vehicle_0006377.jpg"
+            ]
+        },
+        {
+            "text": "This is a grey BYD Sedan.",
+            "image_names": [
+                "vehicle_0002109.jpg",
+                "vehicle_0002004.jpg",
+                "vehicle_0001348.jpg",
+                "vehicle_0002110.jpg",
+                "vehicle_0002048.jpg",
+                "vehicle_0001910.jpg",
+                "vehicle_0002140.jpg",
+                "vehicle_0002007.jpg",
+                "vehicle_0002005.jpg",
+                "vehicle_0002003.jpg"
+            ]
+        },
+        {
+            "text": "A grey Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001973.jpg",
+                "vehicle_0001974.jpg",
+                "vehicle_0002209.jpg",
+                "vehicle_0001482.jpg",
+                "vehicle_0001078.jpg",
+                "vehicle_0001699.jpg",
+                "vehicle_0002119.jpg",
+                "vehicle_0001077.jpg",
+                "vehicle_0002088.jpg",
+                "vehicle_0001855.jpg"
+            ]
+        },
+        {
+            "text": "This is a white Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001463.jpg",
+                "vehicle_0000474.jpg",
+                "vehicle_0002116.jpg",
+                "vehicle_0002120.jpg",
+                "vehicle_0000244.jpg",
+                "vehicle_0001341.jpg",
+                "vehicle_0000245.jpg",
+                "vehicle_0001464.jpg",
+                "vehicle_0000093.jpg",
+                "vehicle_0002115.jpg"
+            ]
+        },
+        {
+            "text": "A grey Nissan Sedan.",
+            "image_names": [
+                "vehicle_0001348.jpg",
+                "vehicle_0002198.jpg",
+                "vehicle_0002200.jpg",
+                "vehicle_0002138.jpg",
+                "vehicle_0002151.jpg",
+                "vehicle_0002183.jpg",
+                "vehicle_0000315.jpg",
+                "vehicle_0002004.jpg",
+                "vehicle_0002015.jpg",
+                "vehicle_0002137.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001243.jpg",
+                "vehicle_0000819.jpg",
+                "vehicle_0000786.jpg",
+                "vehicle_0000049.jpg",
+                "vehicle_0000207.jpg",
+                "vehicle_0000337.jpg",
+                "vehicle_0000912.jpg",
+                "vehicle_0000785.jpg",
+                "vehicle_0001143.jpg",
+                "vehicle_0000435.jpg"
+            ]
+        },
+        {
+            "text": "This is a grey KINGLONG Bus.",
+            "image_names": [
+                "vehicle_0002156.jpg",
+                "vehicle_0001501.jpg",
+                "vehicle_0001836.jpg",
+                "vehicle_0004660.jpg",
+                "vehicle_0002094.jpg",
+                "vehicle_0001865.jpg",
+                "vehicle_0001746.jpg",
+                "vehicle_0002043.jpg",
+                "vehicle_0001885.jpg",
+                "vehicle_0002004.jpg"
+            ]
+        },
+        {
+            "text": "This is a grey SGMW Microbus.",
+            "image_names": [
+                "vehicle_0001501.jpg",
+                "vehicle_0001831.jpg",
+                "vehicle_0001769.jpg",
+                "vehicle_0001930.jpg",
+                "vehicle_0001811.jpg",
+                "vehicle_0001805.jpg",
+                "vehicle_0001806.jpg",
+                "vehicle_0000219.jpg",
+                "vehicle_0001770.jpg",
+                "vehicle_0002160.jpg"
+            ]
+        },
+        {
+            "text": "A white Honda SUV.",
+            "image_names": [
+                "vehicle_0001628.jpg",
+                "vehicle_0000984.jpg",
+                "vehicle_0001629.jpg",
+                "vehicle_0000942.jpg",
+                "vehicle_0009070.jpg",
+                "vehicle_0000893.jpg",
+                "vehicle_0007430.jpg",
+                "vehicle_0000245.jpg",
+                "vehicle_0006385.jpg",
+                "vehicle_0000261.jpg"
+            ]
+        },
+        {
+            "text": "A grey Soueast Sedan.",
+            "image_names": [
+                "vehicle_0002007.jpg",
+                "vehicle_0002048.jpg",
+                "vehicle_0002109.jpg",
+                "vehicle_0002137.jpg",
+                "vehicle_0000208.jpg",
+                "vehicle_0002168.jpg",
+                "vehicle_0002004.jpg",
+                "vehicle_0002198.jpg",
+                "vehicle_0001348.jpg",
+                "vehicle_0002151.jpg"
+            ]
+        },
+        {
+            "text": "A black Hyundai Sedan.",
+            "image_names": [
+                "vehicle_0001107.jpg",
+                "vehicle_0001335.jpg",
+                "vehicle_0000919.jpg",
+                "vehicle_0000597.jpg",
+                "vehicle_0000954.jpg",
+                "vehicle_0001019.jpg",
+                "vehicle_0000003.jpg",
+                "vehicle_0000912.jpg",
+                "vehicle_0006395.jpg",
+                "vehicle_0006872.jpg"
+            ]
+        },
+        {
+            "text": "This is a grey SGMW Microbus.",
+            "image_names": [
+                "vehicle_0001501.jpg",
+                "vehicle_0001831.jpg",
+                "vehicle_0001769.jpg",
+                "vehicle_0001930.jpg",
+                "vehicle_0001811.jpg",
+                "vehicle_0001805.jpg",
+                "vehicle_0001806.jpg",
+                "vehicle_0000219.jpg",
+                "vehicle_0001770.jpg",
+                "vehicle_0002160.jpg"
+            ]
+        },
+        {
+            "text": "This is a red Hyundai Sedan.",
+            "image_names": [
+                "vehicle_0000678.jpg",
+                "vehicle_0001465.jpg",
+                "vehicle_0001466.jpg",
+                "vehicle_0001113.jpg",
+                "vehicle_0002042.jpg",
+                "vehicle_0001969.jpg",
+                "vehicle_0001338.jpg",
+                "vehicle_0000628.jpg",
+                "vehicle_0000579.jpg",
+                "vehicle_0001499.jpg"
+            ]
+        },
+        {
+            "text": "This is a white Volkswagen SUV.",
+            "image_names": [
+                "vehicle_0002116.jpg",
+                "vehicle_0000245.jpg",
+                "vehicle_0002115.jpg",
+                "vehicle_0000244.jpg",
+                "vehicle_0000474.jpg",
+                "vehicle_0001463.jpg",
+                "vehicle_0001464.jpg",
+                "vehicle_0001561.jpg",
+                "vehicle_0002223.jpg",
+                "vehicle_0002120.jpg"
+            ]
+        },
+        {
+            "text": "A grey Nissan Sedan.",
+            "image_names": [
+                "vehicle_0001348.jpg",
+                "vehicle_0002198.jpg",
+                "vehicle_0002200.jpg",
+                "vehicle_0002138.jpg",
+                "vehicle_0002151.jpg",
+                "vehicle_0002183.jpg",
+                "vehicle_0000315.jpg",
+                "vehicle_0002004.jpg",
+                "vehicle_0002015.jpg",
+                "vehicle_0002137.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Buick Sedan.",
+            "image_names": [
+                "vehicle_0000955.jpg",
+                "vehicle_0000312.jpg",
+                "vehicle_0001069.jpg",
+                "vehicle_0004903.jpg",
+                "vehicle_0007511.jpg",
+                "vehicle_0006287.jpg",
+                "vehicle_0000578.jpg",
+                "vehicle_0000313.jpg",
+                "vehicle_0000956.jpg",
+                "vehicle_0000311.jpg"
+            ]
+        },
+        {
+            "text": "This is a grey Nissan Sedan.",
+            "image_names": [
+                "vehicle_0002008.jpg",
+                "vehicle_0002140.jpg",
+                "vehicle_0004864.jpg",
+                "vehicle_0001728.jpg",
+                "vehicle_0001885.jpg",
+                "vehicle_0002004.jpg",
+                "vehicle_0002138.jpg",
+                "vehicle_0008911.jpg",
+                "vehicle_0002198.jpg",
+                "vehicle_0002109.jpg"
+            ]
+        },
+        {
+            "text": "A white Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001463.jpg",
+                "vehicle_0001341.jpg",
+                "vehicle_0002120.jpg",
+                "vehicle_0000093.jpg",
+                "vehicle_0000474.jpg",
+                "vehicle_0001662.jpg",
+                "vehicle_0000703.jpg",
+                "vehicle_0000363.jpg",
+                "vehicle_0001464.jpg",
+                "vehicle_0000473.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Buick Sedan.",
+            "image_names": [
+                "vehicle_0000955.jpg",
+                "vehicle_0000312.jpg",
+                "vehicle_0001069.jpg",
+                "vehicle_0004903.jpg",
+                "vehicle_0007511.jpg",
+                "vehicle_0006287.jpg",
+                "vehicle_0000578.jpg",
+                "vehicle_0000313.jpg",
+                "vehicle_0000956.jpg",
+                "vehicle_0000311.jpg"
+            ]
+        },
+        {
+            "text": "A white Geely Sedan.",
+            "image_names": [
+                "vehicle_0001346.jpg",
+                "vehicle_0001543.jpg",
+                "vehicle_0001629.jpg",
+                "vehicle_0001542.jpg",
+                "vehicle_0000749.jpg",
+                "vehicle_0000227.jpg",
+                "vehicle_0001686.jpg",
+                "vehicle_0005187.jpg",
+                "vehicle_0001232.jpg",
+                "vehicle_0000363.jpg"
+            ]
+        },
+        {
+            "text": "A black Chevrolet Sedan.",
+            "image_names": [
+                "vehicle_0000912.jpg",
+                "vehicle_0000919.jpg",
+                "vehicle_0001335.jpg",
+                "vehicle_0001109.jpg",
+                "vehicle_0001295.jpg",
+                "vehicle_0001406.jpg",
+                "vehicle_0000647.jpg",
+                "vehicle_0000335.jpg",
+                "vehicle_0000360.jpg",
+                "vehicle_0001950.jpg"
+            ]
+        },
+        {
+            "text": "This is a red Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001479.jpg",
+                "vehicle_0008587.jpg",
+                "vehicle_0001877.jpg",
+                "vehicle_0000678.jpg",
+                "vehicle_0002042.jpg",
+                "vehicle_0000402.jpg",
+                "vehicle_0001475.jpg",
+                "vehicle_0007857.jpg",
+                "vehicle_0001241.jpg",
+                "vehicle_0001141.jpg"
+            ]
+        },
+        {
+            "text": "A red Volkswagen Sedan.",
+            "image_names": [
+                "vehicle_0001479.jpg",
+                "vehicle_0008587.jpg",
+                "vehicle_0004875.jpg",
+                "vehicle_0007857.jpg",
+                "vehicle_0000388.jpg",
+                "vehicle_0002042.jpg",
+                "vehicle_0000678.jpg",
+                "vehicle_0000402.jpg",
+                "vehicle_0002052.jpg",
+                "vehicle_0001095.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Honda Sedan.",
+            "image_names": [
+                "vehicle_0000321.jpg",
+                "vehicle_0000973.jpg",
+                "vehicle_0000972.jpg",
+                "vehicle_0006140.jpg",
+                "vehicle_0000351.jpg",
+                "vehicle_0006031.jpg",
+                "vehicle_0000070.jpg",
+                "vehicle_0000019.jpg",
+                "vehicle_0000499.jpg",
+                "vehicle_0007158.jpg"
+            ]
+        },
+        {
+            "text": "This is a white Jinbei Microbus.",
+            "image_names": [
+                "vehicle_0000034.jpg",
+                "vehicle_0001013.jpg",
+                "vehicle_0000894.jpg",
+                "vehicle_0003031.jpg",
+                "vehicle_0001202.jpg",
+                "vehicle_0008010.jpg",
+                "vehicle_0003010.jpg",
+                "vehicle_0007455.jpg",
+                "vehicle_0001435.jpg",
+                "vehicle_0007453.jpg"
+            ]
+        },
+        {
+            "text": "A red Yutong Bus.",
+            "image_names": [
+                "vehicle_0002716.jpg",
+                "vehicle_0000403.jpg",
+                "vehicle_0000377.jpg",
+                "vehicle_0007247.jpg",
+                "vehicle_0002676.jpg",
+                "vehicle_0000376.jpg",
+                "vehicle_0005433.jpg",
+                "vehicle_0006784.jpg",
+                "vehicle_0002089.jpg",
+                "vehicle_0002147.jpg"
+            ]
+        },
+        {
+            "text": "This is a black Honda Sedan.",
+            "image_names": [
+                "vehicle_0000321.jpg",
+                "vehicle_0000973.jpg",
+                "vehicle_0000972.jpg",
+                "vehicle_0006140.jpg",
+                "vehicle_0000351.jpg",
+                "vehicle_0006031.jpg",
+                "vehicle_0000070.jpg",
+                "vehicle_0000019.jpg",
+                "vehicle_0000499.jpg",
+                "vehicle_0007158.jpg"
+            ]
+        },
+        {
+            "text": "A grey Chery Sedan.",
+            "image_names": [
+                "vehicle_0002198.jpg",
+                "vehicle_0001348.jpg",
+                "vehicle_0002137.jpg",
+                "vehicle_0001806.jpg",
+                "vehicle_0001534.jpg",
+                "vehicle_0002015.jpg",
+                "vehicle_0000315.jpg",
+                "vehicle_0002183.jpg",
+                "vehicle_0002007.jpg",
+                "vehicle_0001997.jpg"
+            ]
+        },
+        {
+            "text": "This is a white Honda Sedan.",
+            "image_names": [
+                "vehicle_0009070.jpg",
+                "vehicle_0006385.jpg",
+                "vehicle_0001629.jpg",
+                "vehicle_0001628.jpg",
+                "vehicle_0000984.jpg",
+                "vehicle_0001232.jpg",
+                "vehicle_0005589.jpg",
+                "vehicle_0005751.jpg",
+                "vehicle_0000098.jpg",
+                "vehicle_0002079.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is an adult person aged 18-60, and is standing sideways and carrying a handbag. He is wearning glasses.",
+            "image_names": [
+                "091979.jpg",
+                "093318.jpg",
+                "090229.jpg",
+                "093719.jpg",
+                "096240.jpg",
+                "091321.jpg",
+                "095058.jpg",
+                "095453.jpg",
+                "090310.jpg",
+                "093777.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian is someone who walks on foot, is between 18 and 60 years old, with his body facing the camera. He is wearning glasses.",
+            "image_names": [
+                "095448.jpg",
+                "091773.jpg",
+                "093051.jpg",
+                "092363.jpg",
+                "094912.jpg",
+                "091242.jpg",
+                "091138.jpg",
+                "092845.jpg",
+                "094010.jpg",
+                "093515.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is female is between 18 and 60 years old, with her body back to the camera. She is in a tee shirt with long sleeves with an upper logo.",
+            "image_names": [
+                "090985.jpg",
+                "096483.jpg",
+                "094060.jpg",
+                "099456.jpg",
+                "092293.jpg",
+                "090180.jpg",
+                "092821.jpg",
+                "096431.jpg",
+                "099474.jpg",
+                "091157.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is between 18 and 60 years old, with his body back to the camera and with a backpack. He is in a tee shirt with long sleeves with an upper plaid.",
+            "image_names": [
+                "099364.jpg",
+                "093162.jpg",
+                "092104.jpg",
+                "094423.jpg",
+                "095115.jpg",
+                "098756.jpg",
+                "097715.jpg",
+                "091683.jpg",
+                "090316.jpg",
+                "094578.jpg"
+            ]
+        },
+        {
+            "text": "A walking man who is between 18 and 60 years old, with his body back to the camera. He is in a tee shirt with long sleeves with a logo on the upper.",
+            "image_names": [
+                "093202.jpg",
+                "094060.jpg",
+                "094558.jpg",
+                "094091.jpg",
+                "096267.jpg",
+                "093901.jpg",
+                "095160.jpg",
+                "096265.jpg",
+                "093163.jpg",
+                "094752.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is male is an adult person aged 18-60, with his body back to the camera. He is wearning glasses.",
+            "image_names": [
+                "098842.jpg",
+                "094444.jpg",
+                "096617.jpg",
+                "093715.jpg",
+                "091377.jpg",
+                "090369.jpg",
+                "092046.jpg",
+                "099835.jpg",
+                "099664.jpg",
+                "098510.jpg"
+            ]
+        },
+        {
+            "text": "A female pedestrian is someone who walks on foot, is an adult person aged 18-60, and is standing sideways. She is in a shirt with short sleeves and in a skirt or dress.",
+            "image_names": [
+                "095225.jpg",
+                "098008.jpg",
+                "093695.jpg",
+                "095965.jpg",
+                "099409.jpg",
+                "090809.jpg",
+                "090966.jpg",
+                "098961.jpg",
+                "094331.jpg",
+                "095287.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is between 18 and 60 years old, with his body facing the camera. He is wearning glasses.",
+            "image_names": [
+                "092296.jpg",
+                "093366.jpg",
+                "098579.jpg",
+                "095632.jpg",
+                "092332.jpg",
+                "095342.jpg",
+                "097305.jpg",
+                "094015.jpg",
+                "095004.jpg",
+                "095573.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is female is between 18 and 60 years old, and is standing sideways and has a bag over the shoulder. She is in a shirt with short sleeves and wearing skirt or dress.",
+            "image_names": [
+                "097821.jpg",
+                "094677.jpg",
+                "095300.jpg",
+                "092475.jpg",
+                "097387.jpg",
+                "092408.jpg",
+                "097390.jpg",
+                "097941.jpg",
+                "097077.jpg",
+                "099422.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian is someone who walks on foot, is an adult person aged 18-60, and is standing sideways and holds objects in front. He is in a short sleeve shirt.",
+            "image_names": [
+                "092965.jpg",
+                "098933.jpg",
+                "099293.jpg",
+                "098267.jpg",
+                "095655.jpg",
+                "097272.jpg",
+                "098156.jpg",
+                "094199.jpg",
+                "090010.jpg",
+                "098380.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian is someone who walks on foot, is aged 60 or older, with his body back to the camera. He is in a tee shirt with short sleeves.",
+            "image_names": [
+                "092750.jpg",
+                "095690.jpg",
+                "098459.jpg",
+                "099260.jpg",
+                "098581.jpg",
+                "096489.jpg",
+                "098516.jpg",
+                "094245.jpg",
+                "099075.jpg",
+                "094823.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is female is between 18 and 60 years old, and is standing sideways and clutching a handbag. She is in a shirt with long sleeves.",
+            "image_names": [
+                "097544.jpg",
+                "097625.jpg",
+                "097751.jpg",
+                "098276.jpg",
+                "096387.jpg",
+                "097651.jpg",
+                "092337.jpg",
+                "092713.jpg",
+                "099118.jpg",
+                "097680.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is male is between 18 and 60 years old, and is standing sideways. He is wearning glasses.",
+            "image_names": [
+                "093539.jpg",
+                "090708.jpg",
+                "094828.jpg",
+                "096408.jpg",
+                "092070.jpg",
+                "093290.jpg",
+                "099687.jpg",
+                "091847.jpg",
+                "096972.jpg",
+                "090770.jpg"
+            ]
+        },
+        {
+            "text": "A female pedestrian is someone who walks on foot, is between 18 and 60 years old, with her body back to the camera. She is in a shirt with long sleeves and wearing skirt or dress.",
+            "image_names": [
+                "097219.jpg",
+                "091813.jpg",
+                "093664.jpg",
+                "090158.jpg",
+                "092215.jpg",
+                "090771.jpg",
+                "095596.jpg",
+                "093009.jpg",
+                "094411.jpg",
+                "091872.jpg"
+            ]
+        },
+        {
+            "text": "A walking woman who is an adult person aged 18-60, with her body back to the camera and is carrying a shoulder bag. She is in a shirt with long sleeves.",
+            "image_names": [
+                "097968.jpg",
+                "094830.jpg",
+                "095055.jpg",
+                "092799.jpg",
+                "096570.jpg",
+                "090572.jpg",
+                "098341.jpg",
+                "099991.jpg",
+                "092084.jpg",
+                "098381.jpg"
+            ]
+        },
+        {
+            "text": "A female pedestrian who is an adult person aged 18-60, and is standing sideways. She is in a tee shirt with short sleeves.",
+            "image_names": [
+                "097737.jpg",
+                "097700.jpg",
+                "099881.jpg",
+                "097154.jpg",
+                "096770.jpg",
+                "095046.jpg",
+                "092194.jpg",
+                "099035.jpg",
+                "096765.jpg",
+                "099072.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is an adult person aged 18-60, and is standing sideways and with a backpack. He is in a long sleeve shirt.",
+            "image_names": [
+                "092633.jpg",
+                "091906.jpg",
+                "099883.jpg",
+                "092005.jpg",
+                "093368.jpg",
+                "099112.jpg",
+                "090380.jpg",
+                "091739.jpg",
+                "096912.jpg",
+                "090564.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is an adult perso
