@@ -120983,4 +120983,932 @@
                 "095975.jpg",
                 "098967.jpg",
                 "097789.jpg",
-            
+                "091059.jpg",
+                "095467.jpg",
+                "090633.jpg",
+                "091626.jpg",
+                "094900.jpg"
+            ]
+        },
+        {
+            "text": "A female pedestrian who is between 18 and 60 years old, with her body back to the camera and is carrying a shoulder bag. She is in a long sleeve shirt.",
+            "image_names": [
+                "095808.jpg",
+                "092229.jpg",
+                "099991.jpg",
+                "093365.jpg",
+                "091625.jpg",
+                "094144.jpg",
+                "099362.jpg",
+                "094449.jpg",
+                "092974.jpg",
+                "096846.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian is someone who walks on foot, is between 18 and 60 years old, with his body facing the camera. He is wearning glasses.",
+            "image_names": [
+                "095448.jpg",
+                "091773.jpg",
+                "093051.jpg",
+                "092363.jpg",
+                "094912.jpg",
+                "091242.jpg",
+                "091138.jpg",
+                "092845.jpg",
+                "094010.jpg",
+                "093515.jpg"
+            ]
+        },
+        {
+            "text": "A walking man who is an adult person aged 18-60, with his body back to the camera and has a shoulderbag. He is in a tee shirt with short sleeves.",
+            "image_names": [
+                "096364.jpg",
+                "092598.jpg",
+                "098259.jpg",
+                "091270.jpg",
+                "090732.jpg",
+                "093370.jpg",
+                "092106.jpg",
+                "098201.jpg",
+                "096232.jpg",
+                "098378.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is between 18 and 60 years old, with his body back to the camera. He is in a shirt with short sleeves with an upper splice.",
+            "image_names": [
+                "096534.jpg",
+                "092818.jpg",
+                "093640.jpg",
+                "099779.jpg",
+                "094826.jpg",
+                "091180.jpg",
+                "090459.jpg",
+                "099895.jpg",
+                "098959.jpg",
+                "096070.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is between 18 and 60 years old, with his body facing the camera and with a shoulderbag. He is wearning glasses.",
+            "image_names": [
+                "097500.jpg",
+                "096847.jpg",
+                "095694.jpg",
+                "097761.jpg",
+                "092235.jpg",
+                "098098.jpg",
+                "097793.jpg",
+                "096740.jpg",
+                "095948.jpg",
+                "093768.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is male is an adult person aged 18-60, and is standing sideways. He is wearning glasses.",
+            "image_names": [
+                "092725.jpg",
+                "098712.jpg",
+                "092724.jpg",
+                "092470.jpg",
+                "091018.jpg",
+                "094180.jpg",
+                "092641.jpg",
+                "093813.jpg",
+                "099728.jpg",
+                "093123.jpg"
+            ]
+        },
+        {
+            "text": "A walking woman who is between 18 and 60 years old, with her body back to the camera and clutching a handbag. She is in a long sleeve shirt.",
+            "image_names": [
+                "100000.jpg",
+                "099053.jpg",
+                "098642.jpg",
+                "099632.jpg",
+                "090193.jpg",
+                "097518.jpg",
+                "095302.jpg",
+                "093522.jpg",
+                "097127.jpg",
+                "090604.jpg"
+            ]
+        },
+        {
+            "text": "A walking woman who is an adult person aged 18-60, with her body back to the camera and with a backpack. She is in a long sleeve shirt.",
+            "image_names": [
+                "092961.jpg",
+                "091268.jpg",
+                "098406.jpg",
+                "093227.jpg",
+                "096593.jpg",
+                "097026.jpg",
+                "096039.jpg",
+                "098021.jpg",
+                "093239.jpg",
+                "097266.jpg"
+            ]
+        },
+        {
+            "text": "A walking man who is an adult person aged 18-60, with his body back to the camera. He is in a long sleeve shirt with an upper plaid.",
+            "image_names": [
+                "096992.jpg",
+                "090021.jpg",
+                "092964.jpg",
+                "093998.jpg",
+                "097436.jpg",
+                "095127.jpg",
+                "094428.jpg",
+                "095037.jpg",
+                "093103.jpg",
+                "099932.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian is someone who walks on foot, is an adult person aged 18-60, and is standing sideways and carrying a handbag. He is in a short sleeve shirt.",
+            "image_names": [
+                "090590.jpg",
+                "090465.jpg",
+                "091517.jpg",
+                "094872.jpg",
+                "094627.jpg",
+                "099269.jpg",
+                "090766.jpg",
+                "096528.jpg",
+                "097598.jpg",
+                "099983.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is between 18 and 60 years old, with his body facing the camera. He is in a tee shirt with short sleeves with an upper logo.",
+            "image_names": [
+                "093241.jpg",
+                "097609.jpg",
+                "090649.jpg",
+                "098565.jpg",
+                "097032.jpg",
+                "098282.jpg",
+                "093736.jpg",
+                "097432.jpg",
+                "095691.jpg",
+                "095348.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is male is between 18 and 60 years old, with his body back to the camera. He is in a long sleeve shirt with a plaid on the upper.",
+            "image_names": [
+                "096587.jpg",
+                "093834.jpg",
+                "090516.jpg",
+                "096005.jpg",
+                "092562.jpg",
+                "095356.jpg",
+                "092023.jpg",
+                "091667.jpg",
+                "095338.jpg",
+                "091764.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is female is between 18 and 60 years old, with her body back to the camera. She is wearning a coat that is long,boots.",
+            "image_names": [
+                "095314.jpg",
+                "097806.jpg",
+                "099148.jpg",
+                "099911.jpg",
+                "096511.jpg",
+                "094514.jpg",
+                "099677.jpg",
+                "098187.jpg",
+                "097913.jpg",
+                "095547.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is female is an adult person aged 18-60, and is standing sideways and is carrying a shoulder bag. She is in a shirt with long sleeves with a plaid on the upper.",
+            "image_names": [
+                "094643.jpg",
+                "092575.jpg",
+                "091284.jpg",
+                "095397.jpg",
+                "093315.jpg",
+                "091005.jpg",
+                "097068.jpg",
+                "098743.jpg",
+                "097626.jpg",
+                "099201.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is an adult person aged 18-60, with his body facing the camera. He is in a shirt with short sleeves with a plaid on the upper.",
+            "image_names": [
+                "091205.jpg",
+                "093190.jpg",
+                "090917.jpg",
+                "091317.jpg",
+                "093419.jpg",
+                "099642.jpg",
+                "096958.jpg",
+                "099955.jpg",
+                "092884.jpg",
+                "095243.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is between 18 and 60 years old, with his body facing the camera. He is in a tee shirt with short sleeves with a logo on the upper.",
+            "image_names": [
+                "095309.jpg",
+                "092385.jpg",
+                "093843.jpg",
+                "095505.jpg",
+                "094358.jpg",
+                "094223.jpg",
+                "090452.jpg",
+                "091772.jpg",
+                "092038.jpg",
+                "095341.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is male is between 18 and 60 years old, and is standing sideways. He is in a shirt with long sleeves with a plaid on the upper.",
+            "image_names": [
+                "095117.jpg",
+                "090047.jpg",
+                "094401.jpg",
+                "097261.jpg",
+                "099739.jpg",
+                "091141.jpg",
+                "093413.jpg",
+                "096003.jpg",
+                "094855.jpg",
+                "098064.jpg"
+            ]
+        },
+        {
+            "text": "A walking woman who is between 18 and 60 years old, with her body facing the camera. She is wearning glasses.",
+            "image_names": [
+                "098212.jpg",
+                "092857.jpg",
+                "091386.jpg",
+                "097641.jpg",
+                "099678.jpg",
+                "097048.jpg",
+                "096337.jpg",
+                "099963.jpg",
+                "097977.jpg",
+                "099905.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is between 18 and 60 years old, with his body facing the camera. He is in a shirt with short sleeves with an upper logo.",
+            "image_names": [
+                "090649.jpg",
+                "093241.jpg",
+                "098071.jpg",
+                "093353.jpg",
+                "098565.jpg",
+                "096854.jpg",
+                "095691.jpg",
+                "098593.jpg",
+                "099050.jpg",
+                "091897.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is male is an adult person aged 18-60, and is standing sideways. He is wearning glasses.",
+            "image_names": [
+                "092725.jpg",
+                "098712.jpg",
+                "092724.jpg",
+                "092470.jpg",
+                "091018.jpg",
+                "094180.jpg",
+                "092641.jpg",
+                "093813.jpg",
+                "099728.jpg",
+                "093123.jpg"
+            ]
+        },
+        {
+            "text": "A female pedestrian is someone who walks on foot, is between 18 and 60 years old, with her body back to the camera. She is in a shirt with long sleeves with a logo on the upper.",
+            "image_names": [
+                "090985.jpg",
+                "096431.jpg",
+                "092293.jpg",
+                "090180.jpg",
+                "097415.jpg",
+                "091157.jpg",
+                "095105.jpg",
+                "096483.jpg",
+                "092821.jpg",
+                "092764.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is an adult person aged 18-60, with his body back to the camera and has a bag over the shoulder. He is in a tee shirt with long sleeves.",
+            "image_names": [
+                "091161.jpg",
+                "095952.jpg",
+                "090325.jpg",
+                "097726.jpg",
+                "091615.jpg",
+                "091678.jpg",
+                "094348.jpg",
+                "093633.jpg",
+                "095852.jpg",
+                "095914.jpg"
+            ]
+        },
+        {
+            "text": "A walking woman who is between 18 and 60 years old, with her body back to the camera and has a bag over the shoulder. She is in a shirt with short sleeves.",
+            "image_names": [
+                "094061.jpg",
+                "090481.jpg",
+                "099082.jpg",
+                "093860.jpg",
+                "090458.jpg",
+                "091915.jpg",
+                "091135.jpg",
+                "094707.jpg",
+                "095634.jpg",
+                "096002.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is female is between 18 and 60 years old, with her body facing the camera. She is wearning glasses.",
+            "image_names": [
+                "099905.jpg",
+                "096337.jpg",
+                "099678.jpg",
+                "091404.jpg",
+                "092161.jpg",
+                "098212.jpg",
+                "091305.jpg",
+                "095340.jpg",
+                "099963.jpg",
+                "097048.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is male is an adult person aged 18-60, with his body facing the camera and carrying a backpack. He is in a tee shirt with short sleeves.",
+            "image_names": [
+                "091905.jpg",
+                "091647.jpg",
+                "093877.jpg",
+                "091785.jpg",
+                "090931.jpg",
+                "094940.jpg",
+                "095470.jpg",
+                "090999.jpg",
+                "098557.jpg",
+                "096347.jpg"
+            ]
+        },
+        {
+            "text": "A female pedestrian who is between 18 and 60 years old, with her body back to the camera and holding a handbag. She is in a tee shirt with short sleeves.",
+            "image_names": [
+                "095682.jpg",
+                "096887.jpg",
+                "090447.jpg",
+                "090609.jpg",
+                "096229.jpg",
+                "090240.jpg",
+                "093447.jpg",
+                "094882.jpg",
+                "095944.jpg",
+                "094398.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is male is an adult person aged 18-60, with his body facing the camera. He is wearning glasses.",
+            "image_names": [
+                "092941.jpg",
+                "095484.jpg",
+                "099800.jpg",
+                "092897.jpg",
+                "090306.jpg",
+                "097336.jpg",
+                "099880.jpg",
+                "094919.jpg",
+                "094197.jpg",
+                "095818.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is female is an adult person aged 18-60, with her body back to the camera. She is wearning boots.",
+            "image_names": [
+                "097648.jpg",
+                "090904.jpg",
+                "090322.jpg",
+                "096458.jpg",
+                "099214.jpg",
+                "091768.jpg",
+                "097799.jpg",
+                "091858.jpg",
+                "095239.jpg",
+                "093899.jpg"
+            ]
+        },
+        {
+            "text": "A walking woman who is between 18 and 60 years old, and is standing sideways and has a shoulderbag. She is wearning glasses,a longcoat.",
+            "image_names": [
+                "095788.jpg",
+                "090129.jpg",
+                "094409.jpg",
+                "093036.jpg",
+                "095786.jpg",
+                "099204.jpg",
+                "090484.jpg",
+                "092944.jpg",
+                "099731.jpg",
+                "097238.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is an adult person aged 18-60, and is standing sideways. He is in a shirt with short sleeves with an upper stripe.",
+            "image_names": [
+                "090188.jpg",
+                "092055.jpg",
+                "094105.jpg",
+                "097710.jpg",
+                "099079.jpg",
+                "090436.jpg",
+                "094910.jpg",
+                "091810.jpg",
+                "093952.jpg",
+                "098969.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian is someone who walks on foot, is an adult person aged 18-60, with his body facing the camera. He is in a shirt with long sleeves with an upper stripe.",
+            "image_names": [
+                "092672.jpg",
+                "095049.jpg",
+                "090643.jpg",
+                "091058.jpg",
+                "090879.jpg",
+                "091042.jpg",
+                "091867.jpg",
+                "095118.jpg",
+                "090823.jpg",
+                "090051.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is between 18 and 60 years old, and is standing sideways. He is in a tee shirt with long sleeves with a plaid on the upper.",
+            "image_names": [
+                "097261.jpg",
+                "090047.jpg",
+                "095117.jpg",
+                "094401.jpg",
+                "092685.jpg",
+                "099739.jpg",
+                "094855.jpg",
+                "093413.jpg",
+                "091141.jpg",
+                "091554.jpg"
+            ]
+        },
+        {
+            "text": "A female pedestrian who is an adult person aged 18-60, and is standing sideways and carrying a handbag. She is in a tee shirt with long sleeves.",
+            "image_names": [
+                "092337.jpg",
+                "097835.jpg",
+                "099118.jpg",
+                "092984.jpg",
+                "092713.jpg",
+                "097680.jpg",
+                "093142.jpg",
+                "092518.jpg",
+                "097513.jpg",
+                "097544.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is male is an adult person aged 18-60, and is standing sideways. He is in a shirt with short sleeves with an upper logo.",
+            "image_names": [
+                "092690.jpg",
+                "090889.jpg",
+                "090655.jpg",
+                "096631.jpg",
+                "092739.jpg",
+                "099965.jpg",
+                "095444.jpg",
+                "092979.jpg",
+                "096076.jpg",
+                "095206.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is between 18 and 60 years old, with his body back to the camera and has a bag over the shoulder. He is in a shirt with long sleeves with an upper plaid.",
+            "image_names": [
+                "095137.jpg",
+                "095423.jpg",
+                "097405.jpg",
+                "093947.jpg",
+                "091201.jpg",
+                "090029.jpg",
+                "096744.jpg",
+                "097800.jpg",
+                "094301.jpg",
+                "099594.jpg"
+            ]
+        },
+        {
+            "text": "A female pedestrian is someone who walks on foot, is an adult person aged 18-60, and is standing sideways and carrying a backpack. She is wearning glasses.",
+            "image_names": [
+                "092022.jpg",
+                "099420.jpg",
+                "096927.jpg",
+                "094900.jpg",
+                "090925.jpg",
+                "095467.jpg",
+                "091115.jpg",
+                "098399.jpg",
+                "098630.jpg",
+                "096480.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian is someone who walks on foot, is between 18 and 60 years old, with his body facing the camera. He is in a short sleeve shirt with a logo on the upper.",
+            "image_names": [
+                "097281.jpg",
+                "093473.jpg",
+                "095101.jpg",
+                "090427.jpg",
+                "094974.jpg",
+                "095691.jpg",
+                "096854.jpg",
+                "094223.jpg",
+                "097773.jpg",
+                "090617.jpg"
+            ]
+        },
+        {
+            "text": "A walking man who is between 18 and 60 years old, and is standing sideways. He is wearning glasses.",
+            "image_names": [
+                "095878.jpg",
+                "090747.jpg",
+                "094330.jpg",
+                "099140.jpg",
+                "096068.jpg",
+                "091645.jpg",
+                "094011.jpg",
+                "092254.jpg",
+                "092115.jpg",
+                "092191.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is between 18 and 60 years old, and is standing sideways and carrying a backpack. He is wearning glasses.",
+            "image_names": [
+                "097344.jpg",
+                "097209.jpg",
+                "090819.jpg",
+                "099429.jpg",
+                "098853.jpg",
+                "090069.jpg",
+                "091621.jpg",
+                "097304.jpg",
+                "098364.jpg",
+                "091032.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is male is between 18 and 60 years old, with his body facing the camera. He is in a shirt with long sleeves with an upper splice.",
+            "image_names": [
+                "092351.jpg",
+                "092465.jpg",
+                "099453.jpg",
+                "094633.jpg",
+                "093878.jpg",
+                "099781.jpg",
+                "094986.jpg",
+                "095125.jpg",
+                "093232.jpg",
+                "090818.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian is someone who walks on foot, is an adult person aged 18-60, and is standing sideways. He is wearning glasses.",
+            "image_names": [
+                "093017.jpg",
+                "091594.jpg",
+                "093538.jpg",
+                "091505.jpg",
+                "098360.jpg",
+                "091009.jpg",
+                "097170.jpg",
+                "094598.jpg",
+                "091306.jpg",
+                "092940.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian is someone who walks on foot, is an adult person aged 18-60, with his body back to the camera and carrying a backpack. He is in a shirt with long sleeves.",
+            "image_names": [
+                "097211.jpg",
+                "092514.jpg",
+                "092956.jpg",
+                "096752.jpg",
+                "099933.jpg",
+                "095514.jpg",
+                "090585.jpg",
+                "091866.jpg",
+                "093297.jpg",
+                "091035.jpg"
+            ]
+        },
+        {
+            "text": "A female pedestrian is someone who walks on foot, is an adult person aged 18-60, with her body facing the camera and clutching a handbag. She is in a long sleeve shirt.",
+            "image_names": [
+                "090662.jpg",
+                "097893.jpg",
+                "091238.jpg",
+                "096564.jpg",
+                "093676.jpg",
+                "090671.jpg",
+                "094922.jpg",
+                "093092.jpg",
+                "090825.jpg",
+                "099972.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is female is between 18 and 60 years old, and is standing sideways and with a backpack. She is in a shirt with short sleeves with a logo on the upper.",
+            "image_names": [
+                "095337.jpg",
+                "093691.jpg",
+                "095975.jpg",
+                "095467.jpg",
+                "091059.jpg",
+                "090633.jpg",
+                "098967.jpg",
+                "097789.jpg",
+                "096480.jpg",
+                "094900.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is male is between 18 and 60 years old, with his body facing the camera. He is wearning glasses.",
+            "image_names": [
+                "092647.jpg",
+                "098758.jpg",
+                "092468.jpg",
+                "092058.jpg",
+                "091989.jpg",
+                "099591.jpg",
+                "093733.jpg",
+                "096304.jpg",
+                "091651.jpg",
+                "095151.jpg"
+            ]
+        },
+        {
+            "text": "A female pedestrian is someone who walks on foot, is between 18 and 60 years old, with her body back to the camera. She is wearning glasses.",
+            "image_names": [
+                "090501.jpg",
+                "094491.jpg",
+                "096573.jpg",
+                "091731.jpg",
+                "094836.jpg",
+                "091084.jpg",
+                "093385.jpg",
+                "092696.jpg",
+                "092908.jpg",
+                "097611.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is between 18 and 60 years old, with his body facing the camera. He is wearning glasses.",
+            "image_names": [
+                "092296.jpg",
+                "093366.jpg",
+                "098579.jpg",
+                "095632.jpg",
+                "092332.jpg",
+                "095342.jpg",
+                "097305.jpg",
+                "094015.jpg",
+                "095004.jpg",
+                "095573.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is male is an adult person aged 18-60, with his body facing the camera. He is wearning glasses.",
+            "image_names": [
+                "092941.jpg",
+                "095484.jpg",
+                "099800.jpg",
+                "092897.jpg",
+                "090306.jpg",
+                "097336.jpg",
+                "099880.jpg",
+                "094919.jpg",
+                "094197.jpg",
+                "095818.jpg"
+            ]
+        },
+        {
+            "text": "A walking man who is between 18 and 60 years old, with his body back to the camera. He is in a shirt with long sleeves with a plaid on the upper.",
+            "image_names": [
+                "092023.jpg",
+                "095356.jpg",
+                "093595.jpg",
+                "099939.jpg",
+                "090929.jpg",
+                "096005.jpg",
+                "090122.jpg",
+                "092525.jpg",
+                "090304.jpg",
+                "096324.jpg"
+            ]
+        },
+        {
+            "text": "A female pedestrian is someone who walks on foot, is an adult person aged 18-60, and is standing sideways and has a bag over the shoulder. She is wearning a longcoat.",
+            "image_names": [
+                "093036.jpg",
+                "097275.jpg",
+                "091265.jpg",
+                "094351.jpg",
+                "095786.jpg",
+                "096775.jpg",
+                "099099.jpg",
+                "095161.jpg",
+                "099585.jpg",
+                "090933.jpg"
+            ]
+        },
+        {
+            "text": "A walking man who is an adult person aged 18-60, and is standing sideways. He is in a shirt with long sleeves with an upper stripe.",
+            "image_names": [
+                "093637.jpg",
+                "097824.jpg",
+                "092765.jpg",
+                "096153.jpg",
+                "094314.jpg",
+                "091097.jpg",
+                "094896.jpg",
+                "093625.jpg",
+                "096222.jpg",
+                "095249.jpg"
+            ]
+        },
+        {
+            "text": "A walking woman who is between 18 and 60 years old, and is standing sideways and holding a handbag. She is in a tee shirt with long sleeves.",
+            "image_names": [
+                "092731.jpg",
+                "097751.jpg",
+                "092984.jpg",
+                "097680.jpg",
+                "090711.jpg",
+                "097544.jpg",
+                "096827.jpg",
+                "092713.jpg",
+                "098276.jpg",
+                "097835.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian who is an adult person aged 18-60, and is standing sideways. He is in a tee shirt with short sleeves.",
+            "image_names": [
+                "098539.jpg",
+                "098818.jpg",
+                "092246.jpg",
+                "096735.jpg",
+                "090528.jpg",
+                "094135.jpg",
+                "099499.jpg",
+                "090725.jpg",
+                "094968.jpg",
+                "090508.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is male is an adult person aged 18-60, and is standing sideways. He is wearning glasses.",
+            "image_names": [
+                "092725.jpg",
+                "098712.jpg",
+                "092724.jpg",
+                "092470.jpg",
+                "091018.jpg",
+                "094180.jpg",
+                "092641.jpg",
+                "093813.jpg",
+                "099728.jpg",
+                "093123.jpg"
+            ]
+        },
+        {
+            "text": "A walking man who is an adult person aged 18-60, with his body facing the camera. He is wearning glasses.",
+            "image_names": [
+                "094880.jpg",
+                "094270.jpg",
+                "094231.jpg",
+                "096000.jpg",
+                "092686.jpg",
+                "092538.jpg",
+                "094345.jpg",
+                "090695.jpg",
+                "099915.jpg",
+                "090030.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian is someone who walks on foot, is an adult person aged 18-60, and is standing sideways. He is in a shirt with long sleeves with a plaid on the upper.",
+            "image_names": [
+                "090301.jpg",
+                "098739.jpg",
+                "094640.jpg",
+                "097804.jpg",
+                "092037.jpg",
+                "092685.jpg",
+                "090223.jpg",
+                "092272.jpg",
+                "090723.jpg",
+                "099381.jpg"
+            ]
+        },
+        {
+            "text": "A pedestrian who is male is an adult person aged 18-60, and is standing sideways. He is in a shirt with short sleeves with an upper stripe.",
+            "image_names": [
+                "090188.jpg",
+                "091810.jpg",
+                "094105.jpg",
+                "097710.jpg",
+                "093952.jpg",
+                "098559.jpg",
+                "092484.jpg",
+                "091023.jpg",
+                "099079.jpg",
+                "090436.jpg"
+            ]
+        },
+        {
+            "text": "A female pedestrian is someone who walks on foot, is an adult person aged 18-60, with her body back to the camera and with a shoulderbag. She is in a shirt with long sleeves.",
+            "image_names": [
+                "092767.jpg",
+                "094465.jpg",
+                "090644.jpg",
+                "098055.jpg",
+                "091975.jpg",
+                "094769.jpg",
+                "096430.jpg",
+                "099966.jpg",
+                "092084.jpg",
+                "092365.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian is someone who walks on foot, is between 18 and 60 years old, and is standing sideways. He is wearning glasses.",
+            "image_names": [
+                "093919.jpg",
+                "094988.jpg",
+                "098746.jpg",
+                "095241.jpg",
+                "096540.jpg",
+                "096091.jpg",
+                "095393.jpg",
+                "090429.jpg",
+                "096236.jpg",
+                "091131.jpg"
+            ]
+        },
+        {
+            "text": "A walking man who is an adult person aged 18-60, and is standing sideways. He is in a short sleeve shirt.",
+            "image_names": [
+                "094786.jpg",
+                "097940.jpg",
+                "098560.jpg",
+                "097688.jpg",
+                "098673.jpg",
+                "096825.jpg",
+                "098539.jpg",
+                "094968.jpg",
+                "099499.jpg",
+                "094135.jpg"
+            ]
+        },
+        {
+            "text": "A male pedestrian is someone who walks on foot, is between 18 and 60 years old, with his body back to the camera. He is in a shirt with short sleeves with a plaid on the upper.",
+            "image_names": [
+                "098176.jpg",
+                "098397.jpg",
+                "090954.jpg",
+                "098702.jpg",
+                "097111.jpg",
+                "093096.jpg",
+                "094353.jpg",
+                "098658.jpg",
+                "098093.jpg",
+                "092082.jpg"
+            ]
+        },
+        {
+            "text": "A walking man who is an adult person aged 18-60, and is standing sideways. He is in a short sleeve shirt with an upper plaid.",
+            "image_names": [
+                "090433.jpg",
+                "091668.jpg",
+                "096140.jpg",
+ 
