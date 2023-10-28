@@ -676,4 +676,457 @@ class ResNet_vd(nn.Layer):
             kernel_size=3,
             stride=1,
             act='relu',
-            data_format=da
+            data_format=data_format)
+        self.pool2d_max = nn.MaxPool2D(
+            kernel_size=3, stride=2, padding=1, data_format=data_format)
+
+        # self.block_list = []
+        self.stage_list = []
+        if layers >= 50:
+            for block in range(len(depth)):
+                shortcut = False
+                block_list = []
+                for i in range(depth[block]):
+                    if layers in [101, 152] and block == 2:
+                        if i == 0:
+                            conv_name = "res" + str(block + 2) + "a"
+                        else:
+                            conv_name = "res" + str(block + 2) + "b" + str(i)
+                    else:
+                        conv_name = "res" + str(block + 2) + chr(97 + i)
+
+                    ###############################################################################
+                    # Add dilation rate for some segmentation tasks, if dilation_dict is not None.
+                    dilation_rate = dilation_dict[
+                        block] if dilation_dict and block in dilation_dict else 1
+
+                    # Actually block here is 'stage', and i is 'block' in 'stage'
+                    # At the stage 4, expand the the dilation_rate if given multi_grid
+                    if block == 3:
+                        dilation_rate = dilation_rate * multi_grid[i]
+                    ###############################################################################
+
+                    bottleneck_block = self.add_sublayer(
+                        'bb_%d_%d' % (block, i),
+                        BottleneckBlock(
+                            in_channels=num_channels[block]
+                            if i == 0 else num_filters[block] * 4,
+                            out_channels=num_filters[block],
+                            stride=2 if i == 0 and block != 0 and
+                            dilation_rate == 1 else 1,
+                            shortcut=shortcut,
+                            if_first=block == i == 0,
+                            dilation=dilation_rate,
+                            data_format=data_format))
+
+                    block_list.append(bottleneck_block)
+                    shortcut = True
+                self.stage_list.append(block_list)
+        else:
+            for block in range(len(depth)):
+                shortcut = False
+                block_list = []
+                for i in range(depth[block]):
+                    dilation_rate = dilation_dict[block] \
+                        if dilation_dict and block in dilation_dict else 1
+                    if block == 3:
+                        dilation_rate = dilation_rate * multi_grid[i]
+
+                    basic_block = self.add_sublayer(
+                        'bb_%d_%d' % (block, i),
+                        BasicBlock(
+                            in_channels=num_channels[block]
+                            if i == 0 else num_filters[block],
+                            out_channels=num_filters[block],
+                            stride=2 if i == 0 and block != 0 \
+                                and dilation_rate == 1 else 1,
+                            dilation=dilation_rate,
+                            shortcut=shortcut,
+                            if_first=block == i == 0,
+                            data_format=data_format))
+                    block_list.append(basic_block)
+                    shortcut = True
+                self.stage_list.append(block_list)
+
+        self.pretrained = pretrained
+        self.init_weight()
+
+    def forward(self, inputs):
+        y = self.conv1_1(inputs)
+        y = self.conv1_2(y)
+        y = self.conv1_3(y)
+        self.conv1_logit = y.clone()
+        y = self.pool2d_max(y)
+
+        # A feature list saves the output feature map of each stage.
+        feat_list = []
+        for stage in self.stage_list:
+            i = 0
+            for block in stage:
+                y = block(y)
+            feat_list.append(y)
+
+        return feat_list
+
+    def init_weight(self):
+        utils.load_pretrained_model(self, self.pretrained)
+
+
+
+
+class ViT_ResNet(nn.Layer):
+    """ Vision Transformer with support for patch or hybrid CNN input stage
+    """
+    def __init__(self, img_size=224, patch_size=16, in_chans=3, num_classes=80, embed_dim=768, depth=12,
+                 num_heads=12, mlp_ratio=4., qkv_bias=False, qk_scale=None, drop_rate=0., attn_drop_rate=0.,
+                 drop_path_rate=0., hybrid_backbone=None, norm_layer=None, init_values=None, use_checkpoint=False, 
+                 use_abs_pos_emb=False, use_rel_pos_bias=False, use_shared_rel_pos_bias=False,
+                 out_indices=[11], pretrained=None, out_shape=None, lr_mult=1.0, extra_level=0, grainity=4,
+                 layers=50,
+                 output_stride=8,
+                 multi_grid=(1, 1, 1),
+                 in_channels=3,
+                 res_pretrained=None,
+                 data_format='NCHW'):
+        super().__init__()
+        norm_layer = norm_layer or partial(nn.LayerNorm, epsilon=1e-6)
+        self.num_classes = num_classes
+        self.num_features = self.embed_dim = embed_dim  # num_features for consistency with other models
+
+        if hybrid_backbone is not None:
+            self.patch_embed = HybridEmbed(
+                hybrid_backbone, img_size=img_size, in_chans=in_chans, embed_dim=embed_dim)
+        else:
+            self.patch_embed = PatchEmbed(
+                img_size=img_size, patch_size=patch_size, in_chans=in_chans, embed_dim=embed_dim, lr=lr_mult)
+
+        self.patch_size = patch_size
+        self.out_indices = out_indices
+        self.extra_level = extra_level
+
+        self._out_shape = out_shape
+        self._out_strides = [4, 8, 16, 32]
+
+        if use_abs_pos_emb:
+            num_patches = self.patch_embed.num_patches
+            self.pos_embed = self.create_parameter(
+                shape=(1, num_patches, embed_dim), default_initializer=zeros_, attr=ParamAttr(learning_rate=lr_mult))
+            
+            self.pos_embed_x = img_size // patch_size
+            self.pos_embed_y = img_size // patch_size
+        else:
+            self.pos_embed = None
+
+        self.pos_drop = nn.Dropout(p=drop_rate)
+
+        dpr = [x.item() for x in paddle.linspace(0, drop_path_rate, depth)]  # stochastic depth decay rule
+        self.use_rel_pos_bias = use_rel_pos_bias
+        self.use_checkpoint = use_checkpoint
+        interval = depth // grainity
+        self.blocks = nn.LayerList([
+            Block(
+                dim=embed_dim, num_heads=num_heads, mlp_ratio=mlp_ratio, qkv_bias=qkv_bias, qk_scale=qk_scale,
+                drop=drop_rate, attn_drop=attn_drop_rate, drop_path=dpr[i], norm_layer=norm_layer,
+                init_values=init_values, 
+                lr=lr_mult,
+                window_size=(14, 14) if ((i + 1) % interval != 0) else self.patch_embed.patch_shape, 
+                window=((i + 1) % interval != 0))
+            for i in range(depth)])
+
+        if self.pos_embed is not None:
+            trunc_normal_(self.pos_embed)
+
+        self.norm = norm_layer(embed_dim)
+
+        if self.patch_size == 16:
+            self.fpn1 = nn.Sequential(
+                nn.Conv2DTranspose(embed_dim, embed_dim, kernel_size=2, stride=2),
+                Norm2d(embed_dim),
+                nn.GELU(),
+                nn.Conv2DTranspose(embed_dim, embed_dim, kernel_size=2, stride=2),
+            )
+            self.fpn2 = nn.Sequential(nn.Conv2DTranspose(embed_dim, embed_dim, kernel_size=2, stride=2))
+            self.fpn3 = nn.Identity()
+            self.fpn4 = nn.MaxPool2D(kernel_size=2, stride=2)
+        elif self.patch_size == 8:
+            self.fpn1 = nn.Sequential(
+                nn.Conv2DTranspose(embed_dim, embed_dim, kernel_size=2, stride=2),
+                Norm2d(embed_dim),
+                nn.GELU(),
+            )
+            self.fpn2 = nn.Identity()
+            self.fpn3 = nn.MaxPool2D(kernel_size=2, stride=2)
+            self.fpn4 = nn.MaxPool2D(kernel_size=4, stride=4)
+        else:
+            raise NotImplementedError("your patch size {} is not supported yet.".format(self.patch_size))
+        
+        extra_level_module_list = []
+        for i in range(self.extra_level):
+            extra_level_module_list.append(LastLevelMaxPool())
+        self.extra_level_module_list = nn.LayerList(extra_level_module_list)
+
+        self.apply(self._init_weights)
+        self.fix_init_weight()
+        self.pretrained = pretrained
+        self.init_weights()
+
+
+        ############## CNN #################################################################
+
+        self.data_format = data_format
+        self.conv1_logit = None  # for gscnn shape stream
+        self.layers = layers
+        supported_layers = [18, 34, 50, 101, 152, 200]
+        assert layers in supported_layers, \
+            "supported layers are {} but input layer is {}".format(
+                supported_layers, layers)
+
+        if layers == 18:
+            depth = [2, 2, 2, 2]
+        elif layers == 34 or layers == 50:
+            depth = [3, 4, 6, 3]
+        elif layers == 101:
+            depth = [3, 4, 23, 3]
+        elif layers == 152:
+            depth = [3, 8, 36, 3]
+        elif layers == 200:
+            depth = [3, 12, 48, 3]
+        num_channels = [64, 256, 512,
+                        1024] if layers >= 50 else [64, 64, 128, 256]
+        num_filters = [64, 128, 256, 512]
+
+        # for channels of four returned stages
+        self.feat_channels = [c * 4 for c in num_filters
+                              ] if layers >= 50 else num_filters
+
+        dilation_dict = None
+        if output_stride == 8:
+            dilation_dict = {2: 2, 3: 4}
+        elif output_stride == 16:
+            dilation_dict = {3: 2}
+
+        self.conv1_1 = ConvBNLayer(
+            in_channels=in_channels,
+            out_channels=32,
+            kernel_size=3,
+            stride=2,
+            act='relu',
+            data_format=data_format)
+        self.conv1_2 = ConvBNLayer(
+            in_channels=32,
+            out_channels=32,
+            kernel_size=3,
+            stride=1,
+            act='relu',
+            data_format=data_format)
+        self.conv1_3 = ConvBNLayer(
+            in_channels=32,
+            out_channels=64,
+            kernel_size=3,
+            stride=1,
+            act='relu',
+            data_format=data_format)
+        self.pool2d_max = nn.MaxPool2D(
+            kernel_size=3, stride=2, padding=1, data_format=data_format)
+
+        # self.block_list = []
+        self.stage_list = []
+        if layers >= 50:
+            for block in range(len(depth)):
+                shortcut = False
+                block_list = []
+                for i in range(depth[block]):
+                    if layers in [101, 152] and block == 2:
+                        if i == 0:
+                            conv_name = "res" + str(block + 2) + "a"
+                        else:
+                            conv_name = "res" + str(block + 2) + "b" + str(i)
+                    else:
+                        conv_name = "res" + str(block + 2) + chr(97 + i)
+
+                    ###############################################################################
+                    # Add dilation rate for some segmentation tasks, if dilation_dict is not None.
+                    dilation_rate = dilation_dict[
+                        block] if dilation_dict and block in dilation_dict else 1
+
+                    # Actually block here is 'stage', and i is 'block' in 'stage'
+                    # At the stage 4, expand the the dilation_rate if given multi_grid
+                    if block == 3:
+                        dilation_rate = dilation_rate * multi_grid[i]
+                    ###############################################################################
+
+                    bottleneck_block = self.add_sublayer(
+                        'bb_%d_%d' % (block, i),
+                        BottleneckBlock(
+                            in_channels=num_channels[block]
+                            if i == 0 else num_filters[block] * 4,
+                            out_channels=num_filters[block],
+                            stride=2 if i == 0 and block != 0 and
+                            dilation_rate == 1 else 1,
+                            shortcut=shortcut,
+                            if_first=block == i == 0,
+                            dilation=dilation_rate,
+                            data_format=data_format))
+
+                    block_list.append(bottleneck_block)
+                    shortcut = True
+                self.stage_list.append(block_list)
+        else:
+            for block in range(len(depth)):
+                shortcut = False
+                block_list = []
+                for i in range(depth[block]):
+                    dilation_rate = dilation_dict[block] \
+                        if dilation_dict and block in dilation_dict else 1
+                    if block == 3:
+                        dilation_rate = dilation_rate * multi_grid[i]
+
+                    basic_block = self.add_sublayer(
+                        'bb_%d_%d' % (block, i),
+                        BasicBlock(
+                            in_channels=num_channels[block]
+                            if i == 0 else num_filters[block],
+                            out_channels=num_filters[block],
+                            stride=2 if i == 0 and block != 0 \
+                                and dilation_rate == 1 else 1,
+                            dilation=dilation_rate,
+                            shortcut=shortcut,
+                            if_first=block == i == 0,
+                            data_format=data_format))
+                    block_list.append(basic_block)
+                    shortcut = True
+                self.stage_list.append(block_list)
+
+        self.res_pretrained = res_pretrained
+        self.cnn_init_weight()
+
+    def cnn_init_weight(self):
+        utils.load_pretrained_model(self, self.res_pretrained)
+
+    def fix_init_weight(self):
+        def rescale(param, layer_id):
+            param = param / math.sqrt(2.0 * layer_id)
+
+        for layer_id, layer in enumerate(self.blocks):
+            rescale(layer.attn.proj.weight, layer_id + 1)
+            rescale(layer.mlp.fc2.weight, layer_id + 1)
+
+    def _init_weights(self, m):
+        if isinstance(m, nn.Linear):
+            trunc_normal_(m.weight)
+            if isinstance(m, nn.Linear) and m.bias is not None:
+                zeros_(m.bias)
+        elif isinstance(m, nn.LayerNorm):
+            zeros_(m.bias)
+            ones_(m.weight)
+
+    def init_weights(self, pretrained=None):
+        """Initialize the weights in backbone.
+
+        Args:
+            pretrained (str, optional): Path to pre-trained weights.
+                Defaults to None.
+        """
+        pretrained = pretrained or self.pretrained
+        def _init_weights(m):
+            if isinstance(m, nn.Linear):
+                trunc_normal_(m.weight)
+                if isinstance(m, nn.Linear) and m.bias is not None:
+                    zeros_(m.bias)
+            elif isinstance(m, nn.LayerNorm):
+                zeros_(m.bias)
+                ones_(m.weight)
+
+        if isinstance(pretrained, str):
+            self.apply(_init_weights)
+            print(f"load from {pretrained}")
+            load_checkpoint(self, pretrained)
+        elif pretrained is None:
+            self.apply(_init_weights)
+        else:
+            raise TypeError('pretrained must be a str or None')
+
+    def get_num_layers(self):
+        return len(self.blocks)
+
+    def no_weight_decay(self):
+        return {'pos_embed', 'cls_token'}
+
+    def forward_features(self, x):
+        B, C, H, W = x.shape
+        x, (Hp, Wp) = self.patch_embed(x)
+
+        if self.pos_embed is not None:
+            _, num_patches, embedding_size = x.shape
+            _, pos_num_patches, _ = self.pos_embed.shape
+            # if num_patches != pos_num_patches:
+            #     orig_size = int(pos_num_patches ** 0.5)
+            #     target_size = int(num_patches ** 0.5)
+            #     pos_tokens = self.pos_embed.reshape((-1, orig_size, orig_size, embedding_size)).transpose((0, 3, 1, 2))
+            #     pos_tokens = F.interpolate(pos_tokens, size=(target_size, target_size), mode='bicubic', align_corners=False)
+            #     new_pos_embed = pos_tokens.transpose((0, 2, 3, 1)).flatten(1, 2)
+            #     x = x + new_pos_embed
+            if (self.pos_embed_x, self.pos_embed_y) != (Hp, Wp):
+                pos_tokens = self.pos_embed.reshape((-1, self.pos_embed_x, self.pos_embed_y, embedding_size)).transpose((0, 3, 1, 2))
+                pos_tokens = F.interpolate(pos_tokens, size=(Hp, Wp), mode='bicubic', align_corners=False)
+                new_pos_embed = pos_tokens.transpose((0, 2, 3, 1)).flatten(1, 2)
+                x = x + new_pos_embed
+            else:
+                x = x + self.pos_embed
+        x = self.pos_drop(x)
+
+        features = []
+        for i, blk in enumerate(self.blocks):
+            blk.H = Hp
+            blk.W = Wp
+            if self.use_checkpoint:
+                x = recompute(blk, x, Hp, Wp) #TODO add checkpointing of paddle
+            else:
+                x = blk(x, Hp, Wp)
+        
+        x = self.norm(x)
+        
+        xp = x.transpose((0, 2, 1)).reshape((B, -1, Hp, Wp))
+
+        ops = [self.fpn1, self.fpn2, self.fpn3, self.fpn4]
+        for i in range(len(ops)):
+            if i in self.out_indices:
+                features.append(ops[i](xp))
+        p5_feature = features[-1]
+
+        for i in range(self.extra_level):
+            features.append(self.extra_level_module_list[i](p5_feature))
+
+        return tuple(features)
+
+    def forward_cnn(self, inputs):
+        y = self.conv1_1(inputs)
+        y = self.conv1_2(y)
+        y = self.conv1_3(y)
+        self.conv1_logit = y.clone()
+        y = self.pool2d_max(y)
+
+        # A feature list saves the output feature map of each stage.
+        feat_list = []
+        for stage in self.stage_list:
+            for block in stage:
+                y = block(y)
+            feat_list.append(y)
+
+        return feat_list
+    
+    def forward(self, inputs):
+        x = inputs['image']
+        x1 = self.forward_features(x)
+        x2 = self.forward_cnn(x)
+        x = [x1, x2]  #TODO fuse CNN feature Transformer feature
+        return x
+
+
+
+    @property
+    def out_shape(self):
+        return [
+            # ShapeSpec(channels=ch, stride=s) for ch, s in zip(self._out_shape, self._out_strides)
+            ShapeSpec(channels=self._out_shape[i], stride=self._out_strides[i]) for i in self.out_indices
+        ]
