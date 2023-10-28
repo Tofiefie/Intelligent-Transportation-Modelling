@@ -66,4 +66,40 @@ class PositionEmbedding(nn.Layer):
         if self.embed_type == 'sine':
             mask = mask.astype('float32')
             y_embed = mask.cumsum(1, dtype='float32')
-            x
+            x_embed = mask.cumsum(2, dtype='float32')
+            if self.normalize:
+                y_embed = (y_embed + self.offset) / (
+                    y_embed[:, -1:, :] + self.eps) * self.scale
+                x_embed = (x_embed + self.offset) / (
+                    x_embed[:, :, -1:] + self.eps) * self.scale
+
+            dim_t = 2 * (paddle.arange(self.num_pos_feats) //
+                         2).astype('float32')
+            dim_t = self.temperature**(dim_t / self.num_pos_feats)
+
+            pos_x = x_embed.unsqueeze(-1) / dim_t
+            pos_y = y_embed.unsqueeze(-1) / dim_t
+            pos_x = paddle.stack(
+                (pos_x[:, :, :, 0::2].sin(), pos_x[:, :, :, 1::2].cos()),
+                axis=4).flatten(3)
+            pos_y = paddle.stack(
+                (pos_y[:, :, :, 0::2].sin(), pos_y[:, :, :, 1::2].cos()),
+                axis=4).flatten(3)
+            pos = paddle.concat((pos_y, pos_x), axis=3).transpose([0, 3, 1, 2])
+            return pos
+        elif self.embed_type == 'learned':
+            h, w = mask.shape[-2:]
+            i = paddle.arange(w)
+            j = paddle.arange(h)
+            x_emb = self.col_embed(i)
+            y_emb = self.row_embed(j)
+            pos = paddle.concat(
+                [
+                    x_emb.unsqueeze(0).repeat(h, 1, 1),
+                    y_emb.unsqueeze(1).repeat(1, w, 1),
+                ],
+                axis=-1).transpose([2, 0, 1]).unsqueeze(0).tile(mask.shape[0],
+                                                                1, 1, 1)
+            return pos
+        else:
+            raise ValueError(f"not supported {self.embed_type}")
